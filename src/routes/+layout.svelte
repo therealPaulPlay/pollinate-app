@@ -4,4 +4,6 @@
 	let { children } = $props();
 </script>
 
-{@render children()}
+<main class="min-h-screen fixed inset-0 touch-none overscroll-none select-none p-4">
+	{@render children()}
+</main>
