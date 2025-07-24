@@ -130,6 +130,11 @@
   }
 }
 
+img {
+  /* Prevent haptic touch previews */
+  -webkit-touch-callout: none;
+}
+
 @font-face {
   font-family: Bevellier;
   src: url("/fonts/Bevellier-Bold.woff2");
