@@ -142,8 +142,9 @@
 		<p class="text-center font-bevellier text-5xl">Location, please.</p>
 
 		<div class="relative mx-auto max-w-80">
-			<div class="relative">
-				<Search class="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+			<!-- Search box -->
+			<search class="relative mb-4">
+				<Search class="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 				<Input
 					type="text"
 					placeholder="Search for your city"
@@ -156,10 +157,11 @@
 						<div class="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
 					</div>
 				{/if}
-			</div>
+			</search>
 
+			<!-- Dropdown -->
 			{#if locations.length > 0}
-				<div class="absolute top-full right-0 left-0 z-50 mt-4 overflow-hidden rounded-md bg-muted" transition:slide>
+				<div class="z-50 overflow-hidden rounded-md bg-muted" transition:slide>
 					<div class="of-top of-bottom of-length-2 no-scrollbar max-h-[calc(50dvh-200px)] overflow-y-auto">
 						{#each locations as location}
 							<button
