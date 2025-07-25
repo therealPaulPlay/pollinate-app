@@ -1,4 +1,5 @@
 <script>
+	import { goto } from "$app/navigation";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { vibrate } from "$lib/utils/vibrate";
 	import { ArrowRight } from "lucide-svelte";
@@ -84,6 +85,7 @@
 	}
 
 	onMount(() => {
+		localStorage.removeItem("onboardingCompleted");
 		if (!canvas) return;
 
 		ctx = canvas.getContext("2d");
@@ -118,6 +120,7 @@
 			size="lg"
 			onclick={() => {
 				vibrate.light();
+				goto("/select-pollen-types");
 			}}>Get started <ArrowRight /></Button
 		>
 	</div>

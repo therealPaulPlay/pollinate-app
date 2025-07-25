@@ -6,6 +6,7 @@
 	import { fade, slide } from "svelte/transition";
 	import { onMount, onDestroy } from "svelte";
 	import maplibregl from "maplibre-gl";
+	import { goto } from "$app/navigation";
 
 	let searchQuery = $state("");
 	let locations = $state([]);
@@ -123,12 +124,8 @@
 				timestamp: Date.now()
 			})
 		);
-
-		// Add to recent locations only when saved
-		addToRecents(location);
-
-		vibrate.light();
 		console.log("Location saved:", location);
+		addToRecents(location); // Add to recent locations only when saved
 	}
 
 	onMount(() => {
@@ -165,7 +162,7 @@
 	>
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
-	<div class="mt-30 w-full max-w-md space-y-8">
+	<div class="mt-8 w-full max-w-md space-y-8">
 		<p class="text-center font-bevellier text-5xl">Location, please.</p>
 
 		<div class="relative mx-auto max-w-80">
@@ -228,9 +225,12 @@
 	<div class="mt-auto mb-8">
 		<Button
 			size="lg"
-			onclick={saveLocation}
+			onclick={() => {
+				saveLocation();
+				vibrate.light();
+				goto("/");
+			}}
 			disabled={!selectedLocation}
-			class="backdrop-blur-xl {!selectedLocation ? 'opacity-50' : ''}"
 		>
 			Save location <Check class="mt-0.5" />
 		</Button>

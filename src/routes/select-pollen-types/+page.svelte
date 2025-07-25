@@ -6,6 +6,7 @@
 	import { vibrate } from "$lib/utils/vibrate";
 	import { onMount } from "svelte";
 	import { fade } from "svelte/transition";
+	import { goto } from "$app/navigation";
 
 	let pollenTypes = $state({});
 	let selectedPollen = new SvelteSet();
@@ -39,13 +40,12 @@
 
 	function savePollen() {
 		localStorage.setItem("userPollen", JSON.stringify([...$state.snapshot(selectedPollen)]));
-		vibrate.light();
 		console.log("Pollen type saved:", [...selectedPollen]);
 	}
 </script>
 
 <div class="flex h-full flex-col items-center">
-	<div class="mt-20 w-full max-w-80 space-y-8">
+	<div class="mt-8 w-full max-w-80 space-y-8 flex flex-col overflow-hidden">
 		<p class="text-center font-bevellier text-5xl">What makes you sneeze?</p>
 
 		{#if isLoading}
@@ -53,9 +53,12 @@
 				<div class="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
 			</div>
 		{:else}
-			<div transition:fade class="no-scrollbar of-top of-bottom of-length-2 max-h-[55vh] space-y-2 overflow-y-auto">
+			<div
+				transition:fade
+				class="no-scrollbar of-top of-bottom of-length-2 flex-grow space-y-2 overflow-y-auto mb-8"
+			>
 				{#each Object.entries(pollenTypes) as [id, data]}
-					<label class="flex min-h-[60px] cursor-pointer items-center gap-3 rounded-xl p-4 transition-colors">
+					<label class="flex min-h-[60px] cursor-pointer items-center gap-3 rounded-xl p-4">
 						<Checkbox checked={selectedPollen.has(id)} onCheckedChange={() => togglePollen(id)} />
 						{#if data.category === "tree"}
 							<TreeDeciduous class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
@@ -72,7 +75,12 @@
 	<div class="mt-auto mb-8">
 		<Button
 			size="lg"
-			onclick={savePollen}
+			onclick={() => {
+				savePollen();
+				vibrate.light();
+				if (localStorage.getItem("onboardingCompleted")) goto("/");
+				else goto("/select-location");
+			}}
 			disabled={selectedPollen.size === 0}
 		>
 			Save allergies <Check class="mt-0.5" />
