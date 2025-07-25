@@ -1,0 +1,19 @@
+{
+  "ALDER": { "name": "Alder Tree", "category": "tree" },
+  "ASH": { "name": "Ash Tree", "category": "tree" },
+  "BIRCH": { "name": "Birch Tree", "category": "tree" },
+  "COTTONWOOD": { "name": "Cottonwood Tree", "category": "tree" },
+  "ELM": { "name": "Elm Tree", "category": "tree" },
+  "MAPLE": { "name": "Maple Tree", "category": "tree" },
+  "OLIVE": { "name": "Olive Tree", "category": "tree" },
+  "JUNIPER": { "name": "Juniper Tree", "category": "tree" },
+  "OAK": { "name": "Oak Tree", "category": "tree" },
+  "PINE": { "name": "Pine Tree", "category": "tree" },
+  "CYPRESS_PINE": { "name": "Cypress Pine Tree", "category": "tree" },
+  "HAZEL": { "name": "Hazel Tree", "category": "tree" },
+  "JAPANESE_CEDAR": { "name": "Japanese Cedar Tree", "category": "tree" },
+  "JAPANESE_CYPRESS": { "name": "Japanese Cypress Tree", "category": "tree" },
+  "GRAMINALES": { "name": "Grasses", "category": "grass" },
+  "RAGWEED": { "name": "Ragweed", "category": "weed" },
+  "MUGWORT": { "name": "Mugwort", "category": "weed" }
+}

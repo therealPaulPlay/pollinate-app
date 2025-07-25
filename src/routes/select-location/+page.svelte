@@ -130,7 +130,7 @@
 	<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
 </svelte:head>
 
-<div class="relative z-10 flex h-full flex-col items-center px-6">
+<div class="relative z-10 flex h-full flex-col items-center">
 	<!-- Background Map -->
 	<div
 		style:opacity={mapLoaded ? "0.15" : "0"}
@@ -184,7 +184,7 @@
 			disabled={!selectedLocation}
 			class="backdrop-blur-xl {!selectedLocation ? 'opacity-50' : ''}"
 		>
-			That's the one <Check class="mt-0.5" />
+			Save location <Check class="mt-0.5" />
 		</Button>
 	</div>
 </div>
