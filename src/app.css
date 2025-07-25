@@ -14,15 +14,15 @@
   --popover-foreground: oklch(0.258 0.031 140.6);
   --primary: oklch(0.825 0.155 89.2);
   --primary-foreground: oklch(0.258 0.031 140.6);
-  --secondary: oklch(0.848 0.085 92.4);
+  --secondary: oklch(84.688% 0.08843 85.472);
   --secondary-foreground: oklch(0.258 0.031 140.6);
-  --muted: oklch(0.92 0.035 85.8);
+  --muted: oklch(92.254% 0.06539 88.986);
   --muted-foreground: oklch(0.45 0.025 140.6);
   --accent: oklch(0.825 0.155 89.2);
   --accent-foreground: oklch(0.258 0.031 140.6);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.88 0.045 85.8);
-  --input: oklch(0.95 0.035 85.8);
+  --input: oklch(85.486% 0.12917 84.197);
   --ring: oklch(0.825 0.155 89.2);
   --chart-1: oklch(0.825 0.155 89.2);
   --chart-2: oklch(0.848 0.085 92.4);
@@ -149,4 +149,8 @@ img {
   /* might be renamed to --font (without sans) in future Tailwind versions */
   --font-sans: Raleway, system-ui, sans-serif;
   --font-bevellier: Bevellier, system-ui, sans-serif;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
 }

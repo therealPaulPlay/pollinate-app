@@ -1,9 +1,15 @@
 <script>
-	import '../app.css';
+	import { onMount } from "svelte";
+	import "../app.css";
+	import init from "overfade";
 
 	let { children } = $props();
+
+	onMount(() => {
+		init(); // Init overfade
+	});
 </script>
 
-<main class="min-h-screen fixed inset-0 touch-none overscroll-none select-none p-4">
+<main class="fixed inset-0 min-h-screen touch-none overscroll-none p-4 select-none">
 	{@render children()}
 </main>
