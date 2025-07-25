@@ -1,7 +1,7 @@
 <script>
 	import Button from "$lib/components/ui/button/button.svelte";
 	import Input from "$lib/components/ui/input/input.svelte";
-	import { Check, MapPin, Search } from "lucide-svelte";
+	import { Check, MapPin, Search, Clock } from "lucide-svelte";
 	import { vibrate } from "$lib/utils/vibrate";
 	import { fade, slide } from "svelte/transition";
 	import { onMount, onDestroy } from "svelte";
@@ -9,8 +9,10 @@
 
 	let searchQuery = $state("");
 	let locations = $state([]);
+	let recentLocations = $state([]);
 	let selectedLocation = $state(null);
 	let isLoading = $state(false);
+	let showDropdown = $state(false);
 	let searchTimeout;
 	let mapContainer;
 	let mapLoaded = $state(false);
@@ -68,13 +70,21 @@
 	function handleInput(e) {
 		searchQuery = e.target.value;
 		clearTimeout(searchTimeout);
-		searchTimeout = setTimeout(() => searchLocations(searchQuery), 300);
+
+		if (searchQuery.length === 0) {
+			locations = [];
+			showDropdown = recentLocations.length > 0;
+		} else {
+			showDropdown = true;
+			searchTimeout = setTimeout(() => searchLocations(searchQuery), 300);
+		}
 	}
 
 	function selectLocation(location) {
 		selectedLocation = location;
 		searchQuery = location.name;
 		locations = [];
+		showDropdown = false;
 
 		// Zoom map to selected location
 		if (map && location.lat && location.lon) {
@@ -86,6 +96,18 @@
 		}
 
 		vibrate.light();
+	}
+
+	function addToRecents(location) {
+		recentLocations = recentLocations.filter((recent) => recent.name !== location.name); // Remove if already exists to avoid duplicates
+		recentLocations = [location, ...recentLocations];
+		if (recentLocations.length > 5) recentLocations = recentLocations.slice(0, 5); // Limit to 5
+		localStorage.setItem("userLocationHistory", JSON.stringify(recentLocations));
+	}
+
+	function loadRecents() {
+		const saved = localStorage.getItem("userLocationHistory");
+		if (saved) recentLocations = JSON.parse(saved);
 	}
 
 	function saveLocation() {
@@ -102,11 +124,16 @@
 			})
 		);
 
+		// Add to recent locations only when saved
+		addToRecents(location);
+
 		vibrate.light();
 		console.log("Location saved:", location);
 	}
 
 	onMount(() => {
+		loadRecents();
+
 		if (!mapContainer) return;
 
 		map = new maplibregl.Map({
@@ -150,6 +177,8 @@
 					placeholder="Search for your city"
 					bind:value={searchQuery}
 					oninput={handleInput}
+					onfocus={() => (showDropdown = searchQuery.length === 0 ? recentLocations.length > 0 : locations.length > 0)}
+					onblur={() => setTimeout(() => (showDropdown = false), 150)}
 					class="pl-10 text-base"
 				/>
 				{#if isLoading}
@@ -160,19 +189,36 @@
 			</search>
 
 			<!-- Dropdown -->
-			{#if locations.length > 0}
+			{#if showDropdown}
 				<div class="z-50 overflow-hidden rounded-md bg-muted" transition:slide>
 					<div class="of-top of-bottom of-length-2 no-scrollbar max-h-[calc(50dvh-200px)] overflow-y-auto">
-						{#each locations as location}
-							<button
-								transition:slide={{ duration: 250 }}
-								class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
-								onclick={() => selectLocation(location)}
-							>
-								<MapPin class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
-								<span class="truncate text-base">{location.name}</span>
-							</button>
-						{/each}
+						<!-- Show search results when there's a query -->
+						{#if searchQuery.length > 0 && locations.length > 0}
+							{#each locations as location}
+								<button
+									transition:slide={{ duration: 250 }}
+									class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
+									onclick={() => selectLocation(location)}
+								>
+									<MapPin class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
+									<span class="truncate text-base">{location.name}</span>
+								</button>
+							{/each}
+						{/if}
+
+						<!-- Show recents when no query -->
+						{#if searchQuery.length === 0 && recentLocations.length > 0}
+							{#each recentLocations as location}
+								<button
+									transition:slide={{ duration: 250 }}
+									class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
+									onclick={() => selectLocation(location)}
+								>
+									<Clock class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
+									<span class="truncate text-base">{location.name}</span>
+								</button>
+							{/each}
+						{/if}
 					</div>
 				</div>
 			{/if}
