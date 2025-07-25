@@ -4,12 +4,17 @@
 	import { Check, MapPin, Search } from "lucide-svelte";
 	import { vibrate } from "$lib/utils/vibrate";
 	import { fade, slide } from "svelte/transition";
+	import { onMount, onDestroy } from "svelte";
+	import maplibregl from "maplibre-gl";
 
-	let searchQuery = "";
-	let locations = [];
-	let selectedLocation = null;
-	let isLoading = false;
+	let searchQuery = $state("");
+	let locations = $state([]);
+	let selectedLocation = $state(null);
+	let isLoading = $state(false);
 	let searchTimeout;
+	let mapContainer;
+	let mapLoaded = $state(false);
+	let map;
 
 	async function searchLocations(query) {
 		if (query.length < 3) return (locations = []); // Ignore super short searches
@@ -27,13 +32,23 @@
 				lon: parseFloat(item.lon)
 			}));
 
+			// Remove duplicates
 			const uniqueNames = new Set();
-
 			locations = locations.filter((item) => {
 				if (item.name && uniqueNames.has(item.name)) return false;
 				uniqueNames.add(item.name);
 				return true;
 			});
+
+			// Auto-focus map on first result
+			if (locations.length > 0 && map) {
+				const firstLocation = locations[0];
+				map.flyTo({
+					center: [firstLocation.lon, firstLocation.lat],
+					zoom: 6,
+					duration: 1500
+				});
+			}
 		} catch (error) {
 			console.error("Search failed:", error);
 			locations = [];
@@ -60,28 +75,69 @@
 		selectedLocation = location;
 		searchQuery = location.name;
 		locations = [];
+
+		// Zoom map to selected location
+		if (map && location.lat && location.lon) {
+			map.flyTo({
+				center: [location.lon, location.lat],
+				zoom: 8,
+				duration: 2000
+			});
+		}
+
 		vibrate.light();
 	}
 
 	function saveLocation() {
 		if (!selectedLocation) return;
+		const location = $state.snapshot(selectedLocation);
 
 		localStorage.setItem(
 			"userLocation",
 			JSON.stringify({
-				name: selectedLocation.name,
-				lat: selectedLocation.lat,
-				lon: selectedLocation.lon,
+				name: location.name,
+				lat: location.lat,
+				lon: location.lon,
 				timestamp: Date.now()
 			})
 		);
 
 		vibrate.light();
-		console.log("Location saved:", selectedLocation);
+		console.log("Location saved:", location);
 	}
+
+	onMount(() => {
+		if (!mapContainer) return;
+
+		map = new maplibregl.Map({
+			container: mapContainer,
+			style: "https://tiles.openfreemap.org/styles/liberty",
+			center: [-40, 40], // Show world view initially
+			zoom: 1.5,
+			interactive: false, // Disable interactions for background effect
+			attributionControl: false
+		});
+
+		map.on("load", () => (mapLoaded = true));
+	});
+
+	onDestroy(() => {
+		if (map) map.remove();
+	});
 </script>
 
-<div class="flex h-full flex-col items-center px-6">
+<svelte:head>
+	<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+</svelte:head>
+
+<div class="relative z-10 flex h-full flex-col items-center px-6">
+	<!-- Background Map -->
+	<div
+		style:opacity={mapLoaded ? "0.15" : "0"}
+		class="absolute top-55 right-0 bottom-30 left-0 mask-t-from-85% mask-r-from-70% mask-b-from-85% mask-l-from-70% sepia transition duration-1000"
+	>
+		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
+	</div>
 	<div class="mt-30 w-full max-w-md space-y-8">
 		<p class="text-center font-bevellier text-5xl">Location, please.</p>
 
@@ -103,8 +159,7 @@
 			</div>
 
 			{#if locations.length > 0}
-				<p class="mt-5 ml-4 text-muted-foreground" transition:fade>Results</p>
-				<div class="absolute top-full right-0 left-0 z-50 mt-2 overflow-hidden rounded-lg bg-muted" transition:slide>
+				<div class="absolute top-full right-0 left-0 z-50 mt-4 overflow-hidden rounded-md bg-muted" transition:slide>
 					<div class="of-top of-bottom of-length-2 no-scrollbar max-h-[calc(50dvh-200px)] overflow-y-auto">
 						{#each locations as location}
 							<button
@@ -123,8 +178,13 @@
 	</div>
 
 	<div class="mt-auto mb-8">
-		<Button size="lg" onclick={saveLocation} disabled={!selectedLocation} class={!selectedLocation ? "opacity-50" : ""}>
-			That's the one <Check class="ml-2" />
+		<Button
+			size="lg"
+			onclick={saveLocation}
+			disabled={!selectedLocation}
+			class="backdrop-blur-xl {!selectedLocation ? 'opacity-50' : ''}"
+		>
+			That's the one <Check class="mt-0.5" />
 		</Button>
 	</div>
 </div>
