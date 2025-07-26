@@ -157,7 +157,7 @@
 <div class="relative z-10 flex h-full flex-col items-center">
 	<!-- Background Map -->
 	<div
-		style:opacity={mapLoaded ? "0.15" : "0"}
+		style:opacity={mapLoaded ? "0.2" : "0"}
 		class="absolute top-55 right-0 bottom-30 left-0 mask-t-from-85% mask-r-from-70% mask-b-from-85% mask-l-from-70% sepia transition duration-1000"
 	>
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
@@ -171,7 +171,7 @@
 				<Search class="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 				<Input
 					type="text"
-					placeholder="Search for your city"
+					placeholder="Search for your city..."
 					bind:value={searchQuery}
 					oninput={handleInput}
 					onfocus={() => (showDropdown = searchQuery.length === 0 ? recentLocations.length > 0 : locations.length > 0)}
@@ -227,6 +227,7 @@
 			size="lg"
 			onclick={() => {
 				saveLocation();
+				localStorage.setItem("onboardingCompleted", true);
 				vibrate.light();
 				goto("/");
 			}}

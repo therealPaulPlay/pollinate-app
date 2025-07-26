@@ -8,26 +8,25 @@
 			variant: {
 				default: "bg-primary text-primary-foreground shadow-xs hover:opacity-80",
 				destructive:
-					"bg-destructive shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white",
+					"bg-destructive shadow-xs hover:opacity-50 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-white",
 				outline:
-					"bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 border",
-				secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-				ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-				link: "text-primary underline-offset-4 hover:underline",
+					"bg-background hover:opacity-50 bg-card hover:text-accent-foreground",
+				secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+				ghost: "hover:bg-muted hover:text-accent-foreground dark:hover:bg-muted/50",
+				link: "text-primary underline-offset-4 hover:underline"
 			},
 			size: {
 				default: "h-11 px-6 py-2 has-[>svg]:px-5",
 				sm: "h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5",
 				lg: "h-14 rounded-lg px-18 has-[>svg]:px-16 text-base",
-				icon: "size-9",
-			},
+				icon: "h-9 px-3! size-9"
+			}
 		},
 		defaultVariants: {
 			variant: "default",
-			size: "default",
-		},
+			size: "default"
+		}
 	});
-
 </script>
 
 <script>

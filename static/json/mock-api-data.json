@@ -1,0 +1,195 @@
+{
+    "regionCode": "AT",
+    "location": "Vienna, Austria",
+    "currentConditions": {
+        "airQuality": 87,
+        "ozone": 42.0,
+        "thunderstormRisk": "clear"
+    },
+    "dailyInfo": [
+        {
+            "date": {
+                "year": 2025,
+                "month": 7,
+                "day": 26
+            },
+            "pollenTypeInfo": [
+                {
+                    "code": "GRASS",
+                    "displayName": "Grass",
+                    "inSeason": true,
+                    "indexInfo": {
+                        "code": "UPI",
+                        "displayName": "Universal Pollen Index",
+                        "value": 3,
+                        "category": "Moderate",
+                        "color": {
+                            "red": 1.0,
+                            "green": 0.8,
+                            "blue": 0.0
+                        }
+                    },
+                    "healthRecommendations": [
+                        "Consider limiting outdoor activities during peak hours"
+                    ]
+                },
+                {
+                    "code": "TREE",
+                    "displayName": "Tree",
+                    "inSeason": false,
+                    "indexInfo": {
+                        "value": 1,
+                        "category": "Very Low",
+                        "color": {
+                            "red": 0.0,
+                            "green": 0.8,
+                            "blue": 0.0
+                        }
+                    }
+                },
+                {
+                    "code": "WEED",
+                    "displayName": "Weed",
+                    "inSeason": true,
+                    "indexInfo": {
+                        "value": 2,
+                        "category": "Low",
+                        "color": {
+                            "red": 0.5,
+                            "green": 0.8,
+                            "blue": 0.0
+                        }
+                    }
+                }
+            ],
+            "plantInfo": [
+                {
+                    "code": "BIRCH",
+                    "displayName": "Birch",
+                    "inSeason": false,
+                    "indexInfo": {
+                        "value": 2,
+                        "category": "Very Low"
+                    }
+                },
+                {
+                    "code": "GRAMINALES",
+                    "displayName": "Grasses",
+                    "inSeason": true,
+                    "indexInfo": {
+                        "value": 3,
+                        "category": "Moderate"
+                    }
+                },
+                {
+                    "code": "RAGWEED",
+                    "displayName": "Ragweed",
+                    "inSeason": true,
+                    "indexInfo": {
+                        "value": 2,
+                        "category": "Low"
+                    }
+                },
+                {
+                    "code": "OAK",
+                    "displayName": "Oak",
+                    "inSeason": false,
+                    "indexInfo": {
+                        "value": 1,
+                        "category": "Very Low"
+                    }
+                }
+            ]
+        },
+        {
+            "date": {
+                "year": 2025,
+                "month": 7,
+                "day": 27
+            },
+            "pollenTypeInfo": [
+                {
+                    "code": "GRASS",
+                    "indexInfo": {
+                        "value": 4,
+                        "category": "High"
+                    }
+                },
+                {
+                    "code": "TREE",
+                    "indexInfo": {
+                        "value": 1,
+                        "category": "Very Low"
+                    }
+                },
+                {
+                    "code": "WEED",
+                    "indexInfo": {
+                        "value": 3,
+                        "category": "Moderate"
+                    }
+                }
+            ]
+        },
+        {
+            "date": {
+                "year": 2025,
+                "month": 7,
+                "day": 28
+            },
+            "pollenTypeInfo": [
+                {
+                    "code": "GRASS",
+                    "indexInfo": {
+                        "value": 2,
+                        "category": "Low"
+                    }
+                },
+                {
+                    "code": "TREE",
+                    "indexInfo": {
+                        "value": 1,
+                        "category": "Very Low"
+                    }
+                },
+                {
+                    "code": "WEED",
+                    "indexInfo": {
+                        "value": 2,
+                        "category": "Low"
+                    }
+                }
+            ]
+        },
+        {
+            "date": {
+                "year": 2025,
+                "month": 7,
+                "day": 29
+            },
+            "pollenTypeInfo": [
+                {
+                    "code": "GRASS",
+                    "indexInfo": {
+                        "value": 3,
+                        "category": "Moderate"
+                    }
+                },
+                {
+                    "code": "TREE",
+                    "indexInfo": {
+                        "value": 1,
+                        "category": "Very Low"
+                    }
+                },
+                {
+                    "code": "WEED",
+                    "indexInfo": {
+                        "value": 1,
+                        "category": "Very Low"
+                    }
+                }
+            ]
+        }
+    ]
+}

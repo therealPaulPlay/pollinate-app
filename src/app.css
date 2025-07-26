@@ -8,7 +8,7 @@
   /* More rounded */
   --background: oklch(0.975 0.042 85.8);
   --foreground: oklch(0.258 0.031 140.6);
-  --card: oklch(0.99 0.025 85.8);
+  --card: oklch(92.254% 0.06539 88.986 / 0.65);
   --card-foreground: oklch(0.258 0.031 140.6);
   --popover: oklch(0.99 0.025 85.8);
   --popover-foreground: oklch(0.258 0.031 140.6);
@@ -43,7 +43,7 @@
   --background: oklch(0.15 0.02 140.6);
   /* Dark green base */
   --foreground: oklch(0.92 0.025 85.8);
-  --card: oklch(0.18 0.025 140.6);
+  --card: oklch(22.04% 0.02002 138.832 / 0.65);
   --card-foreground: oklch(0.92 0.025 85.8);
   --popover: oklch(0.18 0.025 140.6);
   --popover-foreground: oklch(0.92 0.025 85.8);

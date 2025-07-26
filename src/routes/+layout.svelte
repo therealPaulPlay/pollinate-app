@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	import { onNavigate } from "$app/navigation";
+	import { goto, onNavigate } from "$app/navigation";
 	import "../app.css";
 	import init from "overfade";
 
@@ -19,9 +19,14 @@
 
 	onMount(() => {
 		init(); // Init overfade
+		if (localStorage.getItem("onboardingCompleted") === null) goto("/onboarding"); // Go to onboarding if not yet completed
 	});
 </script>
 
-<main class="fixed inset-0 min-h-screen touch-none overscroll-none p-4 select-none">
+<svelte:head>
+	<title>Pollinate</title>
+</svelte:head>
+
+<main class="fixed inset-0 min-h-screen touch-none overscroll-none select-none">
 	{@render children()}
 </main>
