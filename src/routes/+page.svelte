@@ -12,80 +12,87 @@
 		calculateRiskLevel
 	} from "$lib/utils/pollen-data.js";
 	import { getRiskColor } from "$lib/utils/risk-color.js";
-	import { formatDate } from "$lib/utils/format-date.js";
-	import { AreaChart } from "layerchart";
-	import { scaleLinear, scalePoint } from "d3-scale";
-	import { curveNatural } from "d3-shape";
+	import { BarChart } from "layerchart";
+	import { scaleLinear, scaleBand } from "d3-scale";
 	import { goto } from "$app/navigation";
-	import ForecastDrawer from "$lib/components/ForecastDrawer.svelte";
 	import Widget from "$lib/components/Widget.svelte";
 	import Minus from "@lucide/svelte/icons/minus";
 	import { slide } from "svelte/transition";
 	import { vibrate } from "$lib/utils/vibrate";
+	import { flip } from "svelte/animate";
 
 	let pollenTypesList = $state({});
-	let forecastDrawerOpen = $state(false);
 	let showingAllOthers = $state(false);
+	let selectedDay = $state(0); // 0 = today, 1 = tomorrow, etc.
 
 	// Basic derived values
 	let riskLevel = $derived.by(() => calculateRiskLevel($pollenData, $userPollen));
 
-	// User's selected pollen with levels
-	let selectedPollenData = $derived.by(() => {
-		return $userPollen
-			.map((code) => {
-				const plant = $pollenData?.dailyInfo?.[0]?.plantInfo?.find((p) => p.code === code);
-				return {
-					code,
-					name: pollenTypesList[code]?.name || code,
-					level: plant?.indexInfo?.value || 0
-				};
-			})
-			.sort((a, b) => b.level - a.level);
-	});
-
-	// Other pollen types
-	let otherPollenData = $derived.by(() => {
-		const others = Object.keys(pollenTypesList)
-			.filter((code) => !$userPollen.includes(code))
-			.map((code) => {
-				const plant = $pollenData?.dailyInfo?.[0]?.plantInfo?.find((p) => p.code === code);
-				return {
-					code,
-					name: pollenTypesList[code]?.name || code,
-					level: plant?.indexInfo?.value || 0
-				};
-			})
-			.sort((a, b) => b.level - a.level);
-
-		return showingAllOthers ? others : others.slice(0, 3);
-	});
-
-	// Forecast data for user's selected pollen
+	// Forecast data for user's selected pollen (bar chart)
 	let forecastData = $derived.by(() => {
 		if (!$pollenData?.dailyInfo || $userPollen.length === 0) return [];
 
-		return $pollenData.dailyInfo.slice(0, 4).map((day) => {
-			const dayData = { date: formatDate(day.date).split(",")[0] };
-			$userPollen.forEach((pollenCode) => {
+		return $userPollen.map((pollenCode) => {
+			const data = { pollen: pollenTypesList[pollenCode]?.name || pollenCode };
+			$pollenData.dailyInfo.slice(0, 4).forEach((day, index) => {
 				const plant = day.plantInfo?.find((p) => p.code === pollenCode);
-				dayData[pollenCode] = plant?.indexInfo?.value || 0;
+				data[`day${index}`] = plant?.indexInfo?.value || 0;
 			});
-			return dayData;
+			return data;
 		});
 	});
 
-	// Chart config for user's pollen
+	// Chart config for bar chart
 	let chartConfig = $derived.by(() => {
 		const config = {};
-		const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"];
-		$userPollen.forEach((pollenCode, index) => {
-			config[pollenCode] = {
-				label: pollenTypesList[pollenCode]?.name || pollenCode,
-				color: colors[index % colors.length]
+		const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)"];
+		for (let i = 0; i < 4; i++) {
+			config[`day${i}`] = {
+				label: getDayLabel(i),
+				color: colors[i]
 			};
-		});
+		}
 		return config;
+	});
+
+	// Get day labels for tabs and chart
+	function getDayLabel(dayIndex) {
+		if (!$pollenData?.dailyInfo?.[dayIndex]) return "";
+		const day = $pollenData.dailyInfo[dayIndex];
+		const date = new Date(day.date.year, day.date.month - 1, day.date.day);
+		return dayIndex === 0 ? "Today" : date.toLocaleDateString("en-US", { weekday: "short" });
+	}
+
+	// Get current day's pollen data
+	let currentDayData = $derived.by(() => {
+		if (!$pollenData?.dailyInfo?.[selectedDay]) return [];
+
+		const dayInfo = $pollenData.dailyInfo[selectedDay];
+		const allPollen = Object.keys(pollenTypesList)
+			.map((code) => {
+				const plant = dayInfo.plantInfo?.find((p) => p.code === code);
+				return {
+					code,
+					name: pollenTypesList[code]?.name || code,
+					level: plant?.indexInfo?.value || 0,
+					isSelected: $userPollen.includes(code)
+				};
+			})
+			.sort((a, b) => {
+				// Selected pollen first, then by level descending
+				if (a.isSelected && !b.isSelected) return -1;
+				if (!a.isSelected && b.isSelected) return 1;
+				return b.level - a.level;
+			});
+
+		return allPollen;
+	});
+
+	// Selected vs other pollen for current day
+	let selectedPollenData = $derived(currentDayData.filter((p) => p.isSelected));
+	let otherPollenData = $derived.by(() => {
+		const others = currentDayData.filter((p) => !p.isSelected);
+		return showingAllOthers ? others : others.slice(0, 3);
 	});
 
 	onMount(async () => {
@@ -130,42 +137,21 @@
 			</span>
 		</Widget>
 
-		<!-- Forecast -->
-		<Widget
-			title="Forecast"
-			cellWidth={2}
-			fixedHeight={true}
-			isLoading={$isLoading}
-			onclick={() => {
-				vibrate.medium();
-				forecastDrawerOpen = true;
-			}}
-		>
+		<!-- Forecast Bar Chart -->
+		<Widget title="Forecast" cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
 			{#if forecastData.length > 0 && $userPollen.length > 0}
 				<div class="-m-4 h-full w-full overflow-hidden">
 					<Chart.Container config={chartConfig} class="h-full w-full">
-						<AreaChart
+						<BarChart
 							data={forecastData}
-							x="date"
-							xScale={scalePoint()}
-							y={$userPollen}
+							x="pollen"
+							xScale={scaleBand().padding(0.2)}
+							y={["day0", "day1", "day2", "day3"]}
 							yScale={scaleLinear().domain([0, 5])}
-							series={$userPollen.map((pollenCode, index) => ({
-								key: pollenCode,
-								label: pollenTypesList[pollenCode]?.name || pollenCode,
-								color: ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"][
-									index % 5
-								]
-							}))}
-							seriesLayout="stack"
 							props={{
-								area: {
-									curve: curveNatural,
-									"fill-opacity": 0.8
-								},
 								xAxis: false,
 								yAxis: false,
-								grid: false,
+								grid: true,
 								tooltip: false
 							}}
 						/>
@@ -186,7 +172,7 @@
 			</div>
 		</Widget>
 
-		<!-- Thunderstorm -->
+		<!-- Weather -->
 		<Widget title="Weather" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
 				<Sun class="mx-auto h-8 w-8" strokeWidth={3} />
@@ -212,15 +198,35 @@
 		</Widget>
 	</div>
 
-	<!-- All pollen -->
-	<!-- Pollen -->
+	<!-- Pollen Forecast Section with Day Tabs -->
 	<Widget title="Pollen" fixedHeight={false} isLoading={$isLoading}>
-		<div class="space-y-6">
-			<!-- Selected Pollen (no header) -->
+		<div class="space-y-4">
+			<!-- Day Selector Pills -->
+			{#if $pollenData?.dailyInfo?.length > 0}
+				<div class="of-left of-right no-scrollbar flex gap-2 overflow-x-auto pb-2">
+					{#each $pollenData.dailyInfo.slice(0, 4) as day, index}
+						<button
+							class="flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all ease-out active:scale-95 {selectedDay ===
+							index
+								? 'bg-primary text-primary-foreground'
+								: 'bg-muted text-muted-foreground'}"
+							onclick={() => {
+								selectedDay = index;
+								vibrate.light();
+							}}
+						>
+							{getDayLabel(index)}
+						</button>
+					{/each}
+				</div>
+			{/if}
+
+			<!-- Selected Pollen for Current Day -->
 			{#if selectedPollenData.length > 0}
 				<div class="space-y-2">
-					{#each selectedPollenData as pollen}
+					{#each selectedPollenData as pollen (pollen.name)}
 						<div
+							animate:flip={{ duration: 250 }}
 							class="flex cursor-pointer items-center justify-between px-1 py-2 transition hover:opacity-50 active:scale-95"
 						>
 							<span class="text-sm font-medium">{pollen.name}</span>
@@ -238,7 +244,7 @@
 				</div>
 			{/if}
 
-			<!-- Others Section with divider -->
+			<!-- Others Section for Current Day -->
 			{#if otherPollenData.length > 0}
 				<div class="space-y-3">
 					<div class="mx-1 flex items-center gap-3">
@@ -246,7 +252,7 @@
 						<div class="mt-1 h-px flex-1 bg-border"></div>
 					</div>
 					<div class="space-y-2">
-						{#each otherPollenData as pollen}
+						{#each otherPollenData as pollen (pollen.name)}
 							<div
 								transition:slide={{ duration: 250 }}
 								class="flex cursor-pointer items-center justify-between px-1 py-2 opacity-60 transition hover:opacity-25 active:scale-95"
@@ -264,7 +270,7 @@
 							</div>
 						{/each}
 
-						{#if Object.keys(pollenTypesList).length - $userPollen.length > 3}
+						{#if currentDayData.filter((p) => !p.isSelected).length > 3}
 							<Button
 								class="w-full"
 								onclick={() => {
@@ -282,7 +288,7 @@
 						{/if}
 					</div>
 				</div>
-			{:else}
+			{:else if selectedPollenData.length === 0}
 				<div class="py-6 text-center text-muted-foreground">
 					<p class="text-sm">No pollen types selected.</p>
 				</div>
@@ -334,6 +340,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Forecast Drawer Component -->
-<ForecastDrawer bind:open={forecastDrawerOpen} {forecastData} isLoading={$isLoading} />

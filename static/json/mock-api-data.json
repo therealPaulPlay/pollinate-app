@@ -1,162 +1,129 @@
 {
-    "regionCode": "AT",
-    "location": "Vienna, Austria",
-    "currentConditions": {
-        "airQuality": 87,
-        "ozone": 42.0,
-        "generalWheather": "clear"
-    },
     "dailyInfo": [
-        {
-            "date": {
-                "year": 2025,
-                "month": 7,
-                "day": 26
-            },
-            "pollenTypeInfo": [
-                {
-                    "code": "GRASS",
-                    "displayName": "Grass",
-                    "inSeason": true,
-                    "indexInfo": {
-                        "code": "UPI",
-                        "displayName": "Universal Pollen Index",
-                        "value": 3,
-                        "category": "Moderate",
-                        "color": {
-                            "red": 1.0,
-                            "green": 0.8,
-                            "blue": 0.0
-                        }
-                    },
-                    "healthRecommendations": [
-                        "Consider limiting outdoor activities during peak hours"
-                    ]
-                },
-                {
-                    "code": "TREE",
-                    "displayName": "Tree",
-                    "inSeason": false,
-                    "indexInfo": {
-                        "value": 1,
-                        "category": "Very Low",
-                        "color": {
-                            "red": 0.0,
-                            "green": 0.8,
-                            "blue": 0.0
-                        }
-                    }
-                },
-                {
-                    "code": "WEED",
-                    "displayName": "Weed",
-                    "inSeason": true,
-                    "indexInfo": {
-                        "value": 2,
-                        "category": "Low",
-                        "color": {
-                            "red": 0.5,
-                            "green": 0.8,
-                            "blue": 0.0
-                        }
-                    }
-                }
-            ],
-            "plantInfo": [
-                {
-                    "code": "BIRCH",
-                    "displayName": "Birch",
-                    "inSeason": false,
-                    "indexInfo": {
-                        "value": 3,
-                        "category": "Very Low"
-                    }
-                },
-                {
-                    "code": "GRAMINALES",
-                    "displayName": "Grasses",
-                    "inSeason": true,
-                    "indexInfo": {
-                        "value": 3,
-                        "category": "Moderate"
-                    }
-                },
-                {
-                    "code": "RAGWEED",
-                    "displayName": "Ragweed",
-                    "inSeason": true,
-                    "indexInfo": {
-                        "value": 2,
-                        "category": "Low"
-                    }
-                },
-                {
-                    "code": "OAK",
-                    "displayName": "Oak",
-                    "inSeason": false,
-                    "indexInfo": {
-                        "value": 1,
-                        "category": "Very Low"
-                    }
-                }
-            ]
-        },
-        {
-            "date": {
-                "year": 2025,
-                "month": 7,
-                "day": 27
-            },
-            "pollenTypeInfo": [
-                {
-                    "code": "GRASS",
-                    "indexInfo": {
-                        "value": 4,
-                        "category": "High"
-                    }
-                },
-                {
-                    "code": "TREE",
-                    "indexInfo": {
-                        "value": 1,
-                        "category": "Very Low"
-                    }
-                },
-                {
-                    "code": "WEED",
-                    "indexInfo": {
-                        "value": 3,
-                        "category": "Moderate"
-                    }
-                }
-            ]
-        },
         {
             "date": {
                 "year": 2025,
                 "month": 7,
                 "day": 28
             },
-            "pollenTypeInfo": [
+            "plantInfo": [
                 {
-                    "code": "GRASS",
+                    "code": "GRAMINALES",
+                    "displayName": "Grasses",
                     "indexInfo": {
-                        "value": 2,
-                        "category": "Low"
+                        "value": 4
                     }
                 },
                 {
-                    "code": "TREE",
+                    "code": "ALDER",
+                    "displayName": "Alder",
                     "indexInfo": {
-                        "value": 1,
-                        "category": "Very Low"
+                        "value": 0
                     }
                 },
                 {
-                    "code": "WEED",
+                    "code": "ASH",
+                    "displayName": "Ash",
                     "indexInfo": {
-                        "value": 2,
-                        "category": "Low"
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "BIRCH",
+                    "displayName": "Birch",
+                    "indexInfo": {
+                        "value": 3
+                    }
+                },
+                {
+                    "code": "COTTONWOOD",
+                    "displayName": "Cottonwood",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "ELM",
+                    "displayName": "Elm",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "MAPLE",
+                    "displayName": "Maple",
+                    "indexInfo": {
+                        "value": 3
+                    }
+                },
+                {
+                    "code": "OLIVE",
+                    "displayName": "Olive",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "JUNIPER",
+                    "displayName": "Juniper",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "OAK",
+                    "displayName": "Oak",
+                    "indexInfo": {
+                        "value": 4
+                    }
+                },
+                {
+                    "code": "PINE",
+                    "displayName": "Pine",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "CYPRESS_PINE",
+                    "displayName": "Cypress pine",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "HAZEL",
+                    "displayName": "Hazel",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "JAPANESE_CEDAR",
+                    "displayName": "Japanese cedar",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JAPANESE_CYPRESS",
+                    "displayName": "Japanese cypress",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "RAGWEED",
+                    "displayName": "Ragweed",
+                    "indexInfo": {
+                        "value": 5
+                    }
+                },
+                {
+                    "code": "MUGWORT",
+                    "displayName": "Mugwort",
+                    "indexInfo": {
+                        "value": 3
                     }
                 }
             ]
@@ -167,29 +134,388 @@
                 "month": 7,
                 "day": 29
             },
-            "pollenTypeInfo": [
+            "plantInfo": [
                 {
-                    "code": "GRASS",
+                    "code": "GRAMINALES",
+                    "displayName": "Grasses",
                     "indexInfo": {
-                        "value": 3,
-                        "category": "Moderate"
+                        "value": 3
                     }
                 },
                 {
-                    "code": "TREE",
+                    "code": "ALDER",
+                    "displayName": "Alder",
                     "indexInfo": {
-                        "value": 1,
-                        "category": "Very Low"
+                        "value": 1
                     }
                 },
                 {
-                    "code": "WEED",
+                    "code": "ASH",
+                    "displayName": "Ash",
                     "indexInfo": {
-                        "value": 1,
-                        "category": "Very Low"
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "BIRCH",
+                    "displayName": "Birch",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "COTTONWOOD",
+                    "displayName": "Cottonwood",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "ELM",
+                    "displayName": "Elm",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "MAPLE",
+                    "displayName": "Maple",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "OLIVE",
+                    "displayName": "Olive",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "JUNIPER",
+                    "displayName": "Juniper",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "OAK",
+                    "displayName": "Oak",
+                    "indexInfo": {
+                        "value": 3
+                    }
+                },
+                {
+                    "code": "PINE",
+                    "displayName": "Pine",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "CYPRESS_PINE",
+                    "displayName": "Cypress pine",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "HAZEL",
+                    "displayName": "Hazel",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "JAPANESE_CEDAR",
+                    "displayName": "Japanese cedar",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JAPANESE_CYPRESS",
+                    "displayName": "Japanese cypress",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "RAGWEED",
+                    "displayName": "Ragweed",
+                    "indexInfo": {
+                        "value": 4
+                    }
+                },
+                {
+                    "code": "MUGWORT",
+                    "displayName": "Mugwort",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                }
+            ]
+        },
+        {
+            "date": {
+                "year": 2025,
+                "month": 7,
+                "day": 30
+            },
+            "plantInfo": [
+                {
+                    "code": "GRAMINALES",
+                    "displayName": "Grasses",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "ALDER",
+                    "displayName": "Alder",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "ASH",
+                    "displayName": "Ash",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "BIRCH",
+                    "displayName": "Birch",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "COTTONWOOD",
+                    "displayName": "Cottonwood",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "ELM",
+                    "displayName": "Elm",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "MAPLE",
+                    "displayName": "Maple",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "OLIVE",
+                    "displayName": "Olive",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JUNIPER",
+                    "displayName": "Juniper",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "OAK",
+                    "displayName": "Oak",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "PINE",
+                    "displayName": "Pine",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "CYPRESS_PINE",
+                    "displayName": "Cypress pine",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "HAZEL",
+                    "displayName": "Hazel",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "JAPANESE_CEDAR",
+                    "displayName": "Japanese cedar",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JAPANESE_CYPRESS",
+                    "displayName": "Japanese cypress",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "RAGWEED",
+                    "displayName": "Ragweed",
+                    "indexInfo": {
+                        "value": 3
+                    }
+                },
+                {
+                    "code": "MUGWORT",
+                    "displayName": "Mugwort",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                }
+            ]
+        },
+        {
+            "date": {
+                "year": 2025,
+                "month": 7,
+                "day": 31
+            },
+            "plantInfo": [
+                {
+                    "code": "GRAMINALES",
+                    "displayName": "Grasses",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "ALDER",
+                    "displayName": "Alder",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "ASH",
+                    "displayName": "Ash",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "BIRCH",
+                    "displayName": "Birch",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "COTTONWOOD",
+                    "displayName": "Cottonwood",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "ELM",
+                    "displayName": "Elm",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "MAPLE",
+                    "displayName": "Maple",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "OLIVE",
+                    "displayName": "Olive",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JUNIPER",
+                    "displayName": "Juniper",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "OAK",
+                    "displayName": "Oak",
+                    "indexInfo": {
+                        "value": 1
+                    }
+                },
+                {
+                    "code": "PINE",
+                    "displayName": "Pine",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "CYPRESS_PINE",
+                    "displayName": "Cypress pine",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "HAZEL",
+                    "displayName": "Hazel",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JAPANESE_CEDAR",
+                    "displayName": "Japanese cedar",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "JAPANESE_CYPRESS",
+                    "displayName": "Japanese cypress",
+                    "indexInfo": {
+                        "value": 0
+                    }
+                },
+                {
+                    "code": "RAGWEED",
+                    "displayName": "Ragweed",
+                    "indexInfo": {
+                        "value": 2
+                    }
+                },
+                {
+                    "code": "MUGWORT",
+                    "displayName": "Mugwort",
+                    "indexInfo": {
+                        "value": 1
                     }
                 }
             ]
         }
-    ]
+    ],
+    "currentConditions": {
+        "ozone": 85,
+        "airQuality": 42,
+        "generalWheather": "cloudy"
+    }
 }

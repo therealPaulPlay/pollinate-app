@@ -21,7 +21,7 @@
 	<div
 		class="flex grow flex-col justify-center overflow-hidden rounded-xl p-4 text-center {isLoading
 			? 'animate-pulse'
-			: ''} {onclick ? 'cursor-pointer' : ''} bg-card"
+			: ''} bg-card"
 		style={bgColor ? `background-color: ${bgColor}` : ""}
 		{onclick}
 		role={clickable ? "button" : undefined}
