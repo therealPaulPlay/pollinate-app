@@ -3,10 +3,10 @@ export function getRiskColor(level) {
     const colors = {
         0: 'var(--color-card',
         1: 'var(--color-secondary)',
-        2: '#fbbf24', // yellow
-        3: '#f97316', // orange
-        4: '#ef4444', // red
-        5: '#dc2626'  // dark red
+        2: 'var(--color-primary)', // yellow
+        3: 'rgb(238, 147, 51)', // orange
+        4: 'rgb(238, 104, 51)', // orange-red
+        5: 'rgb(238, 51, 51)'  // dark red
     };
     return colors[level] || colors[0];
 }

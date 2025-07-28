@@ -104,7 +104,7 @@
 	<header class="flex w-full items-center gap-3">
 		<h1 class="truncate font-bevellier text-5xl">
 			{#if $isLoading}
-				<div class="h-14 w-[50dvw] animate-pulse rounded-full bg-muted"></div>
+				<div class="h-14 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
 			{:else}
 				{$userLocation?.name?.split(",")[0] || "Location"}
 			{/if}
@@ -125,7 +125,7 @@
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
 		<Widget title="Risk" cellWidth={1} fixedHeight={true} bgColor={getRiskColor(riskLevel)} isLoading={$isLoading}>
-			<span class="text-4xl font-bold {riskLevel > 0 ? 'text-white' : ''}">
+			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
 				{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
 			</span>
 		</Widget>
@@ -181,23 +181,23 @@
 		<!-- Ozone -->
 		<Widget title="Ozone" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
 			<div class="flex flex-col items-center">
-				<p class="text-2xl font-bold">{$pollenData?.currentConditions?.ozone || 0}</p>
-				<p class="text-xs text-muted-foreground mt-4">μg/m³</p>
+				<p class="font-bevellier text-4xl">{$pollenData?.currentConditions?.ozone || 0}</p>
+				<p class="mt-2 text-xs text-muted-foreground">μg/m³</p>
 			</div>
 		</Widget>
 
 		<!-- Thunderstorm -->
 		<Widget title="Weather" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
-				<Sun class="mx-auto h-8 w-8" />
+				<Sun class="mx-auto h-8 w-8" strokeWidth={3} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "rainy"}
-				<CloudRain class="mx-auto h-8 w-8" />
+				<CloudRain class="mx-auto h-8 w-8" strokeWidth={3} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "cloudy"}
-				<Cloud class="mx-auto h-8 w-8" />
+				<Cloud class="mx-auto h-8 w-8" strokeWidth={3} />
 			{:else}
-				<Cloud class="mx-auto h-8 w-8" />
+				<Cloud class="mx-auto h-8 w-8" strokeWidth={3} />
 			{/if}
-			<p class="text-xs text-muted-foreground mt-4">
+			<p class="mt-4 text-xs text-muted-foreground">
 				{$pollenData?.currentConditions?.generalWheather?.[0]?.toUpperCase() +
 					$pollenData?.currentConditions?.generalWheather?.slice(1)}
 			</p>
@@ -206,8 +206,8 @@
 		<!-- Air quality -->
 		<Widget title="Air quality" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
 			<div class="flex flex-col items-center">
-				<p class="text-2xl font-bold">{$pollenData?.currentConditions?.airQuality || 0}</p>
-				<p class="text-xs text-muted-foreground mt-4">AQI</p>
+				<p class="font-bevellier text-4xl">{$pollenData?.currentConditions?.airQuality || 0}</p>
+				<p class="mt-2 text-xs text-muted-foreground">AQI</p>
 			</div>
 		</Widget>
 	</div>
