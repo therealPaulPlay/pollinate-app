@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 // Pollen data store
 export const pollenData = writable(null);
-export const isLoading = writable(false);
+export const isLoading = writable(true);
 export const error = writable(null);
 
 // User preferences

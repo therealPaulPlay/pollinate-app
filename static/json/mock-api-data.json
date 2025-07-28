@@ -4,7 +4,7 @@
     "currentConditions": {
         "airQuality": 87,
         "ozone": 42.0,
-        "thunderstormRisk": "clear"
+        "generalWheather": "clear"
     },
     "dailyInfo": [
         {

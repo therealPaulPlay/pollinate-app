@@ -1,4 +1,6 @@
 <script>
+	import { scale } from "svelte/transition";
+
 	let {
 		title,
 		cellWidth = 1,
@@ -6,20 +8,28 @@
 		clickable = false,
 		onclick = () => {},
 		bgColor = null,
+		isLoading = $bindable(false),
 		children
 	} = $props();
 </script>
 
-<div class="space-y-2 {cellWidth === 1 ? 'col-span-1' : cellWidth === 2 ? 'col-span-2' : 'col-span-3'}">
-	<h3 class="px-1 text-sm font-medium text-muted-foreground">{title}</h3>
+<div
+	in:scale
+	class="flex h-full flex-col gap-2 {cellWidth === 1 ? 'col-span-1' : cellWidth === 2 ? 'col-span-2' : 'col-span-3'}"
+>
+	<h3 class="truncate px-1 text-sm font-medium text-nowrap text-muted-foreground">{title}</h3>
 	<div
-		class="rounded-xl p-4 {fixedHeight ? (cellWidth === 1 ? 'aspect-square' : 'h-24') : ''} {fixedHeight
-			? 'flex flex-col justify-center text-center'
-			: ''} {clickable ? 'cursor-pointer' : ''} {bgColor ? '' : 'bg-card'}"
+		class="flex grow flex-col justify-center overflow-hidden rounded-xl p-4 text-center {isLoading
+			? 'animate-pulse'
+			: ''} {onclick ? 'cursor-pointer' : ''} bg-card"
 		style={bgColor ? `background-color: ${bgColor}` : ""}
-		onclick={clickable ? onclick : undefined}
+		{onclick}
 		role={clickable ? "button" : undefined}
 	>
-		{@render children()}
+		{#if !isLoading}
+			{@render children()}
+		{:else if cellWidth === 1}
+			<div class="aspect-square"></div>
+		{/if}
 	</div>
 </div>

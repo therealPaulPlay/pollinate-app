@@ -1,7 +1,7 @@
 <script>
 	import Button from "$lib/components/ui/button/button.svelte";
 	import * as Chart from "$lib/components/ui/chart/index.js";
-	import { Edit, Cloud, Sun, Mail, Bug, Languages, ChevronRight, Plus } from "lucide-svelte";
+	import { Edit, Cloud, Sun, Mail, Bug, Languages, ChevronRight, Plus, CloudRain } from "lucide-svelte";
 	import { onMount } from "svelte";
 	import {
 		pollenData,
@@ -104,7 +104,7 @@
 	<header class="flex w-full items-center gap-3">
 		<h1 class="truncate font-bevellier text-5xl">
 			{#if $isLoading}
-				<div class="h-10 w-32 animate-pulse rounded-full bg-muted"></div>
+				<div class="h-14 w-[50dvw] animate-pulse rounded-full bg-muted"></div>
 			{:else}
 				{$userLocation?.name?.split(",")[0] || "Location"}
 			{/if}
@@ -122,16 +122,12 @@
 	</header>
 
 	<!-- Widget Grid -->
-	<div class="grid grid-cols-3 gap-4">
+	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
-		<Widget title="Risk" cellWidth={1} fixedHeight={true} bgColor={getRiskColor(riskLevel)}>
-			{#if $isLoading}
-				<div class="mx-auto h-12 w-12 animate-pulse rounded-full bg-muted"></div>
-			{:else}
-				<span class="text-4xl font-bold {riskLevel > 0 ? 'text-white' : ''}">
-					{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
-				</span>
-			{/if}
+		<Widget title="Risk" cellWidth={1} fixedHeight={true} bgColor={getRiskColor(riskLevel)} isLoading={$isLoading}>
+			<span class="text-4xl font-bold {riskLevel > 0 ? 'text-white' : ''}">
+				{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
+			</span>
 		</Widget>
 
 		<!-- Forecast -->
@@ -139,15 +135,13 @@
 			title="Forecast"
 			cellWidth={2}
 			fixedHeight={true}
-			clickable={true}
+			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.medium();
 				forecastDrawerOpen = true;
 			}}
 		>
-			{#if $isLoading}
-				<div class="h-full w-full animate-pulse rounded bg-muted"></div>
-			{:else if forecastData.length > 0 && $userPollen.length > 0}
+			{#if forecastData.length > 0 && $userPollen.length > 0}
 				<div class="-m-4 h-full w-full overflow-hidden">
 					<Chart.Container config={chartConfig} class="h-full w-full">
 						<AreaChart
@@ -185,129 +179,116 @@
 		</Widget>
 
 		<!-- Ozone -->
-		<Widget title="Ozone" cellWidth={1} fixedHeight={true}>
-			{#if $isLoading}
-				<div class="mx-auto h-6 w-12 animate-pulse rounded bg-muted"></div>
-			{:else}
-				<div class="flex flex-col items-center">
-					<p class="text-2xl font-bold">{$pollenData?.currentConditions?.ozone || 0}</p>
-					<p class="text-xs text-muted-foreground">μg/m³</p>
-				</div>
-			{/if}
+		<Widget title="Ozone" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+			<div class="flex flex-col items-center">
+				<p class="text-2xl font-bold">{$pollenData?.currentConditions?.ozone || 0}</p>
+				<p class="text-xs text-muted-foreground mt-4">μg/m³</p>
+			</div>
 		</Widget>
 
 		<!-- Thunderstorm -->
-		<Widget title="Weather" cellWidth={1} fixedHeight={true}>
-			{#if $isLoading}
-				<div class="mx-auto h-6 w-6 animate-pulse rounded bg-muted"></div>
-			{:else if $pollenData?.currentConditions?.thunderstormRisk === "clear"}
-				<Sun class="mx-auto h-8 w-8 text-yellow-500" />
+		<Widget title="Weather" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
+				<Sun class="mx-auto h-8 w-8" />
+			{:else if $pollenData?.currentConditions?.generalWheather === "rainy"}
+				<CloudRain class="mx-auto h-8 w-8" />
+			{:else if $pollenData?.currentConditions?.generalWheather === "cloudy"}
+				<Cloud class="mx-auto h-8 w-8" />
 			{:else}
-				<Cloud class="mx-auto h-8 w-8 text-gray-500" />
+				<Cloud class="mx-auto h-8 w-8" />
 			{/if}
+			<p class="text-xs text-muted-foreground mt-4">
+				{$pollenData?.currentConditions?.generalWheather?.[0]?.toUpperCase() +
+					$pollenData?.currentConditions?.generalWheather?.slice(1)}
+			</p>
 		</Widget>
 
 		<!-- Air Quality -->
-		<Widget title="Air Quality" cellWidth={1} fixedHeight={true}>
-			{#if $isLoading}
-				<div class="mx-auto h-6 w-8 animate-pulse rounded bg-muted"></div>
-			{:else}
-				<div class="flex flex-col items-center">
-					<p class="text-2xl font-bold">{$pollenData?.currentConditions?.airQuality || 0}</p>
-					<p class="text-xs text-muted-foreground">AQI</p>
-				</div>
-			{/if}
+		<Widget title="Air Quality" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+			<div class="flex flex-col items-center">
+				<p class="text-2xl font-bold">{$pollenData?.currentConditions?.airQuality || 0}</p>
+				<p class="text-xs text-muted-foreground mt-4">AQI</p>
+			</div>
 		</Widget>
+	</div>
 
-		<!-- Pollen -->
-		<Widget title="Pollen" cellWidth={3} fixedHeight={false}>
-			{#if $isLoading}
-				<div class="space-y-3">
-					{#each Array(3) as _}
-						<div class="flex items-center justify-between py-2">
-							<div class="h-4 w-20 animate-pulse rounded bg-muted"></div>
-							<div class="h-2 w-16 animate-pulse rounded bg-muted"></div>
+	<!-- All pollen -->
+	<!-- Pollen -->
+	<Widget title="Pollen" fixedHeight={false} isLoading={$isLoading}>
+		<div class="space-y-6">
+			<!-- Selected Pollen (no header) -->
+			{#if selectedPollenData.length > 0}
+				<div class="space-y-2">
+					{#each selectedPollenData as pollen}
+						<div
+							class="flex cursor-pointer items-center justify-between px-1 py-2 transition hover:opacity-50 active:scale-95"
+						>
+							<span class="text-sm font-medium">{pollen.name}</span>
+							<div class="flex items-center gap-3">
+								<div class="h-2 w-16 overflow-hidden rounded-full bg-secondary/35">
+									<div
+										class="h-full rounded-full transition-all duration-300"
+										style="width: {(pollen.level / 5) * 100}%; background-color: {getRiskColor(pollen.level)}"
+									></div>
+								</div>
+								<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}/5</span>
+							</div>
 						</div>
 					{/each}
 				</div>
-			{:else}
-				<div class="space-y-6">
-					<!-- Selected Pollen (no header) -->
-					{#if selectedPollenData.length > 0}
-						<div class="space-y-2">
-							{#each selectedPollenData as pollen}
-								<div
-									class="flex cursor-pointer items-center justify-between px-1 py-2 transition hover:opacity-50 active:scale-95"
-								>
-									<span class="text-sm font-medium">{pollen.name}</span>
-									<div class="flex items-center gap-3">
-										<div class="h-2 w-16 overflow-hidden rounded-full bg-secondary/35">
-											<div
-												class="h-full rounded-full transition-all duration-300"
-												style="width: {(pollen.level / 5) * 100}%; background-color: {getRiskColor(pollen.level)}"
-											></div>
-										</div>
-										<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}/5</span>
+			{/if}
+
+			<!-- Others Section with divider -->
+			{#if otherPollenData.length > 0}
+				<div class="space-y-3">
+					<div class="mx-1 flex items-center gap-3">
+						<h4 class="text-sm text-muted-foreground">Others</h4>
+						<div class="mt-1 h-px flex-1 bg-border"></div>
+					</div>
+					<div class="space-y-2">
+						{#each otherPollenData as pollen}
+							<div
+								transition:slide={{ duration: 250 }}
+								class="flex cursor-pointer items-center justify-between px-1 py-2 opacity-60 transition hover:opacity-25 active:scale-95"
+							>
+								<span class="text-sm font-medium">{pollen.name}</span>
+								<div class="flex items-center gap-3">
+									<div class="h-2 w-16 overflow-hidden rounded-full bg-secondary/35">
+										<div
+											class="h-full rounded-full transition-all duration-300"
+											style="width: {(pollen.level / 5) * 100}%; background-color: {getRiskColor(pollen.level)}"
+										></div>
 									</div>
+									<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}/5</span>
 								</div>
-							{/each}
-						</div>
-					{/if}
-
-					<!-- Others Section with divider -->
-					{#if otherPollenData.length > 0}
-						<div class="space-y-3">
-							<div class="mx-1 flex items-center gap-3">
-								<h4 class="text-sm text-muted-foreground">Others</h4>
-								<div class="mt-1 h-px flex-1 bg-border"></div>
 							</div>
-							<div class="space-y-2">
-								{#each otherPollenData as pollen}
-									<div
-										transition:slide={{ duration: 250 }}
-										class="flex cursor-pointer items-center justify-between px-1 py-2 opacity-60 transition hover:opacity-25 active:scale-95"
-									>
-										<span class="text-sm font-medium">{pollen.name}</span>
-										<div class="flex items-center gap-3">
-											<div class="h-2 w-16 overflow-hidden rounded-full bg-secondary/35">
-												<div
-													class="h-full rounded-full transition-all duration-300"
-													style="width: {(pollen.level / 5) * 100}%; background-color: {getRiskColor(pollen.level)}"
-												></div>
-											</div>
-											<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}/5</span>
-										</div>
-									</div>
-								{/each}
+						{/each}
 
-								{#if Object.keys(pollenTypesList).length - $userPollen.length > 3}
-									<Button
-										class="w-full"
-										onclick={() => {
-											vibrate.light();
-											showingAllOthers = !showingAllOthers;
-										}}
-									>
-										{showingAllOthers ? "Show less" : "Show all"}
-										{#if showingAllOthers}
-											<Minus />
-										{:else}
-											<Plus />
-										{/if}
-									</Button>
+						{#if Object.keys(pollenTypesList).length - $userPollen.length > 3}
+							<Button
+								class="w-full"
+								onclick={() => {
+									vibrate.light();
+									showingAllOthers = !showingAllOthers;
+								}}
+							>
+								{showingAllOthers ? "Show less" : "Show all"}
+								{#if showingAllOthers}
+									<Minus />
+								{:else}
+									<Plus />
 								{/if}
-							</div>
-						</div>
-					{/if}
-					{#if selectedPollenData.length === 0}
-						<div class="py-6 text-center text-muted-foreground">
-							<p class="text-sm">No pollen types selected.</p>
-						</div>
-					{/if}
+							</Button>
+						{/if}
+					</div>
+				</div>
+			{:else}
+				<div class="py-6 text-center text-muted-foreground">
+					<p class="text-sm">No pollen types selected.</p>
 				</div>
 			{/if}
-		</Widget>
-	</div>
+		</div>
+	</Widget>
 
 	<!-- Pollen Actions -->
 	<div class="flex justify-center">
