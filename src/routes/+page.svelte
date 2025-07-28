@@ -28,32 +28,27 @@
 	// Basic derived values
 	let riskLevel = $derived.by(() => calculateRiskLevel($pollenData, $userPollen));
 
-	// Forecast data for user's selected pollen (bar chart)
-	let forecastData = $derived.by(() => {
+	// Risk index forecast data for bar chart
+	let riskForecastData = $derived.by(() => {
 		if (!$pollenData?.dailyInfo || $userPollen.length === 0) return [];
 
-		return $userPollen.map((pollenCode) => {
-			const data = { pollen: pollenTypesList[pollenCode]?.name || pollenCode };
-			$pollenData.dailyInfo.slice(0, 4).forEach((day, index) => {
-				const plant = day.plantInfo?.find((p) => p.code === pollenCode);
-				data[`day${index}`] = plant?.indexInfo?.value || 0;
-			});
-			return data;
+		return $pollenData.dailyInfo.slice(0, 4).map((day, index) => {
+			const dayRisk = calculateRiskLevel({ dailyInfo: [day] }, $userPollen);
+			return {
+				day: getDayLabel(index),
+				risk: dayRisk,
+				color: getRiskColor(dayRisk)
+			};
 		});
 	});
 
-	// Chart config for bar chart
-	let chartConfig = $derived.by(() => {
-		const config = {};
-		const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)"];
-		for (let i = 0; i < 4; i++) {
-			config[`day${i}`] = {
-				label: getDayLabel(i),
-				color: colors[i]
-			};
+	// Chart config for risk forecast
+	const riskChartConfig = {
+		risk: {
+			label: "Risk Level",
+			color: "var(--chart-1)"
 		}
-		return config;
-	});
+	};
 
 	// Get day labels for tabs and chart
 	function getDayLabel(dayIndex) {
@@ -88,7 +83,7 @@
 		return allPollen;
 	});
 
-	// Selected vs other pollen for current day
+	// Selected and other pollen for current day
 	let selectedPollenData = $derived(currentDayData.filter((p) => p.isSelected));
 	let otherPollenData = $derived.by(() => {
 		const others = currentDayData.filter((p) => !p.isSelected);
@@ -111,7 +106,7 @@
 	<header class="flex w-full items-center gap-3">
 		<h1 class="truncate font-bevellier text-5xl">
 			{#if $isLoading}
-				<div class="h-14 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
+				<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
 			{:else}
 				{$userLocation?.name?.split(",")[0] || "Location"}
 			{/if}
@@ -137,23 +132,19 @@
 			</span>
 		</Widget>
 
-		<!-- Forecast Bar Chart -->
+		<!-- Risk Forecast Bar Chart -->
 		<Widget title="Forecast" cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
-			{#if forecastData.length > 0 && $userPollen.length > 0}
-				<div class="-m-4 h-full w-full overflow-hidden">
-					<Chart.Container config={chartConfig} class="h-full w-full">
+			{#if riskForecastData.length > 0 && $userPollen.length > 0}
+				<div class="h-full w-full max-h-18 overflow-hidden pt-0.25 pointer-events-none">
+					<Chart.Container config={riskChartConfig} class="h-full w-full">
 						<BarChart
-							data={forecastData}
-							x="pollen"
-							xScale={scaleBand().padding(0.2)}
-							y={["day0", "day1", "day2", "day3"]}
+							data={riskForecastData}
+							x="day"
+							y="risk"
+							axis="x"
+							xScale={scaleBand().padding(0.25)}
 							yScale={scaleLinear().domain([0, 5])}
-							props={{
-								xAxis: false,
-								yAxis: false,
-								grid: true,
-								tooltip: false
-							}}
+                            yNice={false}
 						/>
 					</Chart.Container>
 				</div>

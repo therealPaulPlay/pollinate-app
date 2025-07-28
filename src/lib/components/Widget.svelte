@@ -17,7 +17,7 @@
 	in:scale
 	class="flex h-full flex-col gap-2 {cellWidth === 1 ? 'col-span-1' : cellWidth === 2 ? 'col-span-2' : 'col-span-3'}"
 >
-	<h3 class="truncate px-1 text-sm font-medium text-nowrap text-muted-foreground">{title}</h3>
+	<h3 class="truncate px-1 pt-2 text-sm font-medium text-nowrap text-muted-foreground">{title}</h3>
 	<div
 		class="flex grow flex-col justify-center overflow-hidden rounded-xl p-4 text-center {isLoading
 			? 'animate-pulse'
