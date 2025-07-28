@@ -52,9 +52,7 @@ export function calculateRiskLevel(data, userPollenTypes) {
 
     userPollenTypes.forEach(pollenCode => {
         const plant = todayPlants.find(p => p.code === pollenCode);
-        if (plant?.indexInfo?.value) {
-            maxRisk = Math.max(maxRisk, plant.indexInfo.value);
-        }
+        if (plant?.indexInfo?.value) maxRisk = Math.max(maxRisk, plant.indexInfo.value);
     });
 
     return maxRisk;
