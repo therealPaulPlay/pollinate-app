@@ -99,7 +99,7 @@
 	});
 </script>
 
-<div class="max-h-screen space-y-6 overflow-y-auto bg-background p-6">
+<div class="max-h-screen space-y-6 overflow-y-auto p-6">
 	<!-- Header -->
 	<header class="flex w-full items-center gap-3">
 		<h1 class="truncate font-bevellier text-5xl">
@@ -203,8 +203,8 @@
 			</p>
 		</Widget>
 
-		<!-- Air Quality -->
-		<Widget title="Air Quality" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+		<!-- Air quality -->
+		<Widget title="Air quality" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
 			<div class="flex flex-col items-center">
 				<p class="text-2xl font-bold">{$pollenData?.currentConditions?.airQuality || 0}</p>
 				<p class="text-xs text-muted-foreground mt-4">AQI</p>
