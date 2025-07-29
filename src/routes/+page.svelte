@@ -180,7 +180,7 @@
 								color: "var(--chart-1)"
 							}
 						}}
-						class="h-full w-full [&_.lc-spline-path.lc-bar.lc-bars-bar]:stroke-none"
+						class="h-full w-full [&_.lc-spline-path.lc-bar.lc-bars-bar]:stroke-none [&_.lc-group-g.lc-rule-g]:hidden"
 					>
 						<BarChart
 							data={riskForecastData}

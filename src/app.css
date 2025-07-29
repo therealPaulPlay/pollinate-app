@@ -130,6 +130,11 @@
   }
 }
 
+/* Prevent drag down to refresh */
+body {
+  overscroll-behavior: none;
+}
+
 img {
   /* Prevent haptic touch previews */
   -webkit-touch-callout: none;
