@@ -180,7 +180,7 @@
 								color: "var(--chart-1)"
 							}
 						}}
-						class="h-full w-full [&_.lc-spline-path.lc-bar.lc-bars-bar]:stroke-none [&_.lc-group-g.lc-rule-g]:hidden"
+						class="h-full w-full [&_.lc-group-g.lc-rule-g]:hidden [&_.lc-spline-path.lc-bar.lc-bars-bar]:stroke-none"
 					>
 						<BarChart
 							data={riskForecastData}
@@ -304,7 +304,6 @@
 							tabindex={0}
 							class="flex cursor-pointer items-center justify-between px-1 py-2 transition hover:opacity-50 active:scale-95"
 							onclick={() => {
-								vibrate.light();
 								showPlantInfo(pollen.name, pollen.code);
 							}}
 						>
@@ -339,7 +338,6 @@
 								tabindex={0}
 								class="flex cursor-pointer items-center justify-between px-1 py-2 opacity-60 transition hover:opacity-25 active:scale-95"
 								onclick={() => {
-									vibrate.light();
 									showPlantInfo(pollen.name, pollen.code);
 								}}
 							>
