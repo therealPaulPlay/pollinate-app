@@ -3,7 +3,6 @@ import { writable } from 'svelte/store';
 // Pollen data store
 export const pollenData = writable(null);
 export const isLoading = writable(true);
-export const error = writable(null);
 
 // User preferences
 export const userLocation = writable(null);
@@ -24,23 +23,20 @@ loadUserPreferences();
 // Fetch pollen data
 export async function fetchPollenData() {
     isLoading.set(true);
-    error.set(null);
 
     loadUserPreferences();
 
     try {
         // For now, fetch mock data
         const response = await fetch('/json/mock-api-data.json');
-        if (!response.ok) throw new Error('Failed to fetch pollen data');
+        if (!response.ok) throw new Error(response.status);
 
         const data = await response.json();
         pollenData.set(data);
-    } catch (err) {
-        console.error('Error fetching pollen data:', err);
-        error.set(err.message);
     } finally {
         isLoading.set(false);
     }
+
 }
 
 // Get risk level for user's selected pollen types

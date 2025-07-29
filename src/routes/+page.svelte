@@ -95,8 +95,17 @@
 			pollenTypesList = await response.json();
 		} catch (error) {
 			console.error("Failed to load pollen types:", error);
+			infoDrawerTitle = "Error";
+			infoDrawerText = `An error occured loading the pollen types: ${error}`;
+			infoDrawerOpen = true;
 		}
-		await fetchPollenData();
+		try {
+			await fetchPollenData();
+		} catch (error) {
+			infoDrawerTitle = "Error";
+			infoDrawerText = `An error occured fetching the pollen data: ${error}`;
+			infoDrawerOpen = true;
+		}
 	});
 </script>
 
@@ -365,7 +374,14 @@
 				<ChevronRight class="h-4 w-4" />
 			</Button>
 
-			<Button variant="secondary" class="h-12 w-full justify-between">
+			<Button
+				variant="secondary"
+				class="h-12 w-full justify-between"
+				onclick={() => {
+					vibrate.light();
+					window.open('mailto:paulplaystudio@gmail.com?subject=Pollinate%20feedback');
+				}}
+			>
 				<div class="flex items-center gap-3">
 					<Mail class="h-5 w-5" />
 					<span>Feedback</span>
@@ -373,7 +389,14 @@
 				<ChevronRight class="h-4 w-4" />
 			</Button>
 
-			<Button variant="secondary" class="h-12 w-full justify-between">
+			<Button
+				variant="secondary"
+				class="h-12 w-full justify-between"
+				onclick={() => {
+					vibrate.light();
+					window.open("https://bugspot.dev/form/a05fe6d4-b568-4157-a6db-aadfd0ecd886");
+				}}
+			>
 				<div class="flex items-center gap-3">
 					<Bug class="h-5 w-5" />
 					<span>Report bug</span>
