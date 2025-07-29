@@ -1,4 +1,13 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Guten Tag {username}"
+  "example_message": "Guten Tag {username}",
+  "onboarding_title": "Pollinate",
+  "onboarding_legal_prefix": "Durch Klicken auf ",
+  "onboarding_legal_middle": " stimmen Sie unserer ",
+  "onboarding_legal_and": " und unseren ",
+  "onboarding_legal_suffix": " zu.",
+  "onboarding_get_started": "Loslegen",
+  "onboarding_privacy_policy": "Datenschutzerklärung",
+  "onboarding_terms_of_use": "Nutzungsbedingungen",
+  "language": "Sprache"
 }

@@ -1,9 +1,8 @@
 <script>
-	export const prerender = true;
 	import { onMount } from "svelte";
 	import { goto, onNavigate } from "$app/navigation";
-	import { locales, localizeHref } from "../paraglide/runtime";
 	import { page } from "$app/state";
+	import { locales, localizeHref } from "$lib/paraglide/runtime"; // <- Official docs path
 	import "../app.css";
 	import init from "overfade";
 
@@ -22,7 +21,7 @@
 
 	onMount(() => {
 		init(); // Init overfade
-		if (localStorage.getItem("onboardingCompleted") === null) goto("/onboarding"); // Go to onboarding if not yet completed
+		if (localStorage.getItem("onboardingCompleted") === null) goto("/onboarding");
 	});
 </script>
 
@@ -30,10 +29,11 @@
 	<title>Pollinate</title>
 </svelte:head>
 
-<main class="fixed inset-0 min-h-screen touch-none overscroll-none select-none">
+<main class="fixed inset-0 min-h-dvh touch-none overscroll-none select-none">
 	{@render children()}
 </main>
 
+<!-- Required for SSG - generates all language pages during build -->
 <div style="display:none">
 	{#each locales as locale}
 		<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>

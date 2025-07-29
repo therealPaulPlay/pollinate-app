@@ -21,6 +21,8 @@
 	import { vibrate } from "$lib/utils/vibrate";
 	import { flip } from "svelte/animate";
 	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
+	import LanguageDrawer from "$lib/components/LanguageDrawer.svelte";
+	import * as m from "$lib/paraglide/messages";
 
 	// Pollen section
 	let pollenTypesList = $state({});
@@ -92,6 +94,9 @@
 	let infoDrawerText = $state("Default text.");
 	let infoDrawerImageSrc = $state();
 
+	// Language Drawer
+	let languageDrawerOpen = $state(false);
+
 	let plantTextList;
 
 	function showPlantInfo(name, code) {
@@ -126,7 +131,7 @@
 	});
 </script>
 
-<div class="max-h-screen space-y-6 overflow-y-auto p-6">
+<div class="no-scrollbar max-h-dvh space-y-6 overflow-y-auto p-6">
 	<!-- Header -->
 	<header class="mt-2 flex w-full items-center gap-3">
 		<h1 class="truncate font-bevellier text-5xl">
@@ -399,10 +404,17 @@
 	<div class="space-y-2">
 		<h2 class="px-1 text-sm font-medium text-muted-foreground">More</h2>
 		<div class="space-y-2">
-			<Button variant="secondary" class="h-12 w-full justify-between">
+			<Button
+				variant="secondary"
+				class="h-12 w-full justify-between"
+				onclick={() => {
+					vibrate.light();
+					languageDrawerOpen = true;
+				}}
+			>
 				<div class="flex items-center gap-3">
 					<Languages class="h-5 w-5" />
-					<span>Language</span>
+					<span>{m.language()}</span>
 				</div>
 				<ChevronRight class="h-4 w-4" />
 			</Button>
@@ -441,3 +453,4 @@
 </div>
 
 <InfoDrawer bind:open={infoDrawerOpen} text={infoDrawerText} title={infoDrawerTitle} imageSrc={infoDrawerImageSrc} />
+<LanguageDrawer bind:open={languageDrawerOpen} />

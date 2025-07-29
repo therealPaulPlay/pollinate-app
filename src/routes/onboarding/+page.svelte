@@ -4,6 +4,7 @@
 	import { vibrate } from "$lib/utils/vibrate";
 	import { ArrowRight } from "lucide-svelte";
 	import { onMount } from "svelte";
+	import * as m from "$lib/paraglide/messages";
 
 	let canvas;
 	let ctx;
@@ -107,21 +108,24 @@
 <div class="relative z-10 flex h-full flex-col items-center">
 	<div class="mt-[calc(55dvh-225px)] space-y-2 text-center">
 		<img alt="logo" src="/images/logo_500x500.png" class="mx-auto h-30 w-30" />
-		<h1 class="font-bevellier text-7xl">Pollinate</h1>
+		<h1 class="font-bevellier text-7xl">{m.onboarding_title()}</h1>
 		<p class="-mt-1.5">Accurate pollen forecasts. Free.</p>
 	</div>
 	<div class="mt-auto mb-8 max-w-md space-y-6 text-center">
 		<p class="mx-auto max-w-4/5 text-sm opacity-75">
-			By clicking on <i>Get started</i>, you agree to our
-			<a href="/privacy" class="font-semibold hover:underline">privacy policy</a>
-			and our <a href="/terms" class="font-semibold hover:underline">terms of use</a>.
+			{m.onboarding_legal_prefix()}
+			<i>{m.onboarding_get_started()}</i>{m.onboarding_legal_middle()}
+			<a href="/privacy" class="font-semibold hover:underline">{m.onboarding_privacy_policy()}</a>
+			{m.onboarding_legal_and()}
+			<a href="/terms" class="font-semibold hover:underline">{m.onboarding_terms_of_use()}</a
+			>{m.onboarding_legal_suffix()}
 		</p>
 		<Button
 			size="lg"
 			onclick={() => {
 				vibrate.light();
 				goto("/select-pollen-types");
-			}}>Get started <ArrowRight /></Button
+			}}>{m.onboarding_get_started()} <ArrowRight /></Button
 		>
 	</div>
 </div>

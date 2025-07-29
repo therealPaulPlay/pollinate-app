@@ -1,4 +1,13 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Hello world {username}"
+  "example_message": "Hello world {username}",
+  "onboarding_title": "Pollinate",
+  "onboarding_legal_prefix": "By clicking on ",
+  "onboarding_legal_middle": ", you agree to our ",
+  "onboarding_legal_and": " and our ",
+  "onboarding_legal_suffix": ".",
+  "onboarding_get_started": "Get started",
+  "onboarding_privacy_policy": "privacy policy",
+  "onboarding_terms_of_use": "terms of use",
+  "language": "Language"
 }
