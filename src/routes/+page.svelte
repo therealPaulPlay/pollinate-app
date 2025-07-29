@@ -1,7 +1,7 @@
 <script>
 	import Button from "$lib/components/ui/button/button.svelte";
 	import * as Chart from "$lib/components/ui/chart/index.js";
-	import { Edit, Cloud, Sun, Mail, Bug, Languages, ChevronRight, Plus, CloudRain } from "lucide-svelte";
+	import { Edit, Cloud, Sun, Mail, Bug, Languages, ChevronRight, Plus, CloudRain, CloudLightning } from "lucide-svelte";
 	import { onMount } from "svelte";
 	import {
 		pollenData,
@@ -21,6 +21,7 @@
 	import { vibrate } from "$lib/utils/vibrate";
 	import { flip } from "svelte/animate";
 	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
+	import { text } from "@sveltejs/kit";
 
 	// Pollen section
 	let pollenTypesList = $state({});
@@ -88,6 +89,25 @@
 	let infoDrawerOpen = $state(false);
 	let infoDrawerTitle = $state("Title");
 	let infoDrawerText = $state("Default text.");
+	let infoDrawerImageSrc = $state();
+
+	let plantText = {
+		test: "This is just a test."
+	};
+
+	function showPlantInfo(name, code) {
+		infoDrawerTitle = name;
+		infoDrawerText = plantText["test"];
+		infoDrawerImageSrc = "/images/plants/" + code?.toLowerCase() + ".jpg";
+		infoDrawerOpen = true;
+	}
+
+	function showInfo(title, text) {
+		infoDrawerImageSrc = null;
+		infoDrawerTitle = title;
+		infoDrawerText = text;
+		infoDrawerOpen = true;
+	}
 
 	onMount(async () => {
 		try {
@@ -95,16 +115,12 @@
 			pollenTypesList = await response.json();
 		} catch (error) {
 			console.error("Failed to load pollen types:", error);
-			infoDrawerTitle = "Error";
-			infoDrawerText = `An error occured loading the pollen types: ${error}`;
-			infoDrawerOpen = true;
+			showInfo("Error", `An error occurred loading the pollen types: ${error}`);
 		}
 		try {
 			await fetchPollenData();
 		} catch (error) {
-			infoDrawerTitle = "Error";
-			infoDrawerText = `An error occured fetching the pollen data: ${error}`;
-			infoDrawerOpen = true;
+			showInfo("Error", `An error occurred fetching pollen data: ${error}`);
 		}
 	});
 </script>
@@ -142,9 +158,10 @@
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				infoDrawerTitle = "Risk";
-				infoDrawerText = `The risk index takes today's highest pollen level of the selected types as well as the current weather conditions into account.`;
-				infoDrawerOpen = true;
+				showInfo(
+					"Risk",
+					`The risk index takes today's highest pollen level of the selected types as well as the current weather conditions into account.`
+				);
 			}}
 		>
 			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
@@ -191,9 +208,10 @@
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				infoDrawerTitle = "Ozone";
-				infoDrawerText = `High ozone levels can intensify allergic reactions by making airways more sensitive and pollen more irritating.`;
-				infoDrawerOpen = true;
+				showInfo(
+					"Ozone",
+					`High ozone levels can intensify allergic reactions by making airways more sensitive and pollen more irritating.`
+				);
 			}}
 		>
 			<div class="flex flex-col items-center">
@@ -210,19 +228,20 @@
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				infoDrawerTitle = "Weather";
-				infoDrawerText = `Thunderstorms can worsen allergic reactions by causing pollen grains to break apart and become more easily inhaled. Rain may bring short-term relief.`;
-				infoDrawerOpen = true;
+				showInfo(
+					"Weather",
+					`Thunderstorms can worsen allergic reactions by causing pollen grains to break apart and become more easily inhaled. Rain may bring short-term relief.`
+				);
 			}}
 		>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
-				<Sun class="mx-auto h-8 w-8" strokeWidth={3} />
+				<Sun class="mx-auto h-8 w-8" strokeWidth={4} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "rainy"}
-				<CloudRain class="mx-auto h-8 w-8" strokeWidth={3} />
+				<CloudRain class="mx-auto h-8 w-8" strokeWidth={4} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "cloudy"}
-				<Cloud class="mx-auto h-8 w-8" strokeWidth={3} />
+				<Cloud class="mx-auto h-8 w-8" strokeWidth={4} />
 			{:else}
-				<Cloud class="mx-auto h-8 w-8" strokeWidth={3} />
+				<CloudLightning class="mx-auto h-8 w-8" strokeWidth={4} />
 			{/if}
 			<p class="mt-4 text-xs text-muted-foreground">
 				{$pollenData?.currentConditions?.generalWheather?.[0]?.toUpperCase() +
@@ -238,9 +257,10 @@
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				infoDrawerTitle = "Air quality (AQI)";
-				infoDrawerText = `Poor air quality (high AQI) can worsen allergic reactions by increasing airborne irritants that inflame the airways and amplify sensitivity to pollen.`;
-				infoDrawerOpen = true;
+				showInfo(
+					"Air quality (AQI)",
+					`Poor air quality (high AQI) can worsen allergic reactions by increasing airborne irritants that inflame the airways and amplify sensitivity to pollen.`
+				);
 			}}
 		>
 			<div class="flex flex-col items-center">
@@ -277,9 +297,16 @@
 			{#if selectedPollenData.length > 0}
 				<div class="space-y-2">
 					{#each selectedPollenData as pollen (pollen.name)}
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<div
 							animate:flip={{ duration: 250 }}
+							role="button"
+							tabindex={0}
 							class="flex cursor-pointer items-center justify-between px-1 py-2 transition hover:opacity-50 active:scale-95"
+							onclick={() => {
+								vibrate.light();
+								showPlantInfo(pollen.name, pollen.code);
+							}}
 						>
 							<span class="text-sm font-medium">{pollen.name}</span>
 							<div class="flex items-center gap-3">
@@ -305,9 +332,16 @@
 					</div>
 					<div class="space-y-2">
 						{#each otherPollenData as pollen (pollen.name)}
+							<!-- svelte-ignore a11y_click_events_have_key_events -->
 							<div
 								transition:slide={{ duration: 250 }}
+								role="button"
+								tabindex={0}
 								class="flex cursor-pointer items-center justify-between px-1 py-2 opacity-60 transition hover:opacity-25 active:scale-95"
+								onclick={() => {
+									vibrate.light();
+									showPlantInfo(pollen.name, pollen.code);
+								}}
 							>
 								<span class="text-sm font-medium">{pollen.name}</span>
 								<div class="flex items-center gap-3">
@@ -379,7 +413,7 @@
 				class="h-12 w-full justify-between"
 				onclick={() => {
 					vibrate.light();
-					window.open('mailto:paulplaystudio@gmail.com?subject=Pollinate%20feedback');
+					window.open("mailto:paulplaystudio@gmail.com?subject=Pollinate%20feedback");
 				}}
 			>
 				<div class="flex items-center gap-3">
@@ -407,4 +441,4 @@
 	</div>
 </div>
 
-<InfoDrawer bind:open={infoDrawerOpen} text={infoDrawerText} title={infoDrawerTitle} />
+<InfoDrawer bind:open={infoDrawerOpen} text={infoDrawerText} title={infoDrawerTitle} imageSrc={infoDrawerImageSrc} />

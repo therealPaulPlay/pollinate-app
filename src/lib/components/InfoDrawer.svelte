@@ -1,7 +1,7 @@
 <script>
 	import * as Drawer from "$lib/components/ui/drawer/index.js";
 
-	let { open = $bindable(false), title = "Info", text = "Default text." } = $props();
+	let { open = $bindable(false), title = "Info", text = "Default text.", imageSrc } = $props();
 </script>
 
 <Drawer.Root bind:open>
@@ -10,6 +10,9 @@
 			<Drawer.Title class="font-bevellier text-3xl">{title}</Drawer.Title>
 		</Drawer.Header>
 		<div class="px-4 pb-8">
+			{#if imageSrc}
+				<img alt="plant" class="h-40  w-full rounded-md object-cover mb-4" src={imageSrc} />
+			{/if}
 			<p>{text}</p>
 		</div>
 	</Drawer.Content>
