@@ -21,12 +21,22 @@
 	import { vibrate } from "$lib/utils/vibrate";
 	import { flip } from "svelte/animate";
 	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
-	import { text } from "@sveltejs/kit";
 
 	// Pollen section
 	let pollenTypesList = $state({});
 	let showingAllOthers = $state(false);
-	let selectedDay = $state(0); // 0 = today, 1 = tomorrow, etc.
+	let selectedDay = $state(0);
+
+	// Get day labels for tabs and chart
+	function getDayLabel(dayIndex) {
+		if (!$pollenData?.dailyInfo?.[dayIndex]) return "";
+		if (dayIndex === 0) return "Today";
+
+		// Calculate the date starting from user's today + dayIndex
+		const userDate = new Date();
+		userDate.setDate(userDate.getDate() + dayIndex);
+		return userDate.toLocaleDateString("en-US", { weekday: "short" });
+	}
 
 	// Basic derived values
 	let riskLevel = $derived.by(() => calculateRiskLevel($pollenData, $userPollen));
@@ -45,14 +55,6 @@
 		});
 	});
 
-	// Get day labels for tabs and chart
-	function getDayLabel(dayIndex) {
-		if (!$pollenData?.dailyInfo?.[dayIndex]) return "";
-		const day = $pollenData.dailyInfo[dayIndex];
-		const date = new Date(day.date.year, day.date.month - 1, day.date.day);
-		return dayIndex === 0 ? "Today" : date.toLocaleDateString("en-US", { weekday: "short" });
-	}
-
 	// Get current day's pollen data
 	let currentDayData = $derived.by(() => {
 		if (!$pollenData?.dailyInfo?.[selectedDay]) return [];
@@ -69,7 +71,6 @@
 				};
 			})
 			.sort((a, b) => {
-				// Selected pollen first, then by level descending
 				if (a.isSelected && !b.isSelected) return -1;
 				if (!a.isSelected && b.isSelected) return 1;
 				return b.level - a.level;
