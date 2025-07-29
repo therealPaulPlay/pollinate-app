@@ -91,13 +91,11 @@
 	let infoDrawerText = $state("Default text.");
 	let infoDrawerImageSrc = $state();
 
-	let plantText = {
-		test: "This is just a test."
-	};
+	let plantTextList;
 
 	function showPlantInfo(name, code) {
 		infoDrawerTitle = name;
-		infoDrawerText = plantText["test"];
+		infoDrawerText = plantTextList?.[code]?.description;
 		infoDrawerImageSrc = "/images/plants/" + code?.toLowerCase() + ".jpg";
 		infoDrawerOpen = true;
 	}
@@ -111,11 +109,13 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch("/json/pollen-types.json");
-			pollenTypesList = await response.json();
+			[pollenTypesList, plantTextList] = await Promise.all([
+				await fetch("/json/pollen-types.json").then((response) => response.json()),
+				await fetch("/json/pollen-descriptions.json").then((response) => response.json())
+			]);
 		} catch (error) {
 			console.error("Failed to load pollen types:", error);
-			showInfo("Error", `An error occurred loading the pollen types: ${error}`);
+			showInfo("Error", `An error occurred loading the pollen types & descriptions: ${error}`);
 		}
 		try {
 			await fetchPollenData();
