@@ -10,7 +10,8 @@
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "prettier --check . && eslint .",
+		"machine-translate": "inlang machine translate --project project.inlang"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
@@ -37,7 +38,9 @@
 		"tailwindcss": "^4.0.0",
 		"tw-animate-css": "^1.3.5",
 		"vaul-svelte": "^1.0.0-next.7",
-		"vite": "^7.0.4"
+		"vite": "^7.0.4",
+		"@inlang/paraglide-js": "2.2.0",
+		"@inlang/cli": "^3.0.0"
 	},
 	"dependencies": {
 		"@capacitor/cli": "^7.4.2",

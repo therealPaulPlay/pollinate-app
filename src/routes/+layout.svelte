@@ -1,6 +1,9 @@
 <script>
+	export const prerender = true;
 	import { onMount } from "svelte";
 	import { goto, onNavigate } from "$app/navigation";
+	import { locales, localizeHref } from "../paraglide/runtime";
+	import { page } from "$app/state";
 	import "../app.css";
 	import init from "overfade";
 
@@ -30,3 +33,9 @@
 <main class="fixed inset-0 min-h-screen touch-none overscroll-none select-none">
 	{@render children()}
 </main>
+
+<div style="display:none">
+	{#each locales as locale}
+		<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
+	{/each}
+</div>
