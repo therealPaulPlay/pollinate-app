@@ -6,7 +6,7 @@
 		cellWidth = 1,
 		fixedHeight = true,
 		clickable = false,
-		onclick = () => {},
+		onclick,
 		bgColor = null,
 		isLoading = $bindable(false),
 		children
@@ -19,9 +19,9 @@
 >
 	<h3 class="truncate px-1 pt-2 text-sm font-medium text-nowrap text-muted-foreground">{title}</h3>
 	<div
-		class="flex grow flex-col justify-center overflow-hidden rounded-xl p-4 text-center {isLoading
+		class="flex grow flex-col justify-center transition ease-out overflow-hidden rounded-xl p-4 text-center {isLoading
 			? 'animate-pulse'
-			: ''} bg-card"
+			: ''} bg-card {onclick ? "active:scale-95" : "" }"
 		style={bgColor ? `background-color: ${bgColor}` : ""}
 		{onclick}
 		role={clickable ? "button" : undefined}

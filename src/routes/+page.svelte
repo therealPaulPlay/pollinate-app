@@ -20,7 +20,9 @@
 	import { slide } from "svelte/transition";
 	import { vibrate } from "$lib/utils/vibrate";
 	import { flip } from "svelte/animate";
+	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
 
+	// Pollen section
 	let pollenTypesList = $state({});
 	let showingAllOthers = $state(false);
 	let selectedDay = $state(0); // 0 = today, 1 = tomorrow, etc.
@@ -41,14 +43,6 @@
 			};
 		});
 	});
-
-	// Chart config for risk forecast
-	const riskChartConfig = {
-		risk: {
-			label: "Risk Level",
-			color: "var(--chart-1)"
-		}
-	};
 
 	// Get day labels for tabs and chart
 	function getDayLabel(dayIndex) {
@@ -90,6 +84,11 @@
 		return showingAllOthers ? others : others.slice(0, 3);
 	});
 
+	// Info Drawer
+	let infoDrawerOpen = $state(false);
+	let infoDrawerTitle = $state("Title");
+	let infoDrawerText = $state("Default text.");
+
 	onMount(async () => {
 		try {
 			const response = await fetch("/json/pollen-types.json");
@@ -103,7 +102,7 @@
 
 <div class="max-h-screen space-y-6 overflow-y-auto p-6">
 	<!-- Header -->
-	<header class="flex w-full items-center gap-3">
+	<header class="mt-2 flex w-full items-center gap-3">
 		<h1 class="truncate font-bevellier text-5xl">
 			{#if $isLoading}
 				<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
@@ -126,17 +125,37 @@
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
-		<Widget title="Risk" cellWidth={1} fixedHeight={true} bgColor={getRiskColor(riskLevel)} isLoading={$isLoading}>
+		<Widget
+			title="Risk"
+			cellWidth={1}
+			fixedHeight={true}
+			bgColor={getRiskColor(riskLevel)}
+			isLoading={$isLoading}
+			onclick={() => {
+				vibrate.light();
+				infoDrawerTitle = "Risk";
+				infoDrawerText = `The risk index takes today's highest pollen level of the selected types as well as the current weather conditions into account.`;
+				infoDrawerOpen = true;
+			}}
+		>
 			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
 				{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
 			</span>
 		</Widget>
 
 		<!-- Risk Forecast Bar Chart -->
-		<Widget title="Forecast" cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
+		<Widget title="Risk forecast" cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
 			{#if riskForecastData.length > 0 && $userPollen.length > 0}
-				<div class="h-full w-full max-h-18 overflow-hidden pt-0.25 pointer-events-none">
-					<Chart.Container config={riskChartConfig} class="h-full w-full">
+				<div class="pointer-events-none h-full max-h-18 w-full overflow-hidden pt-0.25">
+					<Chart.Container
+						config={{
+							risk: {
+								label: "Risk Level",
+								color: "var(--chart-1)"
+							}
+						}}
+						class="h-full w-full [&_.lc-spline-path.lc-bar.lc-bars-bar]:stroke-none"
+					>
 						<BarChart
 							data={riskForecastData}
 							x="day"
@@ -144,7 +163,7 @@
 							axis="x"
 							xScale={scaleBand().padding(0.25)}
 							yScale={scaleLinear().domain([0, 5])}
-                            yNice={false}
+							yNice={false}
 						/>
 					</Chart.Container>
 				</div>
@@ -156,7 +175,18 @@
 		</Widget>
 
 		<!-- Ozone -->
-		<Widget title="Ozone" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+		<Widget
+			title="Ozone"
+			cellWidth={1}
+			fixedHeight={true}
+			isLoading={$isLoading}
+			onclick={() => {
+				vibrate.light();
+				infoDrawerTitle = "Ozone";
+				infoDrawerText = `High ozone levels can intensify allergic reactions by making airways more sensitive and pollen more irritating.`;
+				infoDrawerOpen = true;
+			}}
+		>
 			<div class="flex flex-col items-center">
 				<p class="font-bevellier text-4xl">{$pollenData?.currentConditions?.ozone || 0}</p>
 				<p class="mt-2 text-xs text-muted-foreground">μg/m³</p>
@@ -164,7 +194,18 @@
 		</Widget>
 
 		<!-- Weather -->
-		<Widget title="Weather" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+		<Widget
+			title="Weather"
+			cellWidth={1}
+			fixedHeight={true}
+			isLoading={$isLoading}
+			onclick={() => {
+				vibrate.light();
+				infoDrawerTitle = "Weather";
+				infoDrawerText = `Thunderstorms can worsen allergic reactions by causing pollen grains to break apart and become more easily inhaled. Rain may bring short-term relief.`;
+				infoDrawerOpen = true;
+			}}
+		>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
 				<Sun class="mx-auto h-8 w-8" strokeWidth={3} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "rainy"}
@@ -181,7 +222,18 @@
 		</Widget>
 
 		<!-- Air quality -->
-		<Widget title="Air quality" cellWidth={1} fixedHeight={true} isLoading={$isLoading}>
+		<Widget
+			title="Air quality"
+			cellWidth={1}
+			fixedHeight={true}
+			isLoading={$isLoading}
+			onclick={() => {
+				vibrate.light();
+				infoDrawerTitle = "Air quality (AQI)";
+				infoDrawerText = `Poor air quality (high AQI) can worsen allergic reactions by increasing airborne irritants that inflame the airways and amplify sensitivity to pollen.`;
+				infoDrawerOpen = true;
+			}}
+		>
 			<div class="flex flex-col items-center">
 				<p class="font-bevellier text-4xl">{$pollenData?.currentConditions?.airQuality || 0}</p>
 				<p class="mt-2 text-xs text-muted-foreground">AQI</p>
@@ -331,3 +383,5 @@
 		</div>
 	</div>
 </div>
+
+<InfoDrawer bind:open={infoDrawerOpen} text={infoDrawerText} title={infoDrawerTitle} />
