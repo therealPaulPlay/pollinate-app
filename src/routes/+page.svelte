@@ -178,7 +178,7 @@
 	</Button>
 </header>
 
-<div class="no-scrollbar fixed bottom-0 top-20 of-top of-length-2 space-y-6 overflow-y-auto p-6 pb-12">
+<div class="no-scrollbar fixed bottom-0 left-0 right-0 top-20 of-top of-length-2 space-y-6 overflow-y-auto p-6 pb-12">
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->

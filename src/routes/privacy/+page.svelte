@@ -15,8 +15,7 @@
 			}}
 			class="mb-4"
 		>
-			<ArrowLeft class="mr-2 h-4 w-4" />
-			Back
+			<ArrowLeft class="h-4 w-4" />
 		</Button>
 
 		<h1 class="mt-4 font-bevellier text-5xl font-bold">Privacy Policy</h1>

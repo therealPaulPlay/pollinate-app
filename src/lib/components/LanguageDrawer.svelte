@@ -36,7 +36,7 @@
 		<Drawer.Header>
 			<Drawer.Title class="font-bevellier text-3xl">{m.language()}</Drawer.Title>
 		</Drawer.Header>
-		<div class="max-h-73 of-top of-bottom space-y-2 overflow-y-auto px-4 mb-8">
+		<div class="of-top of-bottom no-scrollbar mb-8 max-h-73 space-y-2 overflow-y-auto px-4">
 			{#each locales as lang}
 				{@const isSelected = getLocale() === lang}
 				<button

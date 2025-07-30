@@ -11,7 +11,7 @@
 		</Drawer.Header>
 		<div class="px-4 mb-8 overflow-y-auto of-top of-bottom of-length-2 no-scrollbar">
 			{#if imageSrc}
-				<img alt="plant" class="h-40  w-full rounded-md object-cover mb-4" src={imageSrc} />
+				<img alt="plant" class="h-40  w-full rounded-md object-cover mb-4 dark:brightness-85" src={imageSrc} />
 			{/if}
 			<p>{text}</p>
 		</div>

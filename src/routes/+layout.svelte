@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import { goto, onNavigate } from "$app/navigation";
 	import { page } from "$app/state";
+	import { ModeWatcher } from "mode-watcher";
 	import { locales, localizeHref } from "$lib/paraglide/runtime"; // <- Official docs path
 	import "../app.css";
 	import init from "overfade";
@@ -39,3 +40,5 @@
 		<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
 	{/each}
 </div>
+
+<ModeWatcher />

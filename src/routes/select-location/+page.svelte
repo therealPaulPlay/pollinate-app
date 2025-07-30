@@ -199,11 +199,11 @@
 	<!-- Background Map -->
 	<div
 		style:opacity={mapLoaded ? "0.2" : "0"}
-		class="absolute top-55 right-0 bottom-30 left-0 mask-t-from-85% mask-r-from-70% mask-b-from-85% mask-l-from-70% sepia transition duration-1000"
+		class="absolute top-0 right-0 bottom-0 left-0 mask-radial-from-20% sepia transition duration-1000 dark:brightness-35 dark:saturate-15"
 	>
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
-	<div class="mt-8 w-full max-w-md space-y-8">
+	<div class="z-20 w-full max-w-md space-y-8 bg-background mask-b-from-80% mask-b-to-100% py-8">
 		<p class="text-center font-bevellier text-5xl">{m.location_please()}</p>
 
 		<div class="relative mx-auto max-w-80">
@@ -217,7 +217,7 @@
 					oninput={handleInput}
 					onfocus={() => (showDropdown = searchQuery.length === 0 ? recentLocations.length > 0 : locations.length > 0)}
 					onblur={() => setTimeout(() => (showDropdown = false), 150)}
-					class="pl-10 text-base"
+					class="bg-muted! pl-10 text-base"
 				/>
 				{#if isLoading}
 					<div class="absolute top-1/2 right-3 -translate-y-1/2">
@@ -225,45 +225,43 @@
 					</div>
 				{/if}
 			</search>
-
-			<!-- Dropdown -->
-			{#if showDropdown}
-				<div class="z-50 overflow-hidden rounded-md bg-muted" transition:slide>
-					<div class="of-top of-bottom of-length-2 no-scrollbar max-h-[calc(50dvh-200px)] overflow-y-auto">
-						<!-- Show search results when there's a query -->
-						{#if searchQuery.length > 0 && locations.length > 0}
-							{#each locations as location}
-								<button
-									transition:slide={{ duration: 250 }}
-									class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
-									onclick={() => selectLocation(location)}
-								>
-									<MapPin class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
-									<span class="truncate text-base">{location.name}</span>
-								</button>
-							{/each}
-						{/if}
-
-						<!-- Show recents when no query -->
-						{#if searchQuery.length === 0 && recentLocations.length > 0}
-							{#each recentLocations as location}
-								<button
-									transition:slide={{ duration: 250 }}
-									class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
-									onclick={() => selectLocation(location)}
-								>
-									<Clock class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
-									<span class="truncate text-base">{location.name}</span>
-								</button>
-							{/each}
-						{/if}
-					</div>
-				</div>
-			{/if}
 		</div>
 	</div>
+	<!-- Dropdown -->
+	{#if showDropdown}
+		<div class="z-30 overflow-hidden rounded-md bg-muted fixed top-44" transition:slide>
+			<div class="of-top of-bottom of-length-2 w-80 mx-auto no-scrollbar max-h-[calc(50dvh-200px)] overflow-y-auto">
+				<!-- Show search results when there's a query -->
+				{#if searchQuery.length > 0 && locations.length > 0}
+					{#each locations as location}
+						<button
+							transition:slide={{ duration: 250 }}
+							class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
+							onclick={() => selectLocation(location)}
+						>
+							<MapPin class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
+							<span class="truncate text-base">{location.name}</span>
+						</button>
+					{/each}
+				{/if}
 
-	<div class="mt-auto mb-8">
+				<!-- Show recents when no query -->
+				{#if searchQuery.length === 0 && recentLocations.length > 0}
+					{#each recentLocations as location}
+						<button
+							transition:slide={{ duration: 250 }}
+							class="flex w-full max-w-full items-center gap-3 rounded-lg px-4 py-4 text-left transition ease-out hover:opacity-50 active:scale-95"
+							onclick={() => selectLocation(location)}
+						>
+							<Clock class="h-5 w-5 flex-shrink-0 text-muted-foreground" />
+							<span class="truncate text-base">{location.name}</span>
+						</button>
+					{/each}
+				{/if}
+			</div>
+		</div>
+	{/if}
+	<div class="mt-auto w-full bg-background mask-t-from-80% mask-t-to-100% py-8 text-center">
 		<Button
 			size="lg"
 			onclick={() => {

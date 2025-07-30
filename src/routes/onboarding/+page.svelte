@@ -52,7 +52,7 @@
 		draw() {
 			ctx.save();
 			ctx.globalAlpha = this.opacity;
-			ctx.fillStyle = "#8B4513"; // Dark orange-brown
+			ctx.fillStyle = (document.documentElement.classList.contains("dark") ? "#adac80" : "#8B4513"); // Dark orange-brown
 			ctx.beginPath();
 			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 			ctx.fill();
@@ -107,7 +107,8 @@
 
 <div class="relative z-10 flex h-full flex-col items-center">
 	<div class="mt-[calc(55dvh-225px)] space-y-2 text-center">
-		<img alt="logo" src="/images/logo_500x500.png" class="mx-auto h-30 w-30" />
+		<img alt="logo" src="/images/logo_500x500.png" class="mx-auto h-30 w-30 dark:hidden" />
+		<img alt="logo" src="/images/logo_dark_500x500.png" class="mx-auto h-30 w-30 dark:block hidden" />
 		<h1 class="font-bevellier text-7xl">Pollinate</h1>
 		<p class="-mt-1.5">Accurate pollen forecasts. Free.</p>
 	</div>
