@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Gli ontani producono abbondante polline da febbraio ad aprile, spesso sovrapponendosi con la stagione del nocciolo. Questi alberi amanti dell'umidità sono comuni vicino a fonti d'acqua e il loro polline può causare reazioni allergiche da moderate a severe, specialmente all'inizio della primavera."
+    },
+    "ASH": {
+        "description": "I frassini impollinano da marzo a maggio, producendo polline disperso dal vento che può viaggiare per distanze considerevoli. Sebbene non così potente come il polline di betulla o quercia, il polline di frassino può ancora scatenare reazioni allergiche in individui sensibili."
+    },
+    "BIRCH": {
+        "description": "La betulla è uno dei pollini di albero più allergenici nelle regioni temperate. La stagione di picco va da marzo a maggio, con miliardi di granuli di polline rilasciati da alberi maturi. Le allergie al polline di betulla spesso hanno reazioni crociate con certi cibi come mele e carote."
+    },
+    "COTTONWOOD": {
+        "description": "I pioppi americani, parte della famiglia dei pioppi, producono quantità significative di polline da marzo a maggio. Il polline leggero può viaggiare per lunghe distanze e causare reazioni allergiche da moderate a severe. Questi alberi sono comuni in Nord America vicino a fonti d'acqua."
+    },
+    "ELM": {
+        "description": "Gli olmi sono tra i primi impollinatori primaverili, rilasciando polline da febbraio ad aprile prima che appaiano le loro foglie. Sebbene il polline di olmo sia generalmente meno allergenico di altri pollini di alberi, può ancora contribuire ai sintomi di allergia primaverile."
+    },
+    "MAPLE": {
+        "description": "Gli aceri producono polline da marzo a maggio, con attività di picco all'inizio della primavera. Il polline disperso dal vento può causare reazioni allergiche in individui sensibili. La stagione del polline di acero spesso si sovrappone con altri importanti allergeni di alberi."
+    },
+    "OLIVE": {
+        "description": "Gli olivi sono altamente allergenici, producendo abbondante polline da aprile a giugno nei climi mediterranei. Il polline di olivo è considerato uno degli allergeni più potenti e può causare sintomi respiratori severi. Il polline può viaggiare per centinaia di chilometri."
+    },
+    "JUNIPER": {
+        "description": "I ginepri producono polline allergenico da dicembre a maggio, con stagione di picco nel tardo inverno e inizio primavera. I piccoli granuli di polline leggeri si disperdono facilmente nel vento e possono causare reazioni allergiche significative."
+    },
+    "OAK": {
+        "description": "Le querce rilasciano grandi quantità di polline da aprile a giugno, creando la polvere gialla spesso vista su auto e superfici. Sebbene la sensibilità individuale vari, il polline di quercia può causare sintomi respiratori significativi ed è un importante allergene primaverile."
+    },
+    "PINE": {
+        "description": "I pini producono abbondante polline da aprile a giugno, spesso creando nuvole gialle visibili. Sebbene i granuli di polline di pino siano grandi e meno propensi a penetrare profondamente nelle vie aeree, il volume puro può ancora causare irritazione e reazioni allergiche."
+    },
+    "CYPRESS_PINE": {
+        "description": "I pini cipressi combinano caratteristiche sia di cipressi che di pini, producendo polline allergenico dall'inverno alla primavera. Il polline può causare reazioni allergiche moderate ed è particolarmente problematico in aree dove questi alberi sono coltivati."
+    },
+    "HAZEL": {
+        "description": "I noccioli sono tra i primi produttori di polline, rilasciando tipicamente polline da gennaio a marzo. I piccoli amenti impollinati dal vento possono scatenare reazioni allergiche significative in individui sensibili. Il polline di nocciolo è particolarmente potente e può viaggiare per lunghe distanze."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "Il cedro giapponese (Cryptomeria japonica) è noto per causare reazioni allergiche severe, particolarmente in Giappone dove è chiamato 'sugi.' L'albero produce quantità massive di polline da febbraio ad aprile, creando uno dei problemi di allergia più significativi nell'Asia orientale."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "Il cipresso giapponese (Chamaecyparis obtusa) produce polline altamente allergenico da marzo a maggio. Conosciuto come 'hinoki' in Giappone, questo albero è responsabile di allergie primaverili significative e spesso segue la stagione del cedro giapponese, estendendo il periodo di allergia."
+    },
+    "GRAMINALES": {
+        "description": "Il polline d'erba è uno degli allergeni più comuni e persistenti, con una stagione che tipicamente va da maggio a settembre. Diverse specie d'erba impollinano in momenti diversi, creando periodi di esposizione estesi. Le allergie all'erba colpiscono milioni di persone e possono causare sintomi severi."
+    },
+    "RAGWEED": {
+        "description": "L'ambrosia è nota per produrre alcuni dei pollini più allergenici, con una stagione che va da agosto a ottobre. Una singola pianta può rilasciare miliardi di granuli di polline, e le allergie all'ambrosia colpiscono milioni di persone, causando sintomi severi di allergia autunnale."
+    },
+    "MUGWORT": {
+        "description": "L'artemisia è una pianta altamente allergenica che rilascia polline da luglio a settembre. Comune in aree di scarto e bordi stradali, il polline di artemisia può causare reazioni allergiche severe e spesso ha reazioni crociate con cibi come sedano e spezie."
+    }
+}

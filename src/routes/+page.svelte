@@ -23,6 +23,7 @@
 	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
 	import LanguageDrawer from "$lib/components/LanguageDrawer.svelte";
 	import * as m from "$lib/paraglide/messages";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	// Pollen section
 	let pollenTypesList = $state({});
@@ -32,12 +33,27 @@
 	// Get day labels for tabs and chart
 	function getDayLabel(dayIndex) {
 		if (!$pollenData?.dailyInfo?.[dayIndex]) return "";
-		if (dayIndex === 0) return "Today";
+		if (dayIndex === 0) return m.today();
 
 		// Calculate the date starting from user's today + dayIndex
 		const userDate = new Date();
 		userDate.setDate(userDate.getDate() + dayIndex);
-		return userDate.toLocaleDateString("en-US", { weekday: "short" });
+		const dayOfWeek = userDate.getDay();
+
+		// Map day of week to translation function
+		const dayTranslations = [m.sun, m.mon, m.tue, m.wed, m.thu, m.fri, m.sat];
+		return dayTranslations[dayOfWeek]();
+	}
+
+	// Get weather string
+	function getWeatherString(weather) {
+		const weatherMap = {
+			clear: m.clear(),
+			rainy: m.rainy(),
+			cloudy: m.cloudy(),
+			stormy: m.stormy()
+		};
+		return weatherMap[weather] || weather;
 	}
 
 	// Basic derived values
@@ -67,7 +83,7 @@
 				const plant = dayInfo.plantInfo?.find((p) => p.code === code);
 				return {
 					code,
-					name: pollenTypesList[code]?.name || code,
+					name: getPollenName(code),
 					level: plant?.indexInfo?.value || 0,
 					isSelected: $userPollen.includes(code)
 				};
@@ -115,20 +131,30 @@
 
 	onMount(async () => {
 		try {
+			const locale = getLocale();
+			// Load pollen types and descriptions in current language
 			[pollenTypesList, plantTextList] = await Promise.all([
 				await fetch("/json/pollen-types.json").then((response) => response.json()),
-				await fetch("/json/pollen-descriptions.json").then((response) => response.json())
+				await fetch(`/json/pollen-descriptions-${locale}.json`).then((response) => response.json())
 			]);
 		} catch (error) {
 			console.error("Failed to load pollen types:", error);
-			showInfo("Error", `An error occurred loading the pollen types & descriptions: ${error}`);
+			showInfo(m.error(), `${m.error_loading_pollen()} ${error}`);
 		}
 		try {
 			await fetchPollenData();
 		} catch (error) {
-			showInfo("Error", `An error occurred fetching pollen data: ${error}`);
+			showInfo(m.error(), `${m.error_fetching_data()} ${error}`);
 		}
 	});
+
+	// Get localized name for pollen type
+	function getPollenName(code) {
+		const locale = getLocale();
+		const nameKey = `name-${locale}`;
+		const pollenData = pollenTypesList[code];
+		return pollenData?.[nameKey] || pollenData?.["name-en"] || code;
+	}
 </script>
 
 <div class="no-scrollbar max-h-dvh space-y-6 overflow-y-auto p-6">
@@ -138,7 +164,7 @@
 			{#if $isLoading}
 				<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
 			{:else}
-				{$userLocation?.name?.split(",")[0] || "Location"}
+				{$userLocation?.name?.split(",")[0] || m.location_placeholder()}
 			{/if}
 		</h1>
 		<Button
@@ -157,17 +183,14 @@
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
 		<Widget
-			title="Risk"
+			title={m.risk()}
 			cellWidth={1}
 			fixedHeight={true}
 			bgColor={getRiskColor(riskLevel)}
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				showInfo(
-					"Risk",
-					`The risk index takes today's highest pollen level of the selected types as well as the current weather conditions into account.`
-				);
+				showInfo(m.risk(), m.risk_description());
 			}}
 		>
 			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
@@ -176,13 +199,13 @@
 		</Widget>
 
 		<!-- Risk Forecast Bar Chart -->
-		<Widget title="Risk forecast" cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
+		<Widget title={m.risk_forecast()} cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
 			{#if riskForecastData.length > 0 && $userPollen.length > 0}
 				<div class="pointer-events-none h-full max-h-18 w-full overflow-hidden pt-0.25">
 					<Chart.Container
 						config={{
 							risk: {
-								label: "Risk Level",
+								label: m.risk(),
 								color: "var(--chart-1)"
 							}
 						}}
@@ -201,23 +224,20 @@
 				</div>
 			{:else}
 				<div class="flex h-full w-full items-center justify-center text-center text-xs text-muted-foreground">
-					{$userPollen.length === 0 ? "Select pollen types" : "No data"}
+					{$userPollen.length === 0 ? m.select_pollen_types() : m.no_data()}
 				</div>
 			{/if}
 		</Widget>
 
 		<!-- Ozone -->
 		<Widget
-			title="Ozone"
+			title={m.ozone()}
 			cellWidth={1}
 			fixedHeight={true}
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				showInfo(
-					"Ozone",
-					`High ozone levels can intensify allergic reactions by making airways more sensitive and pollen more irritating.`
-				);
+				showInfo(m.ozone(), m.ozone_description());
 			}}
 		>
 			<div class="flex flex-col items-center">
@@ -228,16 +248,13 @@
 
 		<!-- Weather -->
 		<Widget
-			title="Weather"
+			title={m.weather()}
 			cellWidth={1}
 			fixedHeight={true}
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				showInfo(
-					"Weather",
-					`Thunderstorms can worsen allergic reactions by causing pollen grains to break apart and become more easily inhaled. Rain may bring short-term relief.`
-				);
+				showInfo(m.weather(), m.weather_description());
 			}}
 		>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
@@ -250,23 +267,19 @@
 				<CloudLightning class="mx-auto h-8 w-8" strokeWidth={4} />
 			{/if}
 			<p class="mt-4 text-xs text-muted-foreground">
-				{$pollenData?.currentConditions?.generalWheather?.[0]?.toUpperCase() +
-					$pollenData?.currentConditions?.generalWheather?.slice(1)}
+				{getWeatherString($pollenData?.currentConditions?.generalWheather)}
 			</p>
 		</Widget>
 
 		<!-- Air quality -->
 		<Widget
-			title="Air quality"
+			title={m.air_quality()}
 			cellWidth={1}
 			fixedHeight={true}
 			isLoading={$isLoading}
 			onclick={() => {
 				vibrate.light();
-				showInfo(
-					"Air quality (AQI)",
-					`Poor air quality (high AQI) can worsen allergic reactions by increasing airborne irritants that inflame the airways and amplify sensitivity to pollen.`
-				);
+				showInfo(m.air_quality(), m.air_quality_description());
 			}}
 		>
 			<div class="flex flex-col items-center">
@@ -277,7 +290,7 @@
 	</div>
 
 	<!-- Pollen Forecast Section with Day Tabs -->
-	<Widget title="Pollen" fixedHeight={false} isLoading={$isLoading}>
+	<Widget title={m.pollen()} fixedHeight={false} isLoading={$isLoading}>
 		<div class="space-y-4">
 			<!-- Day Selector Pills -->
 			{#if $pollenData?.dailyInfo?.length > 0}
@@ -332,7 +345,7 @@
 			{#if otherPollenData.length > 0}
 				<div class="space-y-3">
 					<div class="mx-1 flex items-center gap-3">
-						<h4 class="text-sm text-muted-foreground">Others</h4>
+						<h4 class="text-sm text-muted-foreground">{m.others()}</h4>
 						<div class="mt-1 h-px flex-1 bg-border"></div>
 					</div>
 					<div class="space-y-2">
@@ -368,7 +381,7 @@
 									showingAllOthers = !showingAllOthers;
 								}}
 							>
-								{showingAllOthers ? "Show less" : "Show all"}
+								{showingAllOthers ? m.show_less() : m.show_all()}
 								{#if showingAllOthers}
 									<Minus />
 								{:else}
@@ -380,7 +393,7 @@
 				</div>
 			{:else if selectedPollenData.length === 0}
 				<div class="py-6 text-center text-muted-foreground">
-					<p class="text-sm">No pollen types selected.</p>
+					<p class="text-sm">{m.no_pollen_selected()}</p>
 				</div>
 			{/if}
 		</div>
@@ -396,13 +409,13 @@
 			}}
 		>
 			<Edit class="mr-2 h-4 w-4" />
-			Edit pollen selection
+			{m.edit_pollen_selection()}
 		</Button>
 	</div>
 
 	<!-- More Section -->
 	<div class="space-y-2">
-		<h2 class="px-1 text-sm font-medium text-muted-foreground">More</h2>
+		<h2 class="px-1 text-sm font-medium text-muted-foreground">{m.more()}</h2>
 		<div class="space-y-2">
 			<Button
 				variant="secondary"
@@ -429,7 +442,7 @@
 			>
 				<div class="flex items-center gap-3">
 					<Mail class="h-5 w-5" />
-					<span>Feedback</span>
+					<span>{m.feedback()}</span>
 				</div>
 				<ChevronRight class="h-4 w-4" />
 			</Button>
@@ -444,7 +457,7 @@
 			>
 				<div class="flex items-center gap-3">
 					<Bug class="h-5 w-5" />
-					<span>Report bug</span>
+					<span>{m.report_bug()}</span>
 				</div>
 				<ChevronRight class="h-4 w-4" />
 			</Button>

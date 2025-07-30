@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Erlenbäume produzieren von Februar bis April reichlich Pollen, oft überschneidend mit der Haselsaison. Diese feuchtigkeitsliebenden Bäume sind häufig in der Nähe von Wasserquellen zu finden und ihr Pollen kann moderate bis schwere allergische Reaktionen verursachen, besonders im Frühjahr."
+    },
+    "ASH": {
+        "description": "Eschen bestäuben von März bis Mai und produzieren windverbreiteten Pollen, der beträchtliche Entfernungen zurücklegen kann. Obwohl nicht so potent wie Birken- oder Eichenpollen, kann Eschenpollen dennoch allergische Reaktionen bei empfindlichen Personen auslösen."
+    },
+    "BIRCH": {
+        "description": "Birke ist einer der allergensten Baumpollen in gemäßigten Regionen. Die Hauptsaison läuft von März bis Mai, wobei reife Bäume Milliarden von Pollenkörnern freisetzen. Birkenpollenallergien kreuzreagieren oft mit bestimmten Lebensmitteln wie Äpfeln und Karotten."
+    },
+    "COTTONWOOD": {
+        "description": "Baumwollpappeln, Teil der Pappelfamilie, produzieren von März bis Mai erhebliche Mengen Pollen. Der leichte Pollen kann weite Strecken zurücklegen und moderate bis schwere allergische Reaktionen verursachen. Diese Bäume sind in Nordamerika häufig in der Nähe von Wasserquellen."
+    },
+    "ELM": {
+        "description": "Ulmen gehören zu den frühesten Frühjahrsbestäubern und setzen von Februar bis April Pollen frei, bevor ihre Blätter erscheinen. Obwohl Ulmenpollen generell weniger allergen ist als andere Baumpollen, kann er dennoch zu Frühjahrsallergiesymptomen beitragen."
+    },
+    "MAPLE": {
+        "description": "Ahornbäume produzieren von März bis Mai Pollen, mit Spitzenaktivität im frühen Frühling. Der windverbreitete Pollen kann bei empfindlichen Personen allergische Reaktionen verursachen. Die Ahornpollensaison überschneidet sich oft mit anderen wichtigen Baumallergenen."
+    },
+    "OLIVE": {
+        "description": "Olivenbäume sind hochallergen und produzieren von April bis Juni in mediterranem Klima reichlich Pollen. Olivenpollen gilt als einer der potentesten Allergene und kann schwere Atemwegssymptome verursachen. Der Pollen kann hunderte von Kilometern reisen."
+    },
+    "JUNIPER": {
+        "description": "Wacholderbäume und -sträucher produzieren von Dezember bis Mai allergenen Pollen, mit Spitzensaison im späten Winter und frühen Frühling. Die kleinen, leichten Pollenkörner werden leicht vom Wind verbreitet und können erhebliche allergische Reaktionen verursachen."
+    },
+    "OAK": {
+        "description": "Eichen setzen von April bis Juni große Mengen Pollen frei und erzeugen den gelben Staub, der oft auf Autos und Oberflächen zu sehen ist. Obwohl die individuelle Empfindlichkeit variiert, kann Eichenpollen erhebliche Atemwegssymptome verursachen und ist ein wichtiges Frühjahrsallergen."
+    },
+    "PINE": {
+        "description": "Kiefern produzieren von April bis Juni reichlich Pollen und erzeugen oft sichtbare gelbe Wolken. Obwohl Kiefernpollenkörner groß sind und weniger wahrscheinlich tief in die Atemwege eindringen, kann die schiere Menge dennoch Reizungen und allergische Reaktionen verursachen."
+    },
+    "CYPRESS_PINE": {
+        "description": "Zypressenkiefern kombinieren Eigenschaften sowohl von Zypressen als auch von Kiefern und produzieren vom Winter bis zum Frühling allergenen Pollen. Der Pollen kann moderate allergische Reaktionen verursachen und ist besonders problematisch in Gebieten, wo diese Bäume kultiviert werden."
+    },
+    "HAZEL": {
+        "description": "Haselsträucher gehören zu den frühesten Pollenproduzen­ten und setzen typischerweise von Januar bis März Pollen frei. Die kleinen, windbestäubten Kätzchen können bei empfindlichen Personen erhebliche allergische Reaktionen auslösen. Haselpollen ist besonders potent und kann weite Strecken zurücklegen."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "Japanische Zeder (Cryptomeria japonica) ist berüchtigt für schwere allergische Reaktionen, besonders in Japan, wo sie 'Sugi' genannt wird. Der Baum produziert von Februar bis April massive Mengen Pollen und verursacht eines der bedeutendsten Allergieprobleme in Ostasien."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "Japanische Zypresse (Chamaecyparis obtusa) produziert von März bis Mai hochallergenen Pollen. In Japan als 'Hinoki' bekannt, ist dieser Baum für bedeutende Frühjahrsallergien verantwortlich und folgt oft der Japanischen Zedersaison, wodurch die Allergieperiode verlängert wird."
+    },
+    "GRAMINALES": {
+        "description": "Graspollen ist eines der häufigsten und hartnäckigsten Allergene, mit einer Saison, die typischerweise von Mai bis September läuft. Verschiedene Grasarten bestäuben zu verschiedenen Zeiten und schaffen verlängerte Expositionsperioden. Grasallergien betreffen Millionen und können schwere Symptome verursachen."
+    },
+    "RAGWEED": {
+        "description": "Ambrosia ist berüchtigt für die Produktion einiger der allergensten Pollen, mit einer Saison von August bis Oktober. Eine einzige Pflanze kann Milliarden von Pollenkörnern freisetzen, und Ambrosiaallergien betreffen Millionen von Menschen und verursachen schwere Herbstallergiesymptome."
+    },
+    "MUGWORT": {
+        "description": "Beifuß ist eine hochallergene Pflanze, die von Juli bis September Pollen freisetzt. Häufig in Abfallgebieten und Straßenrändern, kann Beifußpollen schwere allergische Reaktionen verursachen und kreuzreagiert oft mit Lebensmitteln wie Sellerie und Gewürzen."
+    }
+}

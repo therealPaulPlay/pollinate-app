@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Les aulnes produisent un pollen abondant de février à avril, se chevauchant souvent avec la saison du noisetier. Ces arbres qui aiment l'humidité sont communs près des sources d'eau et leur pollen peut causer des réactions allergiques modérées à sévères, surtout au début du printemps."
+    },
+    "ASH": {
+        "description": "Les frênes pollinisent de mars à mai, produisant du pollen dispersé par le vent qui peut voyager sur des distances considérables. Bien que pas aussi puissant que le pollen de bouleau ou de chêne, le pollen de frêne peut encore déclencher des réactions allergiques chez les individus sensibles."
+    },
+    "BIRCH": {
+        "description": "Le bouleau est l'un des pollens d'arbre les plus allergènes dans les régions tempérées. La saison de pointe va de mars à mai, avec des milliards de grains de pollen libérés par les arbres matures. Les allergies au pollen de bouleau ont souvent des réactions croisées avec certains aliments comme les pommes et les carottes."
+    },
+    "COTTONWOOD": {
+        "description": "Les peupliers deltoïdes, partie de la famille des peupliers, produisent des quantités significatives de pollen de mars à mai. Le pollen léger peut voyager sur de longues distances et causer des réactions allergiques modérées à sévères. Ces arbres sont communs en Amérique du Nord près des sources d'eau."
+    },
+    "ELM": {
+        "description": "Les ormes sont parmi les premiers pollinisateurs printaniers, libérant du pollen de février à avril avant que leurs feuilles n'apparaissent. Bien que le pollen d'orme soit généralement moins allergène que d'autres pollens d'arbres, il peut encore contribuer aux symptômes d'allergie printanière."
+    },
+    "MAPLE": {
+        "description": "Les érables produisent du pollen de mars à mai, avec une activité de pointe au début du printemps. Le pollen dispersé par le vent peut causer des réactions allergiques chez les individus sensibles. La saison de pollen d'érable se chevauche souvent avec d'autres allergènes d'arbres importants."
+    },
+    "OLIVE": {
+        "description": "Les oliviers sont hautement allergènes, produisant un pollen abondant d'avril à juin dans les climats méditerranéens. Le pollen d'olivier est considéré comme l'un des allergènes les plus puissants et peut causer des symptômes respiratoires sévères. Le pollen peut voyager sur des centaines de kilomètres."
+    },
+    "JUNIPER": {
+        "description": "Les genévriers produisent du pollen allergène de décembre à mai, avec une saison de pointe en fin d'hiver et début de printemps. Les petits grains de pollen légers se dispersent facilement dans le vent et peuvent causer des réactions allergiques significatives."
+    },
+    "OAK": {
+        "description": "Les chênes libèrent de grandes quantités de pollen d'avril à juin, créant la poussière jaune souvent vue sur les voitures et les surfaces. Bien que la sensibilité individuelle varie, le pollen de chêne peut causer des symptômes respiratoires significatifs et est un allergène printanier majeur."
+    },
+    "PINE": {
+        "description": "Les pins produisent un pollen abondant d'avril à juin, créant souvent des nuages jaunes visibles. Bien que les grains de pollen de pin soient grands et moins susceptibles de pénétrer profondément dans les voies respiratoires, le volume pur peut encore causer de l'irritation et des réactions allergiques."
+    },
+    "CYPRESS_PINE": {
+        "description": "Les pins cyprès combinent les caractéristiques des cyprès et des pins, produisant du pollen allergène de l'hiver au printemps. Le pollen peut causer des réactions allergiques modérées et est particulièrement problématique dans les zones où ces arbres sont cultivés."
+    },
+    "HAZEL": {
+        "description": "Les noisetiers sont parmi les premiers producteurs de pollen, libérant typiquement du pollen de janvier à mars. Les petits chatons pollinisés par le vent peuvent déclencher des réactions allergiques significatives chez les individus sensibles. Le pollen de noisetier est particulièrement puissant et peut voyager sur de longues distances."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "Le cèdre du Japon (Cryptomeria japonica) est notoire pour causer des réactions allergiques sévères, particulièrement au Japon où il est appelé 'sugi.' L'arbre produit des quantités massives de pollen de février à avril, créant l'un des problèmes d'allergie les plus significatifs en Asie de l'Est."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "Le cyprès du Japon (Chamaecyparis obtusa) produit du pollen hautement allergène de mars à mai. Connu sous le nom de 'hinoki' au Japon, cet arbre est responsable d'allergies printanières significatives et suit souvent la saison du cèdre japonais, prolongeant la période d'allergie."
+    },
+    "GRAMINALES": {
+        "description": "Le pollen d'herbe est l'un des allergènes les plus communs et persistants, avec une saison qui va typiquement de mai à septembre. Différentes espèces d'herbe pollinisent à différents moments, créant des périodes d'exposition étendues. Les allergies à l'herbe affectent des millions de personnes et peuvent causer des symptômes sévères."
+    },
+    "RAGWEED": {
+        "description": "L'herbe à poux est notoire pour produire certains des pollens les plus allergènes, avec une saison qui va d'août à octobre. Une seule plante peut libérer des milliards de grains de pollen, et les allergies à l'herbe à poux affectent des millions de personnes, causant des symptômes sévères d'allergie automnale."
+    },
+    "MUGWORT": {
+        "description": "L'armoise est une plante hautement allergène qui libère du pollen de juillet à septembre. Commune dans les zones de déchets et les bords de route, le pollen d'armoise peut causer des réactions allergiques sévères et a souvent des réactions croisées avec des aliments comme le céleri et les épices."
+    }
+}

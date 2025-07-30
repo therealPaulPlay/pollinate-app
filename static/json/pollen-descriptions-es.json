@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Los alisos producen abundante polen de febrero a abril, a menudo superponiéndose con la temporada del avellano. Estos árboles amantes de la humedad son comunes cerca de fuentes de agua y su polen puede causar reacciones alérgicas de moderadas a severas, especialmente a principios de primavera."
+    },
+    "ASH": {
+        "description": "Los fresnos polinizan de marzo a mayo, produciendo polen dispersado por el viento que puede viajar distancias considerables. Aunque no tan potente como el polen de abedul o roble, el polen de fresno aún puede desencadenar reacciones alérgicas en individuos sensibles."
+    },
+    "BIRCH": {
+        "description": "El abedul es uno de los pólenes de árbol más alergénicos en regiones templadas. La temporada pico va de marzo a mayo, con miles de millones de granos de polen liberados por árboles maduros. Las alergias al polen de abedul a menudo tienen reacciones cruzadas con ciertos alimentos como manzanas y zanahorias."
+    },
+    "COTTONWOOD": {
+        "description": "Los álamos de Virginia, parte de la familia de los álamos, producen cantidades significativas de polen de marzo a mayo. El polen ligero puede viajar largas distancias y causar reacciones alérgicas de moderadas a severas. Estos árboles son comunes en América del Norte cerca de fuentes de agua."
+    },
+    "ELM": {
+        "description": "Los olmos están entre los primeros polinizadores de primavera, liberando polen de febrero a abril antes de que aparezcan sus hojas. Aunque el polen de olmo es generalmente menos alergénico que otros pólenes de árboles, aún puede contribuir a los síntomas de alergia primaveral."
+    },
+    "MAPLE": {
+        "description": "Los arces producen polen de marzo a mayo, con actividad pico a principios de primavera. El polen dispersado por el viento puede causar reacciones alérgicas en individuos sensibles. La temporada de polen de arce a menudo se superpone con otros alérgenos importantes de árboles."
+    },
+    "OLIVE": {
+        "description": "Los olivos son altamente alergénicos, produciendo abundante polen de abril a junio en climas mediterráneos. El polen de olivo se considera uno de los alérgenos más potentes y puede causar síntomas respiratorios severos. El polen puede viajar cientos de kilómetros."
+    },
+    "JUNIPER": {
+        "description": "Los enebros producen polen alergénico de diciembre a mayo, con temporada pico en invierno tardío y principios de primavera. Los granos de polen pequeños y ligeros se dispersan fácilmente por el viento y pueden causar reacciones alérgicas significativas."
+    },
+    "OAK": {
+        "description": "Los robles liberan grandes cantidades de polen de abril a junio, creando el polvo amarillo que a menudo se ve en coches y superficies. Aunque la sensibilidad individual varía, el polen de roble puede causar síntomas respiratorios significativos y es un alérgeno primaveral importante."
+    },
+    "PINE": {
+        "description": "Los pinos producen abundante polen de abril a junio, a menudo creando nubes amarillas visibles. Aunque los granos de polen de pino son grandes y menos propensos a penetrar profundamente en las vías respiratorias, el volumen puro aún puede causar irritación y reacciones alérgicas."
+    },
+    "CYPRESS_PINE": {
+        "description": "Los pinos ciprés combinan características tanto de cipreses como de pinos, produciendo polen alergénico desde el invierno hasta la primavera. El polen puede causar reacciones alérgicas moderadas y es particularmente problemático en áreas donde estos árboles se cultivan."
+    },
+    "HAZEL": {
+        "description": "Los avellanos están entre los primeros productores de polen, liberando típicamente polen de enero a marzo. Los pequeños amentos polinizados por el viento pueden desencadenar reacciones alérgicas significativas en individuos sensibles. El polen de avellano es particularmente potente y puede viajar largas distancias."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "El cedro japonés (Cryptomeria japonica) es notorio por causar reacciones alérgicas severas, particularmente en Japón donde se llama 'sugi.' El árbol produce cantidades masivas de polen de febrero a abril, creando uno de los problemas de alergia más significativos en el este de Asia."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "El ciprés japonés (Chamaecyparis obtusa) produce polen altamente alergénico de marzo a mayo. Conocido como 'hinoki' en Japón, este árbol es responsable de alergias primaverales significativas y a menudo sigue la temporada del cedro japonés, extendiendo el período de alergia."
+    },
+    "GRAMINALES": {
+        "description": "El polen de hierba es uno de los alérgenos más comunes y persistentes, con una temporada que típicamente va de mayo a septiembre. Diferentes especies de hierba polinizan en diferentes momentos, creando períodos de exposición extendidos. Las alergias a la hierba afectan a millones y pueden causar síntomas severos."
+    },
+    "RAGWEED": {
+        "description": "La ambrosia es notoria por producir algunos de los pólenes más alergénicos, con una temporada que va de agosto a octubre. Una sola planta puede liberar miles de millones de granos de polen, y las alergias a la ambrosia afectan a millones de personas, causando síntomas severos de alergia otoñal."
+    },
+    "MUGWORT": {
+        "description": "El ajenjo es una planta altamente alergénica que libera polen de julio a septiembre. Común en áreas de desecho y bordes de carreteras, el polen de ajenjo puede causar reacciones alérgicas severas y a menudo tiene reacciones cruzadas con alimentos como apio y especias."
+    }
+}

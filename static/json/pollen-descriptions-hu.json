@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Az égerfák bőségesen termelnek pollent februártól áprilisig, gyakran átfedésben a mogyoró szezonnal. Ezek a nedvességkedvelő fák gyakoriak vízforrások közelében, és pollenük mérsékelt vagy súlyos allergiás reakciókat okozhat, különösen kora tavasszal."
+    },
+    "ASH": {
+        "description": "A kőrisfák márciustól májusig poroznak, szél által terjesztett pollent termelve, amely jelentős távolságokat képes megtenni. Bár nem olyan erős, mint a nyír vagy tölgy pollen, a kőris pollen még mindig allergiás reakciókat válthat ki érzékeny egyéneknél."
+    },
+    "BIRCH": {
+        "description": "A nyírfa az egyik legallergénebb fapollen a mérsékelt égövi régiókban. A csúcsszezon márciustól májusig tart, az érett fák milliárd pollenszemet szabadítanak fel. A nyírfapollen allergiák gyakran keresztreakciókat mutatnak bizonyos élelmiszerekkel, mint az alma és a sárgarépa."
+    },
+    "COTTONWOOD": {
+        "description": "Az amerikai nyárfák, a nyárfa család részei, jelentős mennyiségű pollent termelnek márciustól májusig. A könnyű pollen nagy távolságokat képes megtenni és mérsékelt vagy súlyos allergiás reakciókat okozhat. Ezek a fák gyakoriak Észak-Amerikában vízforrások közelében."
+    },
+    "ELM": {
+        "description": "A szilfa a legkorábbi tavaszi beporzók közé tartozik, pollent szabadítva fel februártól áprilisig, mielőtt levelei megjelennek. Bár a szil pollen általában kevésbé allergén más fa polleneknél, még mindig hozzájárulhat a tavaszi allergia tünetekhez."
+    },
+    "MAPLE": {
+        "description": "A juharfák márciustól májusig termelnek pollent, csúcstevékenységgel kora tavasszal. A szél által terjesztett pollen allergiás reakciókat okozhat érzékeny egyéneknél. A juhar szezon gyakran átfed más fontos fa allergénekkel."
+    },
+    "OLIVE": {
+        "description": "Az olajfák erősen allergének, bőségesen termelnek pollent áprilistól júniusig mediterrán éghajlatban. Az olajfa pollen az egyik legerősebb allergénnek számít és súlyos légúti tüneteket okozhat. A pollen több száz kilométert képes megtenni."
+    },
+    "JUNIPER": {
+        "description": "A boróka fák és bokrok allergén pollent termelnek decembertől májusig, csúcsszezonnal késő télen és kora tavasszal. A kis, könnyű pollenszemek könnyen szétterjednek a szélben és jelentős allergiás reakciókat okozhatnak."
+    },
+    "OAK": {
+        "description": "A tölgyfák nagy mennyiségű pollent szabadítanak fel áprilistól júniusig, létrehozva azt a sárga port, amit gyakran látunk autókon és felületeken. Bár az egyéni érzékenység változó, a tölgy pollen jelentős légúti tüneteket okozhat és fontos tavaszi allergén."
+    },
+    "PINE": {
+        "description": "A fenyőfák bőségesen termelnek pollent áprilistól júniusig, gyakran látható sárga felhőket hozva létre. Bár a fenyő pollenszemek nagyok és kevésbé valószínű, hogy mélyen behatolnak a légutakba, a puszta mennyiség még mindig irritációt és allergiás reakciókat okozhat."
+    },
+    "CYPRESS_PINE": {
+        "description": "A ciprusfenyők a ciprusok és fenyők jellemzőit kombinálják, allergén pollent termelve téltől tavaszig. A pollen mérsékelt allergiás reakciókat okozhat és különösen problematikus olyan területeken, ahol ezeket a fákat termesztik."
+    },
+    "HAZEL": {
+        "description": "A mogyoróbokrok a legkorábbi pollentermelők közé tartoznak, jellemzően januártól márciusig szabadítanak fel pollent. A kis, szél által megporzott barkák jelentős allergiás reakciókat válthatnak ki érzékeny egyéneknél. A mogyoró pollen különösen erős és nagy távolságokat képes megtenni."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "A japán cédrus (Cryptomeria japonica) hírhedt arról, hogy súlyos allergiás reakciókat okoz, különösen Japánban, ahol 'sugi'-nak hívják. A fa hatalmas mennyiségű pollent termel februártól áprilisig, és Kelet-Ázsia egyik legjelentősebb allergia problémáját okozza."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "A japán ciprus (Chamaecyparis obtusa) erősen allergén pollent termel márciustól májusig. Japánban 'hinoki'-ként ismert, ez a fa jelentős tavaszi allergiákért felelős és gyakran követi a japán cédrus szezont, meghosszabbítva az allergia időszakot."
+    },
+    "GRAMINALES": {
+        "description": "A fű pollen az egyik leggyakoribb és legkitartóbb allergén, olyan szezonnal, amely jellemzően májustól szeptemberig tart. A különböző fűfajok különböző időpontokban poroznak, hosszabb kitettségi időszakokat teremtve. A fű allergiák milliókat érintenek és súlyos tüneteket okozhatnak."
+    },
+    "RAGWEED": {
+        "description": "A parlagfű hírhedt arról, hogy a legallergénebb pollenek közül néhányat termeli, augusztustól októberig tartó szezonnal. Egyetlen növény milliárd pollenszemet szabadíthat fel, és a parlagfű allergiák emberek millióit érintik, súlyos őszi allergia tüneteket okozva."
+    },
+    "MUGWORT": {
+        "description": "Az üröm egy erősen allergén növény, amely júliustól szeptemberig szabadít fel pollent. Gyakori hulladékterületeken és útszéleken, az üröm pollen súlyos allergiás reakciókat okozhat és gyakran keresztreakciókat mutat élelmiszerekkel, mint a zeller és fűszerek."
+    }
+}

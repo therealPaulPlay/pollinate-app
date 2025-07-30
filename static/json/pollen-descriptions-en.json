@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Alder trees produce abundant pollen from February to April, often overlapping with hazel season. These moisture-loving trees are common near water sources and their pollen can cause moderate to severe allergic reactions, especially in early spring."
+    },
+    "ASH": {
+        "description": "Ash trees pollinate from March to May, producing wind-dispersed pollen that can travel considerable distances. While not as potent as birch or oak, ash pollen can still trigger allergic reactions in sensitive individuals."
+    },
+    "BIRCH": {
+        "description": "Birch is one of the most allergenic tree pollens in temperate regions. Peak season runs from March to May, with billions of pollen grains released by mature trees. Birch pollen allergies often cross-react with certain foods like apples and carrots."
+    },
+    "COTTONWOOD": {
+        "description": "Cottonwood trees, part of the poplar family, produce significant amounts of pollen from March to May. The lightweight pollen can travel long distances and cause moderate to severe allergic reactions. These trees are common in North America near water sources."
+    },
+    "ELM": {
+        "description": "Elm trees are among the earliest spring pollinators, releasing pollen from February to April before their leaves emerge. While elm pollen is generally less allergenic than other tree pollens, it can still contribute to spring allergy symptoms."
+    },
+    "MAPLE": {
+        "description": "Maple trees produce pollen from March to May, with peak activity in early spring. The wind-dispersed pollen can cause allergic reactions in sensitive individuals. Maple pollen season often overlaps with other major tree allergens."
+    },
+    "OLIVE": {
+        "description": "Olive trees are highly allergenic, producing abundant pollen from April to June in Mediterranean climates. Olive pollen is considered one of the most potent allergens and can cause severe respiratory symptoms. The pollen can travel hundreds of kilometers."
+    },
+    "JUNIPER": {
+        "description": "Juniper trees and shrubs produce allergenic pollen from December to May, with peak season in late winter and early spring. The small, lightweight pollen grains are easily dispersed by wind and can cause significant allergic reactions."
+    },
+    "OAK": {
+        "description": "Oak trees release large amounts of pollen from April to June, creating the yellow dust often seen on cars and surfaces. While individual sensitivity varies, oak pollen can cause significant respiratory symptoms and is a major spring allergen."
+    },
+    "PINE": {
+        "description": "Pine trees produce abundant pollen from April to June, often creating visible yellow clouds. While pine pollen grains are large and less likely to penetrate deep into airways, the sheer volume can still cause irritation and allergic reactions."
+    },
+    "CYPRESS_PINE": {
+        "description": "Cypress pine trees combine characteristics of both cypress and pine, producing allergenic pollen from winter through spring. The pollen can cause moderate allergic reactions and is particularly problematic in areas where these trees are cultivated."
+    },
+    "HAZEL": {
+        "description": "Hazel trees are among the earliest pollen producers, typically releasing pollen from January to March. The small, wind-pollinated catkins can trigger significant allergic reactions in sensitive individuals. Hazel pollen is particularly potent and can travel long distances."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "Japanese cedar (Cryptomeria japonica) is notorious for causing severe allergic reactions, particularly in Japan where it's called 'sugi.' The tree produces massive amounts of pollen from February to April, creating one of the most significant allergy problems in East Asia."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "Japanese cypress (Chamaecyparis obtusa) produces highly allergenic pollen from March to May. Known as 'hinoki' in Japan, this tree is responsible for significant spring allergies and often follows Japanese cedar season, extending the allergy period."
+    },
+    "GRAMINALES": {
+        "description": "Grass pollen is one of the most common and persistent allergens, with season typically running from May to September. Different grass species pollinate at different times, creating extended exposure periods. Grass allergies affect millions and can cause severe symptoms."
+    },
+    "RAGWEED": {
+        "description": "Ragweed is notorious for producing some of the most allergenic pollen, with season running from August to October. A single plant can release billions of pollen grains, and ragweed allergies affect millions of people, causing severe fall allergy symptoms."
+    },
+    "MUGWORT": {
+        "description": "Mugwort is a highly allergenic plant that releases pollen from July to September. Common in waste areas and roadsides, mugwort pollen can cause severe allergic reactions and often cross-reacts with foods like celery and spices."
+    }
+}

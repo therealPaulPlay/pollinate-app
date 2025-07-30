@@ -5,10 +5,24 @@
 	import { goto } from "$app/navigation";
 	import { vibrate } from "$lib/utils/vibrate";
 	import { getLocale, setLocale, locales } from "$lib/paraglide/runtime";
+	import { m } from "$lib/paraglide/messages";
 
 	let { open = $bindable(false) } = $props();
 
-	const languageNames = { en: "English", de: "Deutsch" };
+	const languageNames = {
+		en: "English",
+		de: "Deutsch",
+		es: "Español",
+		it: "Italiano",
+		fr: "Français",
+		pt: "Português",
+		da: "Dansk",
+		nl: "Nederlands",
+		sv: "Svenska",
+		hu: "Magyar",
+		ja: "日本語",
+		uk: "Українська"
+	};
 
 	function switchLanguage(newLang) {
 		setLocale(newLang);
@@ -20,9 +34,9 @@
 <Drawer.Root bind:open>
 	<Drawer.Content class="max-h-[50dvh]">
 		<Drawer.Header>
-			<Drawer.Title class="font-bevellier text-3xl">Language</Drawer.Title>
+			<Drawer.Title class="font-bevellier text-3xl">{m.language()}</Drawer.Title>
 		</Drawer.Header>
-		<div class="space-y-2 px-4 pb-8 max-h-60 overflow-y-auto">
+		<div class="max-h-73 of-top of-bottom space-y-2 overflow-y-auto px-4 mb-8">
 			{#each locales as lang}
 				{@const isSelected = getLocale() === lang}
 				<button

@@ -108,7 +108,7 @@
 <div class="relative z-10 flex h-full flex-col items-center">
 	<div class="mt-[calc(55dvh-225px)] space-y-2 text-center">
 		<img alt="logo" src="/images/logo_500x500.png" class="mx-auto h-30 w-30" />
-		<h1 class="font-bevellier text-7xl">{m.onboarding_title()}</h1>
+		<h1 class="font-bevellier text-7xl">Pollinate</h1>
 		<p class="-mt-1.5">Accurate pollen forecasts. Free.</p>
 	</div>
 	<div class="mt-auto mb-8 max-w-md space-y-6 text-center">

@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Elzenbomen produceren overvloedig stuifmeel van februari tot april, vaak overlappend met het hazelnotenseizoen. Deze vochtigheid-minnende bomen zijn gewoon nabij waterbronnen en hun stuifmeel kan matige tot ernstige allergische reacties veroorzaken, vooral in het vroege voorjaar."
+    },
+    "ASH": {
+        "description": "Essenbomen bestuiven van maart tot mei en produceren door wind verspreide stuifmeel dat aanzienlijke afstanden kan afleggen. Hoewel niet zo krachtig als berken- of eikenstuifmeel, kan essenstuifmeel nog steeds allergische reacties veroorzaken bij gevoelige personen."
+    },
+    "BIRCH": {
+        "description": "Berk is een van de meest allergene boomstuifmeels in gematigde streken. Het piekseizoen loopt van maart tot mei, waarbij volwassen bomen miljarden stuifmeelkorrels vrijgeven. Berkenstuifmeelallergieën hebben vaak kruisreacties met bepaalde voedingsmiddelen zoals appels en wortels."
+    },
+    "COTTONWOOD": {
+        "description": "Amerikaanse populieren, deel van de populierenfamilie, produceren aanzienlijke hoeveelheden stuifmeel van maart tot mei. Het lichte stuifmeel kan lange afstanden afleggen en matige tot ernstige allergische reacties veroorzaken. Deze bomen zijn gewoon in Noord-Amerika nabij waterbronnen."
+    },
+    "ELM": {
+        "description": "Iepenbomen behoren tot de vroegste voorjaarsbestuivers en geven stuifmeel af van februari tot april voordat hun bladeren verschijnen. Hoewel iepenstuifmeel over het algemeen minder allergeen is dan andere boomstuifmeels, kan het nog steeds bijdragen aan voorjaarsallergiesymptomen."
+    },
+    "MAPLE": {
+        "description": "Esdoornbomen produceren stuifmeel van maart tot mei met piekactiviteit in het vroege voorjaar. Het door wind verspreide stuifmeel kan allergische reacties veroorzaken bij gevoelige personen. Het esdoornseizoen overlapt vaak met andere belangrijke boomallergenen."
+    },
+    "OLIVE": {
+        "description": "Olijfbomen zijn zeer allergeen en produceren overvloedig stuifmeel van april tot juni in mediterrane klimaten. Olijfstuifmeel wordt beschouwd als een van de krachtigste allergenen en kan ernstige luchtwegklachten veroorzaken. Het stuifmeel kan honderden kilometers reizen."
+    },
+    "JUNIPER": {
+        "description": "Jeneverbessen produceren allergeen stuifmeel van december tot mei met piekseizoen in de late winter en het vroege voorjaar. De kleine, lichte stuifmeelkorrels verspreiden zich gemakkelijk door de wind en kunnen aanzienlijke allergische reacties veroorzaken."
+    },
+    "OAK": {
+        "description": "Eikenbomen geven grote hoeveelheden stuifmeel af van april tot juni, waardoor het gele stof ontstaat dat vaak op auto's en oppervlakken wordt gezien. Hoewel individuele gevoeligheid varieert, kan eikenstuifmeel aanzienlijke luchtwegklachten veroorzaken en is een belangrijk voorjaarsallergeen."
+    },
+    "PINE": {
+        "description": "Dennenbomen produceren overvloedig stuifmeel van april tot juni en creëren vaak zichtbare gele wolken. Hoewel dennenstuifmeelkorrels groot zijn en minder waarschijnlijk diep in de luchtwegen doordringen, kan het pure volume nog steeds irritatie en allergische reacties veroorzaken."
+    },
+    "CYPRESS_PINE": {
+        "description": "Cipressen dennen combineren kenmerken van zowel cipressen als dennen en produceren allergeen stuifmeel van winter tot voorjaar. Het stuifmeel kan matige allergische reacties veroorzaken en is bijzonder problematisch in gebieden waar deze bomen worden gekweekt."
+    },
+    "HAZEL": {
+        "description": "Hazelnootstruiken behoren tot de vroegste stuifmeelproducenten en geven typisch stuifmeel af van januari tot maart. De kleine windbestoven katjes kunnen aanzienlijke allergische reacties veroorzaken bij gevoelige personen. Hazelnotenstuifmeel is bijzonder krachtig en kan lange afstanden afleggen."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "Japanse ceder (Cryptomeria japonica) staat berucht om het veroorzaken van ernstige allergische reacties, vooral in Japan waar het 'sugi' wordt genoemd. De boom produceert enorme hoeveelheden stuifmeel van februari tot april en veroorzaakt een van de meest significante allergieproblemen in Oost-Azië."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "Japanse cipres (Chamaecyparis obtusa) produceert zeer allergeen stuifmeel van maart tot mei. Bekend als 'hinoki' in Japan is deze boom verantwoordelijk voor significante voorjaarsallergieën en volgt vaak het Japanse cederseizoen, waardoor de allergieperiode wordt verlengd."
+    },
+    "GRAMINALES": {
+        "description": "Grasstuifmeel is een van de meest voorkomende en hardnekkige allergenen, met een seizoen dat typisch loopt van mei tot september. Verschillende grassoorten bestuiven op verschillende momenten, waardoor verlengde blootstellingsperioden ontstaan. Grassallergieën treffen miljoenen en kunnen ernstige symptomen veroorzaken."
+    },
+    "RAGWEED": {
+        "description": "Ambrosia staat berucht om het produceren van enkele van de meest allergene stuifmeels, met een seizoen dat loopt van augustus tot oktober. Een enkele plant kan miljarden stuifmeelkorrels afgeven, en ambrosia-allergieën treffen miljoenen mensen en veroorzaken ernstige herfstallergiesymptomen."
+    },
+    "MUGWORT": {
+        "description": "Bijvoet is een zeer allergene plant die stuifmeel afgeeft van juli tot september. Gewoon in afvalgebieden en wegkanten, kan bijvoetstuifmeel ernstige allergische reacties veroorzaken en heeft vaak kruisreacties met voedingsmiddelen zoals selderij en kruiden."
+    }
+}

@@ -7,6 +7,7 @@
 	import { onMount, onDestroy } from "svelte";
 	import maplibregl from "maplibre-gl";
 	import { goto } from "$app/navigation";
+	import * as m from "$lib/paraglide/messages";
 
 	let searchQuery = $state("");
 	let locations = $state([]);
@@ -163,7 +164,7 @@
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
 	<div class="mt-8 w-full max-w-md space-y-8">
-		<p class="text-center font-bevellier text-5xl">Location, please.</p>
+		<p class="text-center font-bevellier text-5xl">{m.location_please()}</p>
 
 		<div class="relative mx-auto max-w-80">
 			<!-- Search box -->
@@ -171,7 +172,7 @@
 				<Search class="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 				<Input
 					type="text"
-					placeholder="Search for your city..."
+					placeholder={m.search_city()}
 					bind:value={searchQuery}
 					oninput={handleInput}
 					onfocus={() => (showDropdown = searchQuery.length === 0 ? recentLocations.length > 0 : locations.length > 0)}
@@ -233,7 +234,8 @@
 			}}
 			disabled={!selectedLocation}
 		>
-			Save location <Check class="mt-0.5" />
+			{m.save_location()}
+			<Check class="mt-0.5" />
 		</Button>
 	</div>
 </div>

@@ -1,0 +1,53 @@
+{
+    "ALDER": {
+        "description": "Elletræer producerer rigelig pollen fra februar til april, ofte overlappende med hasselsæsonen. Disse fugtigheds-elskende træer er almindelige nær vandkilder, og deres pollen kan forårsage moderate til alvorlige allergiske reaktioner, især i det tidlige forår."
+    },
+    "ASH": {
+        "description": "Asketræer bestøver fra marts til maj og producerer vindspredende pollen, der kan rejse betydelige afstande. Selvom det ikke er så potent som birke- eller egepollen, kan askepollen stadig udløse allergiske reaktioner hos følsomme individer."
+    },
+    "BIRCH": {
+        "description": "Birk er et af de mest allergene træpollener i tempererede regioner. Højsæsonen løber fra marts til maj, hvor modne træer frigiver milliarder af pollenkorn. Birkepollen-allergier har ofte krydsreaktioner med visse fødevarer som æbler og gulerødder."
+    },
+    "COTTONWOOD": {
+        "description": "Bomuldspoppel, del af poppelfamilien, producerer betydelige mængder pollen fra marts til maj. Det lette pollen kan rejse lange afstande og forårsage moderate til alvorlige allergiske reaktioner. Disse træer er almindelige i Nordamerika nær vandkilder."
+    },
+    "ELM": {
+        "description": "Almetræer er blandt de tidligste forårsbestøvere og frigiver pollen fra februar til april, før deres blade dukker op. Selvom almepollen generelt er mindre allergent end andre træpollener, kan det stadig bidrage til forårsallergisymptomer."
+    },
+    "MAPLE": {
+        "description": "Løntræer producerer pollen fra marts til maj med topaktivitet i det tidlige forår. Det vindspredende pollen kan forårsage allergiske reaktioner hos følsomme individer. Lønsæsonen overlapper ofte med andre vigtige træallergener."
+    },
+    "OLIVE": {
+        "description": "Oliventræer er meget allergene og producerer rigelig pollen fra april til juni i mediterrane klimaer. Olivenpollen betragtes som et af de mest potente allergener og kan forårsage alvorlige luftvejssymptomer. Pollenet kan rejse hundredvis af kilometer."
+    },
+    "JUNIPER": {
+        "description": "Enetræer producerer allergent pollen fra december til maj med højsæson i sen vinter og tidligt forår. De små, lette pollenkorn spredes let af vind og kan forårsage betydelige allergiske reaktioner."
+    },
+    "OAK": {
+        "description": "Egetræer frigiver store mængder pollen fra april til juni og skaber det gule støv, der ofte ses på biler og overflader. Selvom individuel følsomhed varierer, kan egepollen forårsage betydelige luftvejssymptomer og er et vigtigt forårsallergen."
+    },
+    "PINE": {
+        "description": "Fyrretræer producerer rigelig pollen fra april til juni og skaber ofte synlige gule skyer. Selvom fyrrepollenkorn er store og mindre tilbøjelige til at trænge dybt ind i luftvejene, kan den rene mængde stadig forårsage irritation og allergiske reaktioner."
+    },
+    "CYPRESS_PINE": {
+        "description": "Cypressfyr kombinerer egenskaber fra både cypresser og fyrretræer og producerer allergent pollen fra vinter til forår. Pollenet kan forårsage moderate allergiske reaktioner og er særligt problematisk i områder, hvor disse træer dyrkes."
+    },
+    "HAZEL": {
+        "description": "Hasselbusken er blandt de tidligste pollenproducenter og frigiver typisk pollen fra januar til marts. De små vindbestøvede rakler kan udløse betydelige allergiske reaktioner hos følsomme individer. Hasselpollen er særligt potent og kan rejse lange afstande."
+    },
+    "JAPANESE_CEDAR": {
+        "description": "Japansk ceder (Cryptomeria japonica) er berygtet for at forårsage alvorlige allergiske reaktioner, især i Japan hvor den kaldes 'sugi.' Træet producerer massive mængder pollen fra februar til april og skaber et af de mest betydelige allergiproblemer i Østasien."
+    },
+    "JAPANESE_CYPRESS": {
+        "description": "Japansk cypres (Chamaecyparis obtusa) producerer meget allergent pollen fra marts til maj. Kendt som 'hinoki' i Japan er dette træ ansvarligt for betydelige forårsallergier og følger ofte den japanske cedersæson, hvilket forlænger allergiperioden."
+    },
+    "GRAMINALES": {
+        "description": "Græspollen er et af de mest almindelige og vedvarende allergener med en sæson, der typisk løber fra maj til september. Forskellige græsarter bestøver på forskellige tidspunkter og skaber forlængede eksponeringsperioder. Græsallergier påvirker millioner og kan forårsage alvorlige symptomer."
+    },
+    "RAGWEED": {
+        "description": "Ambrosie er berygtet for at producere nogle af de mest allergene pollener med en sæson, der løber fra august til oktober. En enkelt plante kan frigive milliarder af pollenkorn, og ambrosieallergier påvirker millioner af mennesker og forårsager alvorlige efterårsallergisymptomer."
+    },
+    "MUGWORT": {
+        "description": "Bynke er en meget allergent plante, der frigiver pollen fra juli til september. Almindelig i affaldsområder og vejkanter kan bynkepollen forårsage alvorlige allergiske reaktioner og har ofte krydsreaktioner med fødevarer som selleri og krydderier."
+    }
+}
