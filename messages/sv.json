@@ -52,5 +52,7 @@
     "risk_description": "Riskindexet tar hänsyn till dagens högsta pollennivå av de valda typerna samt aktuella väderförhållanden.",
     "ozone_description": "Höga ozonnivåer kan förstärka allergiska reaktioner genom att göra luftvägarna mer känsliga och pollen mer irriterande.",
     "weather_description": "Åskväder kan förvärra allergiska reaktioner genom att få pollenkorn att gå sönder och bli lättare att andas in. Regn kan ge kortsiktig lindring.",
-    "air_quality_description": "Dålig luftkvalitet (hög AQI) kan förvärra allergiska reaktioner genom att öka luftburna irritanter som inflammerar luftvägarna och förstärker känsligheten för pollen."
+    "air_quality_description": "Dålig luftkvalitet (hög AQI) kan förvärra allergiska reaktioner genom att öka luftburna irritanter som inflammerar luftvägarna och förstärker känsligheten för pollen.",
+    "sorry": "Förlåt!",
+    "unsupported_country_message": "Detta land stöds ännu inte av vår pollendataleverantör. Vi stöder för närvarande endast: Andorra, Albanien, Armenien, Argentina, Österrike, Australien, Bosnien och Hercegovina, Belgien, Bulgarien, Brasilien, Belarus, Kanada, Schweiz, Chile, Kina, Cypern, Tjeckien, Tyskland, Danmark, Estland, Egypten, Spanien, Etiopien, Finland, Frankrike, Storbritannien, Georgien, Gibraltar, Grekland, Hong Kong, Kroatien, Ungern, Irland, Israel, Italien, Jordanien, Japan, Sydkorea, Liechtenstein, Litauen, Luxemburg, Lettland, Moldavien, Montenegro, Nordmakedonien, Mongoliet, Malta, Mexiko, Nederländerna, Norge, Nepal, Nya Zeeland, Pakistan, Polen, Portugal, Rumänien, Serbien, Ryssland, Saudiarabien, Sverige, Slovenien, Slovakien, Turkiet, Ukraina, USA och Sydafrika."
 }

@@ -8,6 +8,7 @@
 	import maplibregl from "maplibre-gl";
 	import { goto } from "$app/navigation";
 	import * as m from "$lib/paraglide/messages";
+	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
 
 	let searchQuery = $state("");
 	let locations = $state([]);
@@ -19,6 +20,40 @@
 	let mapContainer;
 	let mapLoaded = $state(false);
 	let map;
+	let supportedCountries = $state([]);
+
+	// Info Drawer for unsupported countries
+	let infoDrawerOpen = $state(false);
+
+	async function loadSupportedCountries() {
+		try {
+			const response = await fetch("/json/supported-countries.json");
+			supportedCountries = await response.json();
+		} catch (error) {
+			console.error("Failed to load supported countries:", error);
+		}
+	}
+
+	function isCountrySupported(country) {
+		if (!country || !supportedCountries.length) return true;
+
+		let normalizedCountry = country.toLowerCase().trim();
+
+		// Convert common variations to the canonical names used in our JSON
+		if (normalizedCountry === "usa" || normalizedCountry === "us" || normalizedCountry === "united states of america") {
+			normalizedCountry = "united states";
+		} else if (normalizedCountry === "uk" || normalizedCountry === "britain") {
+			normalizedCountry = "united kingdom";
+		} else if (normalizedCountry === "korea") {
+			normalizedCountry = "south korea";
+		} else if (normalizedCountry === "czech republic") {
+			normalizedCountry = "czechia";
+		} else if (normalizedCountry === "bosnia and herzegovina") {
+			normalizedCountry = "bosnia & herzegovina";
+		}
+
+		return supportedCountries.some((supported) => supported.toLowerCase().trim() === normalizedCountry);
+	}
 
 	async function searchLocations(query) {
 		if (query.length < 3) return (locations = []); // Ignore super short searches
@@ -32,6 +67,7 @@
 
 			locations = data.map((item) => ({
 				name: formatLocationName(item.address),
+				country: item.address?.country || "",
 				lat: parseFloat(item.lat),
 				lon: parseFloat(item.lon)
 			}));
@@ -83,6 +119,9 @@
 	}
 
 	function selectLocation(location) {
+		// Check if country is supported
+		if (!isCountrySupported(location.country)) return (infoDrawerOpen = true);
+
 		selectedLocation = location;
 		searchQuery = location.name;
 		locations = [];
@@ -130,6 +169,7 @@
 	}
 
 	onMount(() => {
+		loadSupportedCountries();
 		loadRecents();
 
 		if (!mapContainer) return;
@@ -239,3 +279,5 @@
 		</Button>
 	</div>
 </div>
+
+<InfoDrawer bind:open={infoDrawerOpen} title={m.sorry()} text={m.unsupported_country_message()} />

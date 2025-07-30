@@ -52,5 +52,7 @@
     "risk_description": "O índice de risco leva em conta o nível mais alto de pólen de hoje dos tipos selecionados, bem como as condições climáticas atuais.",
     "ozone_description": "Altos níveis de ozônio podem intensificar reações alérgicas tornando as vias respiratórias mais sensíveis e o pólen mais irritante.",
     "weather_description": "Tempestades podem piorar reações alérgicas causando a quebra dos grãos de pólen e tornando-os mais fáceis de inalar. A chuva pode trazer alívio a curto prazo.",
-    "air_quality_description": "Má qualidade do ar (AQI alto) pode piorar reações alérgicas aumentando irritantes no ar que inflamam as vias respiratórias e amplificam a sensibilidade ao pólen."
+    "air_quality_description": "Má qualidade do ar (AQI alto) pode piorar reações alérgicas aumentando irritantes no ar que inflamam as vias respiratórias e amplificam a sensibilidade ao pólen.",
+    "sorry": "Desculpe!",
+    "unsupported_country_message": "Este país ainda não é suportado pelo nosso fornecedor de dados de pólen. Atualmente, só oferecemos suporte para: Andorra, Albânia, Armênia, Argentina, Áustria, Austrália, Bósnia e Herzegovina, Bélgica, Bulgária, Brasil, Belarus, Canadá, Suíça, Chile, China, Chipre, Tchéquia, Alemanha, Dinamarca, Estônia, Egito, Espanha, Etiópia, Finlândia, França, Reino Unido, Geórgia, Gibraltar, Grécia, Hong Kong, Croácia, Hungria, Irlanda, Israel, Itália, Jordânia, Japão, Coreia do Sul, Liechtenstein, Lituânia, Luxemburgo, Letônia, Moldávia, Montenegro, Macedônia do Norte, Mongólia, Malta, México, Países Baixos, Noruega, Nepal, Nova Zelândia, Paquistão, Polônia, Portugal, Romênia, Sérvia, Rússia, Arábia Saudita, Suécia, Eslovênia, Eslováquia, Turquia, Ucrânia, Estados Unidos e África do Sul."
 }
