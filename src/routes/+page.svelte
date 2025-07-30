@@ -157,28 +157,28 @@
 	}
 </script>
 
-<div class="no-scrollbar max-h-dvh space-y-6 overflow-y-auto p-6">
-	<!-- Header -->
-	<header class="mt-2 flex w-full items-center gap-3">
-		<h1 class="truncate font-bevellier text-5xl">
-			{#if $isLoading}
-				<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
-			{:else}
-				{$userLocation?.name?.split(",")[0] || m.location_placeholder()}
-			{/if}
-		</h1>
-		<Button
-			size="icon"
-			class="flex-shrink-0"
-			onclick={() => {
-				vibrate.light();
-				goto("/select-location");
-			}}
-		>
-			<Edit class="h-5 w-5" />
-		</Button>
-	</header>
+<!-- Header -->
+<header class="fixed top-0 pt-8 p-6 z-10 flex w-full items-center gap-3 bg-background">
+	<h1 class="truncate font-bevellier text-5xl">
+		{#if $isLoading}
+			<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
+		{:else}
+			{$userLocation?.name?.split(",")[0] || m.location_placeholder()}
+		{/if}
+	</h1>
+	<Button
+		size="icon"
+		class="flex-shrink-0"
+		onclick={() => {
+			vibrate.light();
+			goto("/select-location");
+		}}
+	>
+		<Edit class="h-5 w-5" />
+	</Button>
+</header>
 
+<div class="no-scrollbar fixed bottom-0 top-20 of-top of-length-2 space-y-6 overflow-y-auto p-6">
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
