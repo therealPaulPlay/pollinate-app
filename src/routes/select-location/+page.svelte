@@ -188,7 +188,7 @@
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
 	<div
-		class="z-20 w-full max-w-md space-y-8 bg-background mask-b-from-80% mask-b-to-100% pt-[calc(2rem+var(--safe-top))] pb-8"
+		class="z-20 w-full space-y-8 bg-background mask-b-from-80% mask-b-to-100% pt-[calc(2rem+var(--safe-top))] pb-8"
 	>
 		<p class="text-center font-bevellier text-5xl">{m.location_please()}</p>
 

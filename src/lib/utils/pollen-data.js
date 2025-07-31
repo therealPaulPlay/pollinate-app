@@ -53,12 +53,11 @@ export async function fetchPollenData() {
 }
 
 // Get risk level for user's selected pollen types
-export function calculateRiskLevel(data, userPollenTypes) {
-    if (!userPollenTypes?.length) return 0;
+export function calculateRiskLevel(dayData, userPollenTypes) {
     let maxRisk = 0;
 
-    userPollenTypes.forEach(pollenCode => {
-        const level = getPollenLevel(data, 0, pollenCode);
+    userPollenTypes?.forEach(pollenCode => {
+        const level = getPollenLevel({ dailyInfo: [dayData] }, 0, pollenCode);
         if (level > 0) maxRisk = Math.max(maxRisk, level);
     });
 

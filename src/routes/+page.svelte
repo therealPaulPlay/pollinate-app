@@ -42,17 +42,33 @@
 	let showingAllOthers = $state(false);
 	let selectedDay = $state(0);
 
+	function getTodayDataStartOffset() {
+		// Current UTC day
+		const now = new Date();
+		const currentUtcDay = now.getUTCDate();
+
+		// Find today date in API data (it might NOT be the first entry, if the data is old!)
+		const todayIndex = $pollenData?.dailyInfo?.findIndex((day) => {
+			return day.date?.day === currentUtcDay;
+		});
+
+		return todayIndex >= 0 ? todayIndex : 0;
+	}
+
 	// Get day labels for tabs and chart
 	function getDayLabel(dayIndex) {
-		if (!$pollenData?.dailyInfo?.[dayIndex]) return "";
-		if (dayIndex === 0) return m.today();
+		if (!$pollenData?.dailyInfo?.[dayIndex]) return "Err";
 
-		// Calculate the date starting from user's today + dayIndex
-		const userDate = new Date();
-		userDate.setDate(userDate.getDate() + dayIndex);
-		const dayOfWeek = userDate.getDay();
+		const todayIndex = getTodayDataStartOffset();
+		const offsetFromToday = dayIndex - todayIndex;
+		if (offsetFromToday === 0) return m.today();
 
-		// Map day of week to translation function
+		// Start from current UTC time, then add offset, then show in user's timezone
+		const localNow = new Date();
+		const localIndexAdjusted = new Date();
+		localIndexAdjusted.setDate(localNow.getDate() + offsetFromToday);
+		const dayOfWeek = localIndexAdjusted.getDay();
+
 		const dayTranslations = [m.sun, m.mon, m.tue, m.wed, m.thu, m.fri, m.sat];
 		return dayTranslations[dayOfWeek]();
 	}
@@ -69,16 +85,22 @@
 	}
 
 	// Basic derived values
-	let riskLevel = $derived.by(() => calculateRiskLevel($pollenData, $userPollen));
+	let riskLevel = $derived.by(() => {
+		const todayIndex = getTodayDataStartOffset();
+		const todayData = $pollenData?.dailyInfo?.[todayIndex] || $pollenData?.dailyInfo?.[0];
+		return calculateRiskLevel(todayData, $userPollen);
+	});
 
 	// Risk index forecast data for bar chart
 	let riskForecastData = $derived.by(() => {
 		if (!$pollenData?.dailyInfo || $userPollen.length === 0) return [];
 
-		return $pollenData.dailyInfo.slice(0, 4).map((day, index) => {
-			const dayRisk = calculateRiskLevel({ dailyInfo: [day] }, $userPollen);
+		const todayIndex = getTodayDataStartOffset();
+
+		return $pollenData.dailyInfo.slice(todayIndex, todayIndex + 4).map((day, index) => {
+			const dayRisk = calculateRiskLevel(day, $userPollen);
 			return {
-				day: getDayLabel(index),
+				day: getDayLabel(index + todayIndex),
 				risk: Math.max(dayRisk, 0.3),
 				color: getRiskColor(dayRisk)
 			};
@@ -88,14 +110,14 @@
 	// Get current day's pollen data
 	let currentDayData = $derived.by(() => {
 		if (!pollenTypesList || Object.keys(pollenTypesList).length === 0) return [];
+		const index = selectedDay + getTodayDataStartOffset();
 
-		// Always show all pollen types from static data, not just API data
 		const allPollen = Object.keys(pollenTypesList)
 			.map((code) => {
 				return {
 					code,
 					name: getPollenName(code),
-					level: getPollenLevel($pollenData, selectedDay, code),
+					level: getPollenLevel($pollenData, index, code),
 					isSelected: $userPollen.includes(code)
 				};
 			})
@@ -310,8 +332,9 @@
 		<div class="space-y-4">
 			<!-- Day Selector Pills -->
 			{#if $pollenData?.dailyInfo?.length > 0}
+				{@const todayIndex = getTodayDataStartOffset()}
 				<div class="of-left of-right no-scrollbar flex gap-2 overflow-x-auto pb-2">
-					{#each $pollenData.dailyInfo.slice(0, 4) as day, index}
+					{#each $pollenData.dailyInfo.slice(todayIndex) as day, index}
 						<button
 							class="flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all ease-out active:scale-95 {selectedDay ===
 							index
@@ -322,7 +345,7 @@
 								vibrate.light();
 							}}
 						>
-							{getDayLabel(index)}
+							{getDayLabel(index + todayIndex)}
 						</button>
 					{/each}
 				</div>

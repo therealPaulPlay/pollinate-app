@@ -56,7 +56,7 @@
 
 <div class="flex h-full flex-col items-center">
 	<div class="mt-[calc(2rem+var(--safe-top))] flex w-full max-w-80 flex-col space-y-8 overflow-hidden">
-		<p class="text-center font-bevellier text-5xl">{m.what_makes_sneeze()}</p>
+		<p class="text-center font-bevellier text-5xl">{m.what_allergies()}</p>
 
 		{#if isLoading}
 			<div class="flex justify-center py-12">

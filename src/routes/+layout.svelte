@@ -22,7 +22,6 @@
 
 	onMount(() => {
 		init(); // Init overfade
-		if (localStorage.getItem("onboardingCompleted") === null) goto("/onboarding");
 	});
 </script>
 
