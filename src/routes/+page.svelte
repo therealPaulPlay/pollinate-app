@@ -169,7 +169,7 @@
 </script>
 
 <!-- Header -->
-<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-[calc(2rem+var(--safe-top))]">
+<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-[calc(1.5rem+var(--safe-top))]">
 	<h1 class="truncate font-bevellier text-5xl">
 		{#if $isLoading}
 			<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
