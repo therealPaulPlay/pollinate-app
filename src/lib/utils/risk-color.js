@@ -7,7 +7,7 @@ export function getRiskColor(level) {
     const opacityParam = checkIfDarkMode() ? "0.85" : "1";
     const colors = {
         0: 'var(--color-card',
-        1: 'var(--color-secondary)',
+        1: `rgba(230, 195, 115, ${opacityParam})`,
         2: 'var(--color-primary)', // yellow
         3: `rgba(238, 147, 51, ${opacityParam})`, // orange
         4: `rgba(238, 104, 51, ${opacityParam})`, // orange-red

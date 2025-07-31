@@ -204,7 +204,7 @@
 				showInfo(m.risk(), m.risk_description());
 			}}
 		>
-			<span class="font-bevellier text-4xl {riskLevel > 1 ? 'text-white' : ''}">
+			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
 				{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
 			</span>
 		</Widget>
