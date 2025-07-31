@@ -5,7 +5,7 @@
 	import { vibrate } from "$lib/utils/vibrate";
 </script>
 
-<div class="max-h-dvh overflow-y-auto p-4 pt-[calc(1rem+var(--safe-top))]">
+<div class="max-h-dvh overflow-y-auto px-4 pt-[calc(1rem+var(--safe-top))] pb-8">
 	<div class="mx-auto max-w-3xl space-y-6">
 		<!-- Back Button -->
 		<Button

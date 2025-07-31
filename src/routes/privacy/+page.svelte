@@ -5,7 +5,7 @@
 	import { vibrate } from "$lib/utils/vibrate";
 </script>
 
-<div class="max-h-dvh overflow-y-auto p-4 pt-[calc(1rem+var(--safe-top))]">
+<div class="max-h-dvh overflow-y-auto px-4 pt-[calc(1rem+var(--safe-top))] pb-8">
 	<div class="mx-auto max-w-3xl space-y-6">
 		<!-- Back Button -->
 		<Button
@@ -61,7 +61,8 @@
 					We use Google Analytics to collect usage statistics and improve our service. Google Analytics may collect
 					information such as how often you use the app, the events that occur within the app, aggregated usage,
 					performance data, and where you downloaded the app from. We do not link the information we store within Google
-					Analytics to any personally identifiable information you submit within the app, all collected data is anonymous.
+					Analytics to any personally identifiable information you submit within the app, all collected data is
+					anonymous.
 				</p>
 			</section>
 
