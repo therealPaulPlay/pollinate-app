@@ -7,6 +7,9 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/ios
+/android
+/icons
 
 # OS
 .DS_Store

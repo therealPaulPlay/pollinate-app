@@ -7,6 +7,7 @@
 		"dev": "vite dev --port 3000 --host",
 		"build": "vite build",
 		"build:mobile": "vite build && npx cap sync",
+		"build:mobile-assets": "npx capacitor-assets generate --ios --assetPath ./store-assets",
 		"paraglide:build": "inlang build --project ./project.inlang",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -15,6 +16,7 @@
 		"machine-translate": "inlang machine translate --project project.inlang"
 	},
 	"devDependencies": {
+		"@capacitor/assets": "^3.0.5",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
 		"@inlang/cli": "^3.0.0",
@@ -48,6 +50,7 @@
 		"@capacitor/core": "^7.4.2",
 		"@capacitor/haptics": "^7.0.1",
 		"@capacitor/ios": "^7.4.2",
+		"@sveltejs/adapter-static": "^3.0.8",
 		"lucide-svelte": "^0.525.0",
 		"maplibre-gl": "^5.6.1",
 		"mode-watcher": "^1.1.0",
