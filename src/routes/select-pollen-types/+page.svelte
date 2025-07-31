@@ -55,7 +55,7 @@
 </script>
 
 <div class="flex h-full flex-col items-center">
-	<div class="mt-8 flex w-full max-w-80 flex-col space-y-8 overflow-hidden">
+	<div class="mt-[calc(2rem+var(--safe-top))] flex w-full max-w-80 flex-col space-y-8 overflow-hidden">
 		<p class="text-center font-bevellier text-5xl">{m.what_makes_sneeze()}</p>
 
 		{#if isLoading}
@@ -81,7 +81,7 @@
 		{/if}
 	</div>
 
-	<div class="mt-auto mb-8">
+	<div class="mt-auto mb-12">
 		<Button
 			size="lg"
 			onclick={() => {

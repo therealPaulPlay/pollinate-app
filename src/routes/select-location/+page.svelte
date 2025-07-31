@@ -192,7 +192,7 @@
 </script>
 
 <svelte:head>
-	<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+	<link href="/stylesheets/maplibre.css" rel="stylesheet" />
 </svelte:head>
 
 <div class="relative z-10 flex h-full flex-col items-center">
@@ -203,7 +203,9 @@
 	>
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
-	<div class="z-20 w-full max-w-md space-y-8 bg-background mask-b-from-80% mask-b-to-100% py-8">
+	<div
+		class="z-20 w-full max-w-md space-y-8 bg-background mask-b-from-80% mask-b-to-100% pt-[calc(2rem+var(--safe-top))] pb-8"
+	>
 		<p class="text-center font-bevellier text-5xl">{m.location_please()}</p>
 
 		<div class="relative mx-auto max-w-80">
@@ -229,8 +231,8 @@
 	</div>
 	<!-- Dropdown -->
 	{#if showDropdown}
-		<div class="z-30 overflow-hidden rounded-md bg-muted fixed top-44" transition:slide>
-			<div class="of-top of-bottom of-length-2 w-80 mx-auto no-scrollbar max-h-[calc(50dvh-200px)] overflow-y-auto">
+		<div class="fixed top-44 z-30 overflow-hidden rounded-md bg-muted" transition:slide>
+			<div class="of-top of-bottom of-length-2 no-scrollbar mx-auto max-h-[calc(50dvh-200px)] w-80 overflow-y-auto">
 				<!-- Show search results when there's a query -->
 				{#if searchQuery.length > 0 && locations.length > 0}
 					{#each locations as location}
@@ -261,7 +263,7 @@
 			</div>
 		</div>
 	{/if}
-	<div class="mt-auto w-full bg-background mask-t-from-80% mask-t-to-100% py-8 text-center">
+	<div class="mt-auto w-full bg-background mask-t-from-80% mask-t-to-100% py-8 pb-12 text-center">
 		<Button
 			size="lg"
 			onclick={() => {

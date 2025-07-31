@@ -112,7 +112,7 @@
 		<h1 class="font-bevellier text-7xl">Pollinate</h1>
 		<p class="-mt-1.5">Accurate pollen forecasts. Free.</p>
 	</div>
-	<div class="mt-auto mb-8 max-w-md space-y-6 text-center">
+	<div class="mt-auto mb-12 max-w-md space-y-6 text-center">
 		<p class="mx-auto max-w-4/5 text-sm opacity-75">
 			{m.onboarding_legal_prefix()}
 			<i>{m.onboarding_get_started()}</i>{m.onboarding_legal_middle()}
