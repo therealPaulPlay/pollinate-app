@@ -34,40 +34,25 @@
 		}
 	}
 
-	function isCountrySupported(country) {
-		if (!country || !supportedCountries.length) return true;
-
-		let normalizedCountry = country.toLowerCase().trim();
-
-		// Convert common variations to the canonical names used in our JSON
-		if (normalizedCountry === "usa" || normalizedCountry === "us" || normalizedCountry === "united states of america") {
-			normalizedCountry = "united states";
-		} else if (normalizedCountry === "uk" || normalizedCountry === "britain") {
-			normalizedCountry = "united kingdom";
-		} else if (normalizedCountry === "korea") {
-			normalizedCountry = "south korea";
-		} else if (normalizedCountry === "czech republic") {
-			normalizedCountry = "czechia";
-		} else if (normalizedCountry === "bosnia and herzegovina") {
-			normalizedCountry = "bosnia & herzegovina";
-		}
-
-		return supportedCountries.some((supported) => supported.toLowerCase().trim() === normalizedCountry);
+	function isCountrySupported(countryCode) {
+		if (!countryCode || !supportedCountries.length) return true;
+		return supportedCountries.includes(countryCode.toUpperCase());
 	}
 
 	async function searchLocations(query) {
-		if (query.length < 3) return (locations = []); // Ignore super short searches
+		if (query.length < 3) return (locations = []);
 		isLoading = true;
 
 		try {
 			const response = await fetch(
-				`https://nominatim.openstreetmap.org/search?format=json&limit=6&q=${encodeURIComponent(query)}&addressdetails=1`
+				`https://nominatim.openstreetmap.org/search?format=json&limit=6&q=${encodeURIComponent(query)}&addressdetails=1&extratags=1`
 			);
 			const data = await response.json();
 
 			locations = data.map((item) => ({
 				name: formatLocationName(item.address),
 				country: item.address?.country || "",
+				countryCode: item.address?.country_code?.toUpperCase() || "", // ISO code
 				lat: parseFloat(item.lat),
 				lon: parseFloat(item.lon)
 			}));
@@ -119,8 +104,7 @@
 	}
 
 	function selectLocation(location) {
-		// Check if country is supported
-		if (!isCountrySupported(location.country)) return (infoDrawerOpen = true);
+		if (!isCountrySupported(location.countryCode)) return (infoDrawerOpen = true);
 
 		selectedLocation = location;
 		searchQuery = location.name;
