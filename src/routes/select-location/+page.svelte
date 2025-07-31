@@ -183,7 +183,7 @@
 	<!-- Background Map -->
 	<div
 		style:opacity={mapLoaded ? "0.2" : "0"}
-		class="absolute top-0 right-0 bottom-0 left-0 mask-radial-from-20% sepia transition duration-1000 dark:brightness-35 dark:saturate-15"
+		class="absolute top-0 right-0 bottom-0 left-0 mask-radial-from-20% sepia transition duration-1000 dark:brightness-50 dark:saturate-15"
 	>
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
@@ -247,7 +247,7 @@
 			</div>
 		</div>
 	{/if}
-	<div class="mt-auto w-full bg-background mask-t-from-80% mask-t-to-100% py-8 pb-12 text-center">
+	<div class="mt-auto w-full bg-background mask-t-from-70% mask-t-to-100% py-12 text-center">
 		<Button
 			size="lg"
 			onclick={() => {

@@ -52,7 +52,7 @@
 		draw() {
 			ctx.save();
 			ctx.globalAlpha = this.opacity;
-			ctx.fillStyle = (document.documentElement.classList.contains("dark") ? "#adac80" : "#8B4513"); // Dark orange-brown
+			ctx.fillStyle = (document.documentElement.classList.contains("dark") ? "#b3b182" : "#8B4513"); // Dark orange-brown
 			ctx.beginPath();
 			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 			ctx.fill();
