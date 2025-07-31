@@ -47,6 +47,7 @@
 		"@capacitor/cli": "^7.4.2",
 		"@capacitor/core": "^7.4.2",
 		"@capacitor/haptics": "^7.0.1",
+		"@capacitor/ios": "^7.4.2",
 		"lucide-svelte": "^0.525.0",
 		"maplibre-gl": "^5.6.1",
 		"mode-watcher": "^1.1.0",

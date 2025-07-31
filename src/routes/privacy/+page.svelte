@@ -61,7 +61,7 @@
 					We use Google Analytics to collect usage statistics and improve our service. Google Analytics may collect
 					information such as how often you use the app, the events that occur within the app, aggregated usage,
 					performance data, and where you downloaded the app from. We do not link the information we store within Google
-					Analytics to any personally identifiable information you submit within the app.
+					Analytics to any personally identifiable information you submit within the app, all collected data is anonymous.
 				</p>
 			</section>
 
