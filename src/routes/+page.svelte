@@ -191,8 +191,8 @@
 </script>
 
 <!-- Header -->
-<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-[calc(1.5rem+var(--safe-top))]">
-	<h1 class="truncate font-bevellier text-5xl">
+<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pb-3.5 pt-[calc(1.5rem+var(--safe-top))]">
+	<h1 class="truncate font-bevellier pb-1.5 text-5xl">
 		{#if $isLoading}
 			<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
 		{:else}
@@ -228,7 +228,7 @@
 				showInfo(m.risk(), m.risk_description());
 			}}
 		>
-			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
+			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-popover' : 'text-foreground'}">
 				{riskLevel}<span class="ml-0.5 align-[2px] text-base">/&thinsp;5</span>
 			</span>
 		</Widget>
