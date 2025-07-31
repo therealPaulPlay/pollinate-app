@@ -215,7 +215,7 @@
 	</div>
 	<!-- Dropdown -->
 	{#if showDropdown}
-		<div class="fixed top-44 z-30 overflow-hidden rounded-md bg-muted" transition:slide>
+		<div class="fixed top-[calc(11rem+var(--safe-top))] z-30 overflow-hidden rounded-md bg-muted" transition:slide>
 			<div class="of-top of-bottom of-length-2 no-scrollbar mx-auto max-h-[calc(50dvh-200px)] w-80 overflow-y-auto">
 				<!-- Show search results when there's a query -->
 				{#if searchQuery.length > 0 && locations.length > 0}
