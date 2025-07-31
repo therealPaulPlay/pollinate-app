@@ -294,13 +294,13 @@
 			}}
 		>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
-				<SunMedium class="mx-auto h-8 w-8" strokeWidth={4} />
+				<SunMedium class="mx-auto h-8 w-8" strokeWidth={3.5} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "rainy"}
-				<CloudRain class="mx-auto h-8 w-8" strokeWidth={4} />
+				<CloudRain class="mx-auto h-8 w-8" strokeWidth={3.5} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "cloudy"}
-				<Cloud class="mx-auto h-8 w-8" strokeWidth={4} />
+				<Cloud class="mx-auto h-8 w-8" strokeWidth={3.5} />
 			{:else}
-				<CloudLightning class="mx-auto h-8 w-8" strokeWidth={4} />
+				<CloudLightning class="mx-auto h-8 w-8" strokeWidth={3.5} />
 			{/if}
 			<p class="mt-4 text-xs text-muted-foreground">
 				{getWeatherString($pollenData?.currentConditions?.generalWheather)}
@@ -351,7 +351,7 @@
 				</div>
 			{/if}
 
-			<!-- Selected Pollen for Current Day -->
+			<!-- Selected Pollen for current day -->
 			{#if selectedPollenData.length > 0}
 				<div class="space-y-2">
 					{#each selectedPollenData as pollen (pollen.name)}
@@ -373,7 +373,7 @@
 										style="width: {(pollen.level / 5) * 100}%; background-color: {getRiskColor(pollen.level)}"
 									></div>
 								</div>
-								<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}/5</span>
+								<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}&hairsp;/&hairsp;5</span>
 							</div>
 						</div>
 					{/each}
@@ -407,7 +407,7 @@
 											style="width: {(pollen.level / 5) * 100}%; background-color: {getRiskColor(pollen.level)}"
 										></div>
 									</div>
-									<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}/5</span>
+									<span class="w-8 text-xs font-medium text-muted-foreground">{pollen.level}&hairsp;/&hairsp;5</span>
 								</div>
 							</div>
 						{/each}
