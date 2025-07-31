@@ -229,7 +229,7 @@
 			}}
 		>
 			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
-				{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
+				{riskLevel}<span class="ml-0.5 align-[2px] text-base">/&thinsp;5</span>
 			</span>
 		</Widget>
 
@@ -320,7 +320,7 @@
 		>
 			<div class="flex flex-col items-center">
 				<span class="font-bevellier text-4xl">
-					{$pollenData?.currentConditions?.airQuality || 0}<span class="ml-0.5 align-[2px] text-sm">/6</span>
+					{$pollenData?.currentConditions?.airQuality || 0}<span class="ml-0.5 align-[2px] text-base">/&thinsp;6</span>
 				</span>
 				<p class="mt-2 text-xs text-muted-foreground">AQI</p>
 			</div>
