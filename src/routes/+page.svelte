@@ -1,7 +1,18 @@
 <script>
 	import Button from "$lib/components/ui/button/button.svelte";
 	import * as Chart from "$lib/components/ui/chart/index.js";
-	import { Edit, Cloud, Sun, Mail, Bug, Languages, ChevronRight, Plus, CloudRain, CloudLightning } from "lucide-svelte";
+	import {
+		Edit,
+		Cloud,
+		Mail,
+		Bug,
+		Languages,
+		ChevronRight,
+		Plus,
+		CloudRain,
+		CloudLightning,
+		SunMedium
+	} from "lucide-svelte";
 	import { onMount } from "svelte";
 	import {
 		pollenData,
@@ -68,7 +79,7 @@
 			const dayRisk = calculateRiskLevel({ dailyInfo: [day] }, $userPollen);
 			return {
 				day: getDayLabel(index),
-				risk: dayRisk,
+				risk: Math.max(dayRisk, 0.3),
 				color: getRiskColor(dayRisk)
 			};
 		});
@@ -193,14 +204,14 @@
 				showInfo(m.risk(), m.risk_description());
 			}}
 		>
-			<span class="font-bevellier text-4xl {riskLevel > 0 ? 'text-white' : ''}">
+			<span class="font-bevellier text-4xl {riskLevel > 1 ? 'text-white' : ''}">
 				{riskLevel}<span class="ml-0.5 align-[2px] text-sm">/5</span>
 			</span>
 		</Widget>
 
 		<!-- Risk Forecast Bar Chart -->
 		<Widget title={m.risk_forecast()} cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
-			{#if riskForecastData.length > 0 && $userPollen.length > 0}
+			{#if riskForecastData.length > 0}
 				<div class="pointer-events-none h-full max-h-18 w-full overflow-hidden pt-0.25">
 					<Chart.Container
 						config={{
@@ -217,8 +228,9 @@
 							y="risk"
 							axis="x"
 							xScale={scaleBand().padding(0.25)}
-							yScale={scaleLinear().domain([0, 5])}
-							yNice={false}
+							yScale={scaleLinear()}
+							yDomain={[0, 5]}
+							yNice={true}
 						/>
 					</Chart.Container>
 				</div>
@@ -258,7 +270,7 @@
 			}}
 		>
 			{#if $pollenData?.currentConditions?.generalWheather === "clear"}
-				<Sun class="mx-auto h-8 w-8" strokeWidth={4} />
+				<SunMedium class="mx-auto h-8 w-8" strokeWidth={4} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "rainy"}
 				<CloudRain class="mx-auto h-8 w-8" strokeWidth={4} />
 			{:else if $pollenData?.currentConditions?.generalWheather === "cloudy"}
@@ -283,7 +295,9 @@
 			}}
 		>
 			<div class="flex flex-col items-center">
-				<p class="font-bevellier text-4xl">{$pollenData?.currentConditions?.airQuality || 0}</p>
+				<span class="font-bevellier text-4xl">
+					{$pollenData?.currentConditions?.airQuality || 0}<span class="ml-0.5 align-[2px] text-sm">/6</span>
+				</span>
 				<p class="mt-2 text-xs text-muted-foreground">AQI</p>
 			</div>
 		</Widget>
