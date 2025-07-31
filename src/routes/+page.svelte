@@ -9,7 +9,8 @@
 		userLocation,
 		userPollen,
 		fetchPollenData,
-		calculateRiskLevel
+		calculateRiskLevel,
+		getPollenLevel
 	} from "$lib/utils/pollen-data.js";
 	import { getRiskColor } from "$lib/utils/risk-color.js";
 	import { BarChart } from "layerchart";
@@ -75,16 +76,15 @@
 
 	// Get current day's pollen data
 	let currentDayData = $derived.by(() => {
-		if (!$pollenData?.dailyInfo?.[selectedDay]) return [];
+		if (!pollenTypesList || Object.keys(pollenTypesList).length === 0) return [];
 
-		const dayInfo = $pollenData.dailyInfo[selectedDay];
+		// Always show all pollen types from static data, not just API data
 		const allPollen = Object.keys(pollenTypesList)
 			.map((code) => {
-				const plant = dayInfo.plantInfo?.find((p) => p.code === code);
 				return {
 					code,
 					name: getPollenName(code),
-					level: plant?.indexInfo?.value || 0,
+					level: getPollenLevel($pollenData, selectedDay, code),
 					isSelected: $userPollen.includes(code)
 				};
 			})
@@ -158,7 +158,7 @@
 </script>
 
 <!-- Header -->
-<header class="fixed top-0 pt-8 p-6 z-10 flex w-full items-center gap-3 bg-background">
+<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-8">
 	<h1 class="truncate font-bevellier text-5xl">
 		{#if $isLoading}
 			<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
@@ -178,7 +178,7 @@
 	</Button>
 </header>
 
-<div class="no-scrollbar fixed bottom-0 left-0 right-0 top-20 of-top of-length-2 space-y-6 overflow-y-auto p-6 pb-12">
+<div class="no-scrollbar of-top of-length-2 fixed top-20 right-0 bottom-0 left-0 space-y-6 overflow-y-auto p-6 pb-12">
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->

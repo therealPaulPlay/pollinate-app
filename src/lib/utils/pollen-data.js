@@ -29,21 +29,17 @@ export async function fetchPollenData() {
     loadUserPreferences();
 
     try {
-        // Get user location
         const savedLocation = localStorage.getItem('userLocation');
         if (!savedLocation) throw new Error('No location saved!');
 
         const location = JSON.parse(savedLocation);
         if (!location.lat || !location.lon) throw new Error('Provided location is invalid!');
 
-        // Fetch from API
         const response = await fetch(
             `${API_BASE_URL}/pollen-data?lat=${location.lat}&lon=${location.lon}`,
             {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
             }
         );
 
@@ -58,15 +54,24 @@ export async function fetchPollenData() {
 
 // Get risk level for user's selected pollen types
 export function calculateRiskLevel(data, userPollenTypes) {
-    if (!data?.dailyInfo?.[0]?.plantInfo || !userPollenTypes?.length) return 0;
-
-    const todayPlants = data.dailyInfo[0].plantInfo;
+    if (!userPollenTypes?.length) return 0;
     let maxRisk = 0;
 
     userPollenTypes.forEach(pollenCode => {
-        const plant = todayPlants.find(p => p.code === pollenCode);
-        if (plant?.indexInfo?.value) maxRisk = Math.max(maxRisk, plant.indexInfo.value);
+        const level = getPollenLevel(data, 0, pollenCode);
+        if (level > 0) maxRisk = Math.max(maxRisk, level);
     });
 
     return maxRisk;
+}
+
+// Get pollen level for a specific pollen type with fallback to 0
+export function getPollenLevel(data, dayIndex, pollenCode) {
+    if (!data?.dailyInfo?.[dayIndex]) return 0;
+    const dayData = data.dailyInfo[dayIndex];
+
+    // Check plantInfo
+    const plant = dayData.plantInfo?.find(p => p.code === pollenCode);
+    if (plant?.indexInfo?.value) return plant.indexInfo.value;
+    return 0;
 }
