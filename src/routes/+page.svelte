@@ -169,7 +169,7 @@
 </script>
 
 <!-- Header -->
-<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-8">
+<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-[calc(2rem+var(--safe-top))]">
 	<h1 class="truncate font-bevellier text-5xl">
 		{#if $isLoading}
 			<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
@@ -189,7 +189,9 @@
 	</Button>
 </header>
 
-<div class="no-scrollbar of-top of-length-2 fixed  top-[calc(5rem+var(--safe-top))] right-0 bottom-0 left-0 space-y-6 overflow-y-auto p-6 pb-12">
+<div
+	class="no-scrollbar of-top of-length-2 fixed top-[calc(5rem+var(--safe-top))] right-0 bottom-0 left-0 space-y-6 overflow-y-auto p-6 pb-12"
+>
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
