@@ -8,6 +8,9 @@ export const isLoading = writable(true);
 export const userLocation = writable(null);
 export const userPollen = writable([]);
 
+// API configuration
+const API_BASE_URL = 'https://pollen.openreport.dev';
+
 // Load user preferences from localStorage
 function loadUserPreferences() {
     if (typeof localStorage !== 'undefined') {
@@ -20,15 +23,30 @@ function loadUserPreferences() {
 }
 loadUserPreferences();
 
-// Fetch pollen data
+// Fetch pollen data from API
 export async function fetchPollenData() {
     isLoading.set(true);
-
     loadUserPreferences();
 
     try {
-        // For now, fetch mock data
-        const response = await fetch('/json/mock-api-data.json');
+        // Get user location
+        const savedLocation = localStorage.getItem('userLocation');
+        if (!savedLocation) throw new Error('No location saved!');
+
+        const location = JSON.parse(savedLocation);
+        if (!location.lat || !location.lon) throw new Error('Provided location is invalid!');
+
+        // Fetch from API
+        const response = await fetch(
+            `${API_BASE_URL}/pollen-data?lat=${location.lat}&lon=${location.lon}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
         if (!response.ok) throw new Error(response.status);
 
         const data = await response.json();
@@ -36,7 +54,6 @@ export async function fetchPollenData() {
     } finally {
         isLoading.set(false);
     }
-
 }
 
 // Get risk level for user's selected pollen types
