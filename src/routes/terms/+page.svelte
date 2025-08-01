@@ -3,16 +3,21 @@
 	import { ArrowLeft } from "lucide-svelte";
 	import { goto } from "$app/navigation";
 	import { vibrate } from "$lib/utils/vibrate";
+
+	function goBack() {
+		vibrate.light();
+		const onboardingComplete = localStorage.getItem("onboardingCompleted");
+
+		if (onboardingComplete) goto("/"); // Go to main app
+		else goto("/onboarding"); // Go to onboarding
+	}
 </script>
 
 <div class="max-h-dvh overflow-y-auto px-4 pt-[calc(1.5rem+var(--safe-top))] pb-8">
 	<div class="mx-auto max-w-3xl space-y-6">
 		<!-- Back Button -->
 		<Button
-			onclick={() => {
-				vibrate.light();
-				goto("/onboarding");
-			}}
+			onclick={goBack}
 			class="mb-4"
 		>
 			<ArrowLeft class="h-4 w-4" />

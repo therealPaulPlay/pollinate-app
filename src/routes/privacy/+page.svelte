@@ -3,23 +3,25 @@
 	import { ArrowLeft } from "lucide-svelte";
 	import { goto } from "$app/navigation";
 	import { vibrate } from "$lib/utils/vibrate";
+
+	function goBack() {
+		vibrate.light();
+		const onboardingComplete = localStorage.getItem("onboardingCompleted");
+
+		if (onboardingComplete) goto("/"); // Go home
+		else goto("/onboarding"); // Go to onboarding
+	}
 </script>
 
 <div class="max-h-dvh overflow-y-auto px-4 pt-[calc(1.5rem+var(--safe-top))] pb-8">
 	<div class="mx-auto max-w-3xl space-y-6">
 		<!-- Back Button -->
-		<Button
-			onclick={() => {
-				vibrate.light();
-				goto("/onboarding");
-			}}
-			class="mb-4"
-		>
+		<Button onclick={goBack} class="mb-4">
 			<ArrowLeft class="h-4 w-4" />
 		</Button>
 
 		<h1 class="mt-4 font-bevellier text-5xl font-bold">Privacy Policy</h1>
-		<p class="text-muted-foreground">Last updated: July 31, 2025</p>
+		<p class="text-muted-foreground">Last updated: August 1, 2025</p>
 
 		<div class="space-y-6">
 			<section>
@@ -32,43 +34,23 @@
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Information We Collect</h2>
-				<div class="space-y-3">
-					<p>We may collect the following types of information:</p>
-					<div class="ml-6 space-y-2">
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Location data (when you grant permission) to provide localized pollen forecasts</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Device information including device type, operating system, and app version</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Usage data to improve our services</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Crash reports and diagnostic information</span>
-						</div>
+				<p>To provide our pollen forecast service, we may temporarily process:</p>
+				<div class="ml-6 space-y-2">
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Location coordinates (when you input the requested location) to fetch relevant pollen data</span>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Basic device information for compatibility</span>
 					</div>
 				</div>
-			</section>
-
-			<section>
-				<h2 class="mb-3 text-lg font-semibold">Analytics</h2>
-				<p>
-					We use Google Analytics to collect usage statistics and improve our service. Google Analytics may collect
-					information such as how often you use the app, the events that occur within the app, aggregated usage,
-					performance data, and where you downloaded the app from. We do not link the information we store within Google
-					Analytics to any personally identifiable information you submit within the app, all collected data is
-					anonymous.
-				</p>
+				<p>This information is processed temporarily and is not permanently stored on our servers.</p>
 			</section>
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">How We Use Your Information</h2>
-				<p>We use the collected information to:</p>
+				<p>We use information to:</p>
 				<div class="ml-6 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
@@ -80,15 +62,7 @@
 					</div>
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
-						<span>Analyze usage patterns and app performance</span>
-					</div>
-					<div class="flex items-start gap-2">
-						<span class="text-foreground">•</span>
 						<span>Provide customer support</span>
-					</div>
-					<div class="flex items-start gap-2">
-						<span class="text-foreground">•</span>
-						<span>Send important updates about our service</span>
 					</div>
 				</div>
 			</section>
@@ -96,27 +70,23 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Data Sharing</h2>
 				<p>
-					We do not sell, trade, or otherwise transfer your personal information to third parties except as described in
-					this policy. We may share information with:
+					We do not sell or trade user information. When you request pollen data, we may share your location coordinates
+					with:
 				</p>
 				<div class="ml-6 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
-						<span>Service providers who assist in app operation (such as analytics services)</span>
+						<span>Weather data providers to retrieve pollen forecasts</span>
 					</div>
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Legal authorities when required by law</span>
 					</div>
-					<div class="flex items-start gap-2">
-						<span class="text-foreground">•</span>
-						<span>Business partners in case of merger, acquisition, or asset sale</span>
-					</div>
 				</div>
 			</section>
 
 			<section>
-				<h2 class="mb-3 text-lg font-semibold">Data Security</h2>
+				<h2 class="font-semibel mb-3 text-lg">Data Security</h2>
 				<p>
 					We implement appropriate security measures to protect your information against unauthorized access,
 					alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic
@@ -127,34 +97,26 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Data Retention</h2>
 				<p>
-					We retain your information only as long as necessary to provide our services and fulfill the purposes outlined
-					in this policy. You may request deletion of your data by contacting us.
+					We do not permanently store your personal information on our servers. Your app preferences (location, selected
+					allergens) are stored locally on your device and can be deleted by uninstalling the app.
 				</p>
 			</section>
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Your Rights</h2>
-				<p>Depending on your location, you may have the right to:</p>
+				<p>You have the right to:</p>
 				<div class="ml-6 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
-						<span>Access your personal information</span>
+						<span>Know what information we process</span>
 					</div>
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
-						<span>Correct inaccurate information</span>
+						<span>Request information about our data practices</span>
 					</div>
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
-						<span>Delete your information</span>
-					</div>
-					<div class="flex items-start gap-2">
-						<span class="text-foreground">•</span>
-						<span>Restrict processing of your information</span>
-					</div>
-					<div class="flex items-start gap-2">
-						<span class="text-foreground">•</span>
-						<span>Data portability</span>
+						<span>Delete your local app data by uninstalling the app</span>
 					</div>
 				</div>
 			</section>

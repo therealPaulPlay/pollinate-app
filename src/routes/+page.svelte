@@ -12,7 +12,9 @@
 		CloudRain,
 		CloudLightning,
 		SunMedium,
-		RotateCcw
+		RotateCcw,
+		FileText,
+		GlobeLock
 	} from "lucide-svelte";
 	import { onMount } from "svelte";
 	import {
@@ -243,7 +245,7 @@
 	</h1>
 	<Button
 		size="icon"
-		class="flex-shrink-0 mb-0.5"
+		class="mb-0.5 flex-shrink-0"
 		onclick={() => {
 			vibrate.light();
 			goto("/select-location");
@@ -580,6 +582,36 @@
 				<div class="flex items-center gap-3">
 					<Bug class="h-5 w-5" />
 					<span>{m.report_bug()}</span>
+				</div>
+				<ChevronRight class="h-4 w-4" />
+			</Button>
+			<!-- Legal links -->
+			<Button
+				variant="secondary"
+				class="h-12 w-full justify-between"
+				onclick={() => {
+					vibrate.light();
+					goto("/privacy");
+				}}
+			>
+				<div class="flex items-center gap-3">
+					<GlobeLock class="h-5 w-5" />
+					<span>{m.privacy_policy()}</span>
+				</div>
+				<ChevronRight class="h-4 w-4" />
+			</Button>
+
+			<Button
+				variant="secondary"
+				class="h-12 w-full justify-between"
+				onclick={() => {
+					vibrate.light();
+					goto("/terms");
+				}}
+			>
+				<div class="flex items-center gap-3">
+					<FileText class="h-5 w-5" />
+					<span>{m.terms_of_use()}</span>
 				</div>
 				<ChevronRight class="h-4 w-4" />
 			</Button>
