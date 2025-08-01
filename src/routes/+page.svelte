@@ -11,7 +11,8 @@
 		Plus,
 		CloudRain,
 		CloudLightning,
-		SunMedium
+		SunMedium,
+		RotateCcw
 	} from "lucide-svelte";
 	import { onMount } from "svelte";
 	import {
@@ -36,6 +37,15 @@
 	import LanguageDrawer from "$lib/components/LanguageDrawer.svelte";
 	import * as m from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
+
+	// Pull-to-refresh state
+	let container;
+	let isRefreshing = $state(false);
+	let pullDistance = $state(0);
+	let startY = 0;
+	let pulling = $state(false);
+	let showSpinner = $state(false);
+	let animatingOut = $state(false);
 
 	// Pollen section
 	let pollenTypesList = $state({});
@@ -162,6 +172,36 @@
 		infoDrawerOpen = true;
 	}
 
+	async function handleRefreshTouchEnd() {
+		if (pullDistance > 30 && !isRefreshing) {
+			isRefreshing = true;
+			vibrate.medium();
+			try {
+				await fetchPollenData();
+			} catch (error) {
+				showInfo(m.error(), `${m.error_fetching_data()} ${error.message}`);
+			} finally {
+				setTimeout(() => {
+					isRefreshing = false;
+					animatingOut = true;
+					setTimeout(() => {
+						showSpinner = false;
+						animatingOut = false;
+						pullDistance = 0;
+					}, 300);
+				}, 600);
+			}
+		} else {
+			animatingOut = true;
+			setTimeout(() => {
+				showSpinner = false;
+				animatingOut = false;
+				pullDistance = 0;
+			}, 300);
+		}
+		pulling = false;
+	}
+
 	onMount(async () => {
 		try {
 			const locale = getLocale();
@@ -177,7 +217,7 @@
 		try {
 			await fetchPollenData();
 		} catch (error) {
-			showInfo(m.error(), `${m.error_fetching_data()} ${error}`);
+			showInfo(m.error(), `${m.error_fetching_data()} ${error.message}`);
 		}
 	});
 
@@ -191,8 +231,10 @@
 </script>
 
 <!-- Header -->
-<header class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pb-3.5 pt-[calc(1.5rem+var(--safe-top))]">
-	<h1 class="truncate font-bevellier pb-1.5 text-5xl">
+<header
+	class="fixed top-0 z-10 flex w-full items-center gap-3 bg-background p-6 pt-[calc(1.5rem+var(--safe-top))] pb-3.5"
+>
+	<h1 class="truncate pb-1.5 font-bevellier text-5xl">
 		{#if $isLoading}
 			<div class="h-12 w-[50dvw] animate-pulse rounded-xl bg-muted"></div>
 		{:else}
@@ -211,8 +253,49 @@
 	</Button>
 </header>
 
+<!-- Refresh indicator -->
+{#if showSpinner}
+	<div
+		class="fixed top-[calc(6rem+var(--safe-top))] left-1/2 z-20 -translate-x-1/2 transition-all duration-300 ease-out"
+		style="transform: translate(-50%, 0) scale({animatingOut
+			? 0
+			: isRefreshing
+				? 1
+				: Math.max(0.6, pullDistance / 50)}); opacity: {animatingOut
+			? 0
+			: isRefreshing
+				? 1
+				: Math.min(1, pullDistance / 20)}"
+	>
+		<div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary shadow-xs">
+			<RotateCcw
+				class="h-4 w-4 text-primary-foreground transition-transform duration-200 {isRefreshing ? 'animate-spin' : ''}"
+			/>
+		</div>
+	</div>
+{/if}
+
+<!-- Main content -->
 <div
+	bind:this={container}
 	class="no-scrollbar of-top of-length-2 fixed top-[calc(5rem+var(--safe-top))] right-0 bottom-0 left-0 space-y-6 overflow-y-auto p-6 pb-12"
+	ontouchstart={(e) => {
+		if (container.scrollTop === 0) {
+			startY = e.touches[0].clientY;
+			pulling = true;
+		}
+	}}
+	ontouchmove={(e) => {
+		if (!pulling || container.scrollTop > 0 || isRefreshing) return;
+		const diff = e.touches[0].clientY - startY;
+		if (diff <= 0) return;
+		pullDistance = Math.min(diff / 3, 50);
+		if (pullDistance > 10) {
+			showSpinner = true;
+			e.preventDefault();
+		}
+	}}
+	ontouchend={handleRefreshTouchEnd}
 >
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
@@ -222,7 +305,7 @@
 			cellWidth={1}
 			fixedHeight={true}
 			bgColor={getRiskColor(riskLevel)}
-			isLoading={$isLoading}
+			isLoading={$isLoading || isRefreshing}
 			onclick={() => {
 				vibrate.light();
 				showInfo(m.risk(), m.risk_description());
@@ -234,7 +317,7 @@
 		</Widget>
 
 		<!-- Risk Forecast Bar Chart -->
-		<Widget title={m.risk_forecast()} cellWidth={2} fixedHeight={true} isLoading={$isLoading}>
+		<Widget title={m.risk_forecast()} cellWidth={2} fixedHeight={true} isLoading={$isLoading || isRefreshing}>
 			{#if riskForecastData.length > 0}
 				<div class="pointer-events-none h-full max-h-18 w-full overflow-hidden pt-0.25">
 					<Chart.Container
@@ -270,7 +353,7 @@
 			title={m.ozone()}
 			cellWidth={1}
 			fixedHeight={true}
-			isLoading={$isLoading}
+			isLoading={$isLoading || isRefreshing}
 			onclick={() => {
 				vibrate.light();
 				showInfo(m.ozone(), m.ozone_description());
@@ -287,7 +370,7 @@
 			title={m.weather()}
 			cellWidth={1}
 			fixedHeight={true}
-			isLoading={$isLoading}
+			isLoading={$isLoading || isRefreshing}
 			onclick={() => {
 				vibrate.light();
 				showInfo(m.weather(), m.weather_description());
@@ -303,7 +386,7 @@
 				<CloudLightning class="mx-auto h-8 w-8" strokeWidth={3.5} />
 			{/if}
 			<p class="mt-4 text-xs text-muted-foreground">
-				{getWeatherString($pollenData?.currentConditions?.generalWheather)}
+				{getWeatherString($pollenData?.currentConditions?.generalWheather) || m.no_data()}
 			</p>
 		</Widget>
 
@@ -312,7 +395,7 @@
 			title={m.air_quality()}
 			cellWidth={1}
 			fixedHeight={true}
-			isLoading={$isLoading}
+			isLoading={$isLoading || isRefreshing}
 			onclick={() => {
 				vibrate.light();
 				showInfo(m.air_quality(), m.air_quality_description());
@@ -328,7 +411,7 @@
 	</div>
 
 	<!-- Pollen Forecast Section with Day Tabs -->
-	<Widget title={m.pollen()} fixedHeight={false} isLoading={$isLoading}>
+	<Widget title={m.pollen()} fixedHeight={false} isLoading={$isLoading || isRefreshing}>
 		<div class="space-y-4">
 			<!-- Day Selector Pills -->
 			{#if $pollenData?.dailyInfo?.length > 0}
