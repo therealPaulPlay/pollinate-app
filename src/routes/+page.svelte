@@ -269,7 +269,7 @@
 				? 1
 				: Math.min(1, pullDistance / 20)}"
 	>
-		<div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary shadow-xs">
+		<div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
 			<RotateCcw
 				class="h-4 w-4 text-primary-foreground transition-transform duration-200 {isRefreshing ? 'animate-spin' : ''}"
 			/>
