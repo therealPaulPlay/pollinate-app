@@ -243,7 +243,7 @@
 	</h1>
 	<Button
 		size="icon"
-		class="flex-shrink-0"
+		class="flex-shrink-0 mb-0.5"
 		onclick={() => {
 			vibrate.light();
 			goto("/select-location");
