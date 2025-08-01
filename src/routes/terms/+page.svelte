@@ -61,7 +61,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Prohibited Uses</h2>
 				<p>You agree not to:</p>
-				<div class="ml-6 space-y-2">
+				<div class="space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Extract, scrape, or systematically collect data from our service</span>
@@ -103,7 +103,7 @@
 					If you purchase premium features through app stores (Google Play Store, Apple App Store), the following terms
 					apply:
 				</p>
-				<div class="ml-6 space-y-2">
+				<div class="space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>All purchases are processed by the respective app store, not by us directly</span>
@@ -134,7 +134,7 @@
 						We do not guarantee that our service will be available at all times or function without interruption. The
 						service may experience:
 					</p>
-					<div class="ml-6 space-y-2">
+					<div class="space-y-2">
 						<div class="flex items-start gap-2">
 							<span class="text-foreground">•</span>
 							<span>Temporary outages or maintenance periods</span>
