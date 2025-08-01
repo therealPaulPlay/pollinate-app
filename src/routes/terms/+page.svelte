@@ -19,7 +19,7 @@
 		</Button>
 
 		<h1 class="mt-4 font-bevellier text-5xl font-bold">Terms of Use</h1>
-		<p class="text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+		<p class="text-muted-foreground">Last updated: July 31, 2025</p>
 
 		<div class="space-y-6">
 			<section>
