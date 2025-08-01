@@ -258,7 +258,7 @@
 <!-- Refresh indicator -->
 {#if showSpinner}
 	<div
-		class="fixed top-[calc(6rem+var(--safe-top))] left-1/2 z-20 -translate-x-1/2 transition-all duration-300 ease-out"
+		class="fixed top-[calc(6rem+var(--safe-top))] left-1/2 z-20 transition-all duration-300 ease-out"
 		style="transform: translate(-50%, 0) scale({animatingOut
 			? 0
 			: isRefreshing
