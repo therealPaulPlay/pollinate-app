@@ -183,3 +183,17 @@ img {
     210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
+
+/* Set html and body color depending on theme */
+html,
+body {
+  background-color: oklch(0.975 0.042 85.8);
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html,
+  body {
+    background-color: oklch(0.15 0.02 140.6);
+  }
+}
