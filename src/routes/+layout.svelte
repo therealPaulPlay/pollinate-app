@@ -29,7 +29,7 @@
 	<title>Pollinate</title>
 </svelte:head>
 
-<main class="fixed inset-0 min-h-dvh touch-none overscroll-none select-none">
+<main class="fixed inset-0 min-h-dvh overscroll-none select-none">
 	{@render children()}
 </main>
 

@@ -35,7 +35,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Information We Collect</h2>
 				<p>To provide our pollen forecast service, we may temporarily process:</p>
-				<div class="space-y-2">
+				<div class="space-y-2 mt-1">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Location coordinates (when you input the requested location) to fetch relevant pollen data</span>
@@ -45,13 +45,13 @@
 						<span>Basic device information for compatibility</span>
 					</div>
 				</div>
-				<p>This information is processed temporarily and is not permanently stored on our servers.</p>
+				<p class="mt-1">This information is processed temporarily and is not permanently stored on our servers.</p>
 			</section>
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">How We Use Your Information</h2>
 				<p>We use information to:</p>
-				<div class="space-y-2">
+				<div class="space-y-2 mt-1">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Provide accurate pollen forecasts for your location</span>
@@ -73,7 +73,7 @@
 					We do not sell or trade user information. When you request pollen data, we may share your location coordinates
 					with:
 				</p>
-				<div class="space-y-2">
+				<div class="space-y-2 mt-1">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Weather data providers to retrieve pollen forecasts</span>
@@ -105,7 +105,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Your Rights</h2>
 				<p>You have the right to:</p>
-				<div class="space-y-2">
+				<div class="space-y-2 mt-1">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Know what information we process</span>

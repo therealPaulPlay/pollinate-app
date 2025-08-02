@@ -8,7 +8,8 @@
 		vibrate.light();
 		const onboardingComplete = localStorage.getItem("onboardingCompleted");
 
-		if (onboardingComplete) goto("/"); // Go to main app
+		if (onboardingComplete)
+			goto("/"); // Go to main app
 		else goto("/onboarding"); // Go to onboarding
 	}
 </script>
@@ -16,10 +17,7 @@
 <div class="max-h-dvh overflow-y-auto px-4 pt-[calc(1.5rem+var(--safe-top))] pb-8">
 	<div class="mx-auto max-w-3xl space-y-6">
 		<!-- Back Button -->
-		<Button
-			onclick={goBack}
-			class="mb-4"
-		>
+		<Button onclick={goBack} class="mb-4">
 			<ArrowLeft class="h-4 w-4" />
 		</Button>
 
@@ -45,7 +43,7 @@
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Data Accuracy Disclaimer</h2>
-				<div class="space-y-3">
+				<div class="space-y-2">
 					<p>
 						We do not guarantee the accuracy, completeness, or reliability of any pollen data, forecasts, or health
 						recommendations provided through our service.
@@ -61,7 +59,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Prohibited Uses</h2>
 				<p>You agree not to:</p>
-				<div class="space-y-2">
+				<div class="space-y-2 mt-1">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Extract, scrape, or systematically collect data from our service</span>
@@ -103,7 +101,7 @@
 					If you purchase premium features through app stores (Google Play Store, Apple App Store), the following terms
 					apply:
 				</p>
-				<div class="space-y-2">
+				<div class="space-y-2 mt-1">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>All purchases are processed by the respective app store, not by us directly</span>
@@ -129,40 +127,38 @@
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Service Availability</h2>
-				<div class="space-y-3">
-					<p>
-						We do not guarantee that our service will be available at all times or function without interruption. The
-						service may experience:
-					</p>
-					<div class="space-y-2">
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Temporary outages or maintenance periods</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Server downtime or technical difficulties</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Incompatibility with certain devices or operating systems</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Bugs, errors, or malfunctions</span>
-						</div>
-						<div class="flex items-start gap-2">
-							<span class="text-foreground">•</span>
-							<span>Changes or discontinuation of features</span>
-						</div>
+				<p>
+					We do not guarantee that our service will be available at all times or function without interruption. The
+					service may experience:
+				</p>
+				<div class="mt-1 space-y-2">
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Temporary outages or maintenance periods</span>
 					</div>
-					<p>We reserve the right to modify, suspend, or discontinue the service at any time without notice.</p>
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Server downtime or technical difficulties</span>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Incompatibility with certain devices or operating systems</span>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Bugs, errors, or malfunctions</span>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="text-foreground">•</span>
+						<span>Changes or discontinuation of features</span>
+					</div>
 				</div>
+				<p class="mt-1">We reserve the right to modify, suspend, or discontinue the service at any time without notice.</p>
 			</section>
 
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Limitation of Liability</h2>
-				<div class="space-y-3">
+				<div class="mt-2 space-y-2">
 					<p>
 						To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, special,
 						consequential, or punitive damages, including but not limited to loss of profits, data, use, or other
