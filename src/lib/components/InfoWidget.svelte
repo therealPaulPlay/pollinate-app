@@ -26,7 +26,8 @@
 		class="absolute top-2 right-2"
 		size="sm"
 		variant="ghost"
-		onclick={() => {
+		onclick={(e) => {
+			e.stopPropagation();
 			onclose?.();
 		}}
 	>
