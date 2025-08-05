@@ -56,5 +56,5 @@
   "weather_description": "Thunderstorms can worsen allergic reactions by causing pollen grains to break apart and become more easily inhaled. Rain may bring short-term relief.",
   "air_quality_description": "Poor air quality (high AQI) can worsen allergic reactions by increasing airborne irritants that inflame the airways and amplify sensitivity to pollen.",
   "sorry": "Sorry!",
-  "unsupported_country_message": "This country is not yet supported by our pollen data provider. We currently only support: Andorra, Albania, Armenia, Argentina, Austria, Australia, Bosnia & Herzegovina, Belgium, Bulgaria, Brazil, Belarus, Canada, Switzerland, Chile, China, Cyprus, Czechia, Germany, Denmark, Estonia, Egypt, Spain, Ethiopia, Finland, France, United Kingdom, Georgia, Gibraltar, Greece, Hong Kong, Croatia, Hungary, Ireland, Israel, Italy, Jordan, Japan, South Korea, Liechtenstein, Lithuania, Luxembourg, Latvia, Moldova, Montenegro, North Macedonia, Mongolia, Malta, Mexico, Netherlands, Norway, Nepal, New Zealand, Pakistan, Poland, Portugal, Romania, Serbia, Russia, Saudi Arabia, Sweden, Slovenia, Slovakia, Turkey, Ukraine, United States, and South Africa."
+  "unsupported_country_message": "This country is not yet supported by our pollen data provider."
 }

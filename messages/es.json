@@ -56,5 +56,5 @@
     "weather_description": "Las tormentas pueden empeorar las reacciones alérgicas al hacer que los granos de polen se rompan y sean más fáciles de inhalar. La lluvia puede traer alivio a corto plazo.",
     "air_quality_description": "La mala calidad del aire (AQI alto) puede empeorar las reacciones alérgicas al aumentar los irritantes en el aire que inflaman las vías respiratorias y amplifican la sensibilidad al polen.",
     "sorry": "¡Lo siento!",
-    "unsupported_country_message": "Este país aún no es compatible con nuestro proveedor de datos de polen. Actualmente solo admitimos: Andorra, Albania, Armenia, Argentina, Austria, Australia, Bosnia y Herzegovina, Bélgica, Bulgaria, Brasil, Bielorrusia, Canadá, Suiza, Chile, China, Chipre, Chequia, Alemania, Dinamarca, Estonia, Egipto, España, Etiopía, Finlandia, Francia, Reino Unido, Georgia, Gibraltar, Grecia, Hong Kong, Croacia, Hungría, Irlanda, Israel, Italia, Jordania, Japón, Corea del Sur, Liechtenstein, Lituania, Luxemburgo, Letonia, Moldavia, Montenegro, Macedonia del Norte, Mongolia, Malta, México, Países Bajos, Noruega, Nepal, Nueva Zelanda, Pakistán, Polonia, Portugal, Rumania, Serbia, Rusia, Arabia Saudí, Suecia, Eslovenia, Eslovaquia, Turquía, Ucrania, Estados Unidos y Sudáfrica."
+    "unsupported_country_message": "Este país aún no es compatible con nuestro proveedor de datos de polen."
 }
