@@ -9,6 +9,7 @@
 	import { goto } from "$app/navigation";
 	import * as m from "$lib/paraglide/messages";
 	import InfoDrawer from "$lib/components/InfoDrawer.svelte";
+	import { showLimitedDataInfo } from "$lib/utils/pollen-data";
 
 	let searchQuery = $state("");
 	let locations = $state([]);
@@ -21,22 +22,30 @@
 	let mapLoaded = $state(false);
 	let map;
 	let supportedCountries = $state([]);
+	let limitedCountries = $state([]);
 
 	// Info Drawer for unsupported countries
 	let infoDrawerOpen = $state(false);
 
 	async function loadSupportedCountries() {
 		try {
-			const response = await fetch("/json/supported-countries.json");
-			supportedCountries = await response.json();
+			[supportedCountries, limitedCountries] = await Promise.all([
+				await fetch("/json/supported-countries.json").then((response) => response.json()),
+				await fetch("/json/limited-countries.json").then((response) => response.json())
+			]);
 		} catch (error) {
 			console.error("Failed to load supported countries:", error);
 		}
 	}
 
 	function isCountrySupported(countryCode) {
-		if (!countryCode || !supportedCountries.length) return true;
-		return supportedCountries.includes(countryCode.toUpperCase());
+		if (!countryCode) return true;
+		return supportedCountries?.includes(countryCode.toUpperCase());
+	}
+
+	function isCountryLimited(countryCode) {
+		if (!countryCode || !limitedCountries.length) return true;
+		return limitedCountries?.includes(countryCode.toUpperCase());
 	}
 
 	async function searchLocations(query) {
@@ -136,8 +145,8 @@
 	}
 
 	function saveLocation() {
-		if (!selectedLocation) return;
 		const location = $state.snapshot(selectedLocation);
+		showLimitedDataInfo.set(isCountryLimited(location.countryCode));
 
 		localStorage.setItem(
 			"userLocation",
@@ -145,9 +154,11 @@
 				name: location.name,
 				lat: location.lat,
 				lon: location.lon,
+				countryCode: location.countryCode,
 				timestamp: Date.now()
 			})
 		);
+
 		console.log("Location saved:", location);
 		addToRecents(location); // Add to recent locations only when saved
 	}
@@ -187,9 +198,7 @@
 	>
 		<div bind:this={mapContainer} class="pointer-events-none h-full"></div>
 	</div>
-	<div
-		class="z-20 w-full space-y-8 bg-background mask-b-from-80% mask-b-to-100% pt-[calc(2rem+var(--safe-top))] pb-8"
-	>
+	<div class="z-20 w-full space-y-8 bg-background mask-b-from-80% mask-b-to-100% pt-[calc(2rem+var(--safe-top))] pb-8">
 		<p class="text-center font-bevellier text-5xl">{m.location_please()}</p>
 
 		<div class="relative mx-auto max-w-80">

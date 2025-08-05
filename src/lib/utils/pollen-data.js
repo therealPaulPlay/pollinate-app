@@ -8,6 +8,9 @@ export const isLoading = writable(true);
 export const userLocation = writable(null);
 export const userPollen = writable([]);
 
+// Show limited data info
+export const showLimitedDataInfo = writable(false);
+
 // API configuration
 const API_BASE_URL = 'https://pollen.openreport.dev';
 

@@ -24,7 +24,8 @@
 		userPollen,
 		fetchPollenData,
 		calculateRiskLevel,
-		getPollenLevel
+		getPollenLevel,
+		showLimitedDataInfo
 	} from "$lib/utils/pollen-data.js";
 	import { getRiskColor } from "$lib/utils/risk-color.js";
 	import { BarChart } from "layerchart";
@@ -39,6 +40,7 @@
 	import LanguageDrawer from "$lib/components/LanguageDrawer.svelte";
 	import * as m from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import InfoWidget from "$lib/components/InfoWidget.svelte";
 
 	// Pull-to-refresh state
 	let container;
@@ -299,6 +301,18 @@
 	}}
 	ontouchend={handleRefreshTouchEnd}
 >
+	<!-- Info messages -->
+	{#if $showLimitedDataInfo}
+		<InfoWidget
+			title="Limited data"
+			text="Pollen data is limited to grasses for this country."
+			onclose={() => {
+				vibrate.light();
+				$showLimitedDataInfo = false;
+			}}
+		/>
+	{/if}
+
 	<!-- Widget Grid -->
 	<div class="grid auto-rows-fr grid-cols-3 gap-4">
 		<!-- Risk Level -->
@@ -470,7 +484,7 @@
 				<div class="space-y-3">
 					<div class="mx-1 flex items-center gap-3">
 						<h4 class="text-sm text-muted-foreground">{m.others()}</h4>
-						<div class="mt-1 h-px flex-1 bg-border"></div>
+						<div class="mt-1 h-[2px] flex-1 rounded-full bg-border"></div>
 					</div>
 					<div class="space-y-2">
 						{#each otherPollenData as pollen (pollen.name)}
