@@ -56,5 +56,9 @@
     "weather_description": "Las tormentas pueden empeorar las reacciones alérgicas al hacer que los granos de polen se rompan y sean más fáciles de inhalar. La lluvia puede traer alivio a corto plazo.",
     "air_quality_description": "La mala calidad del aire (AQI alto) puede empeorar las reacciones alérgicas al aumentar los irritantes en el aire que inflaman las vías respiratorias y amplifican la sensibilidad al polen.",
     "sorry": "¡Lo siento!",
-    "unsupported_country_message": "Este país aún no es compatible con nuestro proveedor de datos de polen."
+    "unsupported_country_message": "Este país aún no es compatible con nuestro proveedor de datos de polen.",
+    "limited_data_title": "Datos limitados",
+    "limited_data_message": "Los datos de polen están limitados a pastos para este país.",
+    "rate_us_title": "Califícanos",
+    "rate_us_message": "¿Te gusta Pollinate? ¡Tu calificación significaría mucho!"
 }

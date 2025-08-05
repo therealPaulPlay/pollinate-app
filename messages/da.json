@@ -56,5 +56,9 @@
     "weather_description": "Tordenvejr kan forværre allergiske reaktioner ved at få pollenkorn til at gå i stykker og gøre dem lettere at indånde. Regn kan give kortvarig lindring.",
     "air_quality_description": "Dårlig luftkvalitet (høj AQI) kan forværre allergiske reaktioner ved at øge luftbårne irritanter, der irriterer luftvejene og forstærker følsomheden over for pollen.",
     "sorry": "Undskyld!",
-    "unsupported_country_message": "Dette land understøttes endnu ikke af vores pollendataudbyder."
+    "unsupported_country_message": "Dette land understøttes endnu ikke af vores pollendataudbyder.",
+    "limited_data_title": "Begrænsede data",
+    "limited_data_message": "Pollendata er begrænset til græsser for dette land.",
+    "rate_us_title": "Bedøm os",
+    "rate_us_message": "Kan du lide Pollinate? Din vurdering ville betyde alt!"
 }

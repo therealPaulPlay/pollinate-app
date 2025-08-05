@@ -56,5 +56,9 @@
     "weather_description": "A viharok súlyosbíthatják az allergiás reakciókat azáltal, hogy a pollenszemcséket széttörik és könnyebbé teszik a belégzést. Az eső rövid távú enyhülést hozhat.",
     "air_quality_description": "A rossz levegőminőség (magas AQI) súlyosbíthatja az allergiás reakciókat azáltal, hogy növeli a levegőben lévő irritáló anyagokat, amelyek gyulladást okoznak a légutakban és fokozzák a pollen iránti érzékenységet.",
     "sorry": "Sajnálom!",
-    "unsupported_country_message": "Ezt az országot még nem támogatja a pollenadatszolgáltatónk."
+    "unsupported_country_message": "Ezt az országot még nem támogatja a pollenadatszolgáltatónk.",
+    "limited_data_title": "Korlátozott adatok",
+    "limited_data_message": "A pollenadatok erre az országra korlátozódnak a füvekre.",
+    "rate_us_title": "Értékelj minket",
+    "rate_us_message": "Tetszik a Pollinate? Az értékelésed mindent jelentene!"
 }

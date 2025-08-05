@@ -56,5 +56,9 @@
     "weather_description": "Åskväder kan förvärra allergiska reaktioner genom att få pollenkorn att gå sönder och bli lättare att andas in. Regn kan ge kortsiktig lindring.",
     "air_quality_description": "Dålig luftkvalitet (hög AQI) kan förvärra allergiska reaktioner genom att öka luftburna irritanter som inflammerar luftvägarna och förstärker känsligheten för pollen.",
     "sorry": "Förlåt!",
-    "unsupported_country_message": "Detta land stöds ännu inte av vår pollendataleverantör."
+    "unsupported_country_message": "Detta land stöds ännu inte av vår pollendataleverantör.",
+    "limited_data_title": "Begränsade data",
+    "limited_data_message": "Pollendata är begränsat till gräs för detta land.",
+    "rate_us_title": "Betygsätt oss",
+    "rate_us_message": "Gillar du Pollinate? Ditt betyg skulle betyda allt!"
 }

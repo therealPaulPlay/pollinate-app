@@ -56,5 +56,9 @@
     "weather_description": "Les orages peuvent aggraver les réactions allergiques en provoquant l'éclatement des grains de pollen et en les rendant plus faciles à inhaler. La pluie peut apporter un soulagement à court terme.",
     "air_quality_description": "Une mauvaise qualité de l'air (AQI élevé) peut aggraver les réactions allergiques en augmentant les irritants dans l'air qui enflamment les voies respiratoires et amplifient la sensibilité au pollen.",
     "sorry": "Désolé !",
-    "unsupported_country_message": "Ce pays n'est pas encore pris en charge par notre fournisseur de données sur le pollen."
+    "unsupported_country_message": "Ce pays n'est pas encore pris en charge par notre fournisseur de données sur le pollen.",
+    "limited_data_title": "Données limitées",
+    "limited_data_message": "Les données sur le pollen sont limitées aux graminées pour ce pays.",
+    "rate_us_title": "Notez-nous",
+    "rate_us_message": "Vous aimez Pollinate ? Votre avis nous ferait très plaisir !"
 }

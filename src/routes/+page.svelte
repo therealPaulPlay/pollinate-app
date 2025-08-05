@@ -41,6 +41,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import InfoWidget from "$lib/components/InfoWidget.svelte";
+	import { openNativeRating } from "$lib/utils/app-rating.js";
 
 	// Pull-to-refresh state
 	let container;
@@ -55,6 +56,9 @@
 	let pollenTypesList = $state({});
 	let showingAllOthers = $state(false);
 	let selectedDay = $state(0);
+
+	// Rating prompt
+	let showRatingWidget = $state(false);
 
 	function getTodayDataStartOffset() {
 		// Current UTC day
@@ -232,6 +236,10 @@
 		const pollenData = pollenTypesList[code];
 		return pollenData?.[nameKey] || pollenData?.["name-en"] || code;
 	}
+
+	onMount(async () => {
+		showRatingWidget = !localStorage.getItem("ratingInfoShown");
+	});
 </script>
 
 <!-- Header -->
@@ -304,11 +312,30 @@
 	<!-- Info messages -->
 	{#if $showLimitedDataInfo}
 		<InfoWidget
-			title="Limited data"
-			text="Pollen data is limited to grasses for this country."
+			title={m.limited_data_title()}
+			text={m.limited_data_message()}
 			onclose={() => {
 				vibrate.light();
 				$showLimitedDataInfo = false;
+			}}
+		/>
+	{/if}
+
+	{#if showRatingWidget}
+		<InfoWidget
+			title={m.rate_us_title()}
+			text={m.rate_us_message()}
+			clickable={true}
+			onclick={() => {
+				vibrate.light();
+				openNativeRating();
+				localStorage.setItem("ratingInfoShown", "true");
+				showRatingWidget = false;
+			}}
+			onclose={() => {
+				vibrate.light();
+				localStorage.setItem("ratingInfoShown", "true");
+				showRatingWidget = false;
 			}}
 		/>
 	{/if}
@@ -484,7 +511,7 @@
 				<div class="space-y-3">
 					<div class="mx-1 flex items-center gap-3">
 						<h4 class="text-sm text-muted-foreground">{m.others()}</h4>
-						<div class="mt-1 h-[2px] flex-1 rounded-full bg-border"></div>
+						<div class="mt-0.5 h-[3px] flex-1 rounded-full bg-border"></div>
 					</div>
 					<div class="space-y-2">
 						{#each otherPollenData as pollen (pollen.name)}

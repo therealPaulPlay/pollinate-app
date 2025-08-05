@@ -14,7 +14,8 @@
 </script>
 
 <div
-	transition:slide
+	in:fade
+	out:slide
 	class="row-span-0.25 relative col-span-3 flex grow flex-col space-y-1 overflow-hidden rounded-xl border-2 p-4 px-6 transition ease-out {isLoading
 		? 'animate-pulse'
 		: ''} bg-card {onclick ? 'active:scale-95' : ''}"
@@ -31,7 +32,7 @@
 	>
 		<X />
 	</Button>
-	<h2 class="truncate font-bevellier text-2xl max-w-3/4" transition:fade={{ duration: 50 }}>
+	<h2 class="max-w-3/4 truncate font-bevellier text-2xl" transition:fade={{ duration: 50 }}>
 		{title}
 	</h2>
 	<p class="text-sm" transition:fade={{ duration: 50 }}>{text}</p>

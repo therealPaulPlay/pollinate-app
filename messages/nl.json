@@ -56,5 +56,9 @@
     "weather_description": "Onweer kan allergische reacties verergeren door stuifmeelkorrels te laten uiteenvallen en gemakkelijker in te ademen. Regen kan kortdurende verlichting brengen.",
     "air_quality_description": "Slechte luchtkwaliteit (hoge AQI) kan allergische reacties verergeren door luchtverontreinigende stoffen te verhogen die luchtwegen ontsteken en gevoeligheid voor stuifmeel versterken.",
     "sorry": "Sorry!",
-    "unsupported_country_message": "Dit land wordt nog niet ondersteund door onze pollendataprovider."
+    "unsupported_country_message": "Dit land wordt nog niet ondersteund door onze pollendataprovider.",
+    "limited_data_title": "Beperkte gegevens",
+    "limited_data_message": "Pollengegevens zijn beperkt tot grassen voor dit land.",
+    "rate_us_title": "Beoordeel ons",
+    "rate_us_message": "Vind je Pollinate leuk? Je beoordeling zou alles betekenen!"
 }

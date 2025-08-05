@@ -56,5 +56,9 @@
   "weather_description": "Gewitter können allergische Reaktionen verschlimmern, indem du Pollenkörner aufbrechen und leichter einatmbar machen. Regen kann kurzfristige Linderung bringen.",
   "air_quality_description": "Schlechte Luftqualität (hoher AQI) kann allergische Reaktionen verschlimmern, indem du luftgetragene Reizstoffe erhöht, die die Atemwege entzünden und die Pollenempfindlichkeit verstärken.",
   "sorry": "Entschuldigung!",
-  "unsupported_country_message": "Dieses Land wird von unserem Pollendatenanbieter noch nicht unterstützt."
+  "unsupported_country_message": "Dieses Land wird von unserem Pollendatenanbieter noch nicht unterstützt.",
+  "limited_data_title": "Begrenzte Daten",
+  "limited_data_message": "Pollendaten sind für dieses Land auf Gräser beschränkt.",
+  "rate_us_title": "Bewerte uns",
+  "rate_us_message": "Gefällt dir Pollinate? Deine Bewertung würde uns sehr freuen!"
 }

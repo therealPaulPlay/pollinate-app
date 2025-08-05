@@ -56,5 +56,9 @@
     "weather_description": "雷雨は、花粉粒を破裂させ、吸入しやすくすることで、アレルギー反応を悪化させることがあります。雨は短期的な緩和をもたらすことがあります。",
     "air_quality_description": "大気質の悪化（高いAQI）は、気道を炎症させ、花粉への感受性を高める空気中の刺激物質を増加させることで、アレルギー反応を悪化させることがあります。",
     "sorry": "申し訳ありません！",
-    "unsupported_country_message": "この国は、まだ私たちの花粉データプロバイダーによってサポートされていません。"
+    "unsupported_country_message": "この国は、まだ私たちの花粉データプロバイダーによってサポートされていません。",
+    "limited_data_title": "制限されたデータ",
+    "limited_data_message": "この国の花粉データは草本植物に限定されています。",
+    "rate_us_title": "評価してください",
+    "rate_us_message": "Pollinateを気に入っていますか？評価していただけると嬉しいです！"
 }

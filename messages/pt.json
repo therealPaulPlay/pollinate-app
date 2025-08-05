@@ -56,5 +56,9 @@
     "weather_description": "Tempestades podem piorar reações alérgicas causando a quebra dos grãos de pólen e tornando-os mais fáceis de inalar. A chuva pode trazer alívio a curto prazo.",
     "air_quality_description": "Má qualidade do ar (AQI alto) pode piorar reações alérgicas aumentando irritantes no ar que inflamam as vias respiratórias e amplificam a sensibilidade ao pólen.",
     "sorry": "Desculpe!",
-    "unsupported_country_message": "Este país ainda não é suportado pelo nosso fornecedor de dados de pólen."
+    "unsupported_country_message": "Este país ainda não é suportado pelo nosso fornecedor de dados de pólen.",
+    "limited_data_title": "Dados limitados",
+    "limited_data_message": "Os dados de pólen são limitados a gramíneas para este país.",
+    "rate_us_title": "Avalie-nos",
+    "rate_us_message": "Gostando do Pollinate? Sua avaliação significaria tudo!"
 }
