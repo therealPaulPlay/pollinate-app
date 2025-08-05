@@ -8,19 +8,26 @@
 		vibrate.light();
 		const onboardingComplete = localStorage.getItem("onboardingCompleted");
 
-		if (onboardingComplete) goto("/"); // Go home
+		if (onboardingComplete)
+			goto("/"); // Go home
 		else goto("/onboarding"); // Go to onboarding
 	}
 </script>
 
-<div class="max-h-dvh overflow-y-auto px-4 pt-[calc(1.5rem+var(--safe-top))] pb-8">
-	<div class="mx-auto max-w-3xl space-y-6">
-		<!-- Back Button -->
-		<Button onclick={goBack} class="mb-4">
-			<ArrowLeft class="h-4 w-4" />
-		</Button>
+<header
+	class="fixed top-0 z-10 flex w-full items-center gap-4 bg-background p-4 pt-[calc(1.5rem+var(--safe-top))] pb-3"
+>
+	<!-- Back Button -->
+	<Button onclick={goBack} class="mb-1.5 px-4!">
+		<ArrowLeft class="h-4 w-4" />
+	</Button>
+	<h1 class="truncate pb-1.5 font-bevellier text-5xl">Privacy Policy</h1>
+</header>
 
-		<h1 class="mt-4 font-bevellier text-5xl font-bold">Privacy Policy</h1>
+<div
+	class="of-top of-length-2 fixed top-[calc(5.5rem+var(--safe-top))] right-0 bottom-0 left-0 space-y-6 overflow-y-auto px-4 pt-4 pb-10"
+>
+	<div class="mx-auto max-w-3xl space-y-6">
 		<p class="text-muted-foreground">Last updated: August 1, 2025</p>
 
 		<div class="space-y-6">
@@ -35,7 +42,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Information We Collect</h2>
 				<p>To provide our pollen forecast service, we may temporarily process:</p>
-				<div class="space-y-2 mt-1">
+				<div class="mt-1 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Location coordinates (when you input the requested location) to fetch relevant pollen data</span>
@@ -51,7 +58,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">How We Use Your Information</h2>
 				<p>We use information to:</p>
-				<div class="space-y-2 mt-1">
+				<div class="mt-1 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Provide accurate pollen forecasts for your location</span>
@@ -73,7 +80,7 @@
 					We do not sell or trade user information. When you request pollen data, we may share your location coordinates
 					with:
 				</p>
-				<div class="space-y-2 mt-1">
+				<div class="mt-1 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Weather data providers to retrieve pollen forecasts</span>
@@ -105,7 +112,7 @@
 			<section>
 				<h2 class="mb-3 text-lg font-semibold">Your Rights</h2>
 				<p>You have the right to:</p>
-				<div class="space-y-2 mt-1">
+				<div class="mt-1 space-y-2">
 					<div class="flex items-start gap-2">
 						<span class="text-foreground">•</span>
 						<span>Know what information we process</span>

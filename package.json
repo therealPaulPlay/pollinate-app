@@ -7,7 +7,7 @@
 		"dev": "vite dev --port 3000 --host",
 		"build": "vite build",
 		"build:mobile": "vite build && npx cap sync",
-		"build:mobile-assets": "npx capacitor-assets generate --ios --assetPath ./store-assets",
+		"build:mobile-assets": "npx capacitor-assets generate --ios --android --assetPath ./store-assets",
 		"paraglide:build": "inlang build --project ./project.inlang",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -46,6 +46,7 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"@capacitor/android": "^7.4.2",
 		"@capacitor/cli": "^7.4.2",
 		"@capacitor/core": "^7.4.2",
 		"@capacitor/haptics": "^7.0.1",
