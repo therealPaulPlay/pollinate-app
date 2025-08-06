@@ -44,7 +44,7 @@
 	}
 
 	function isCountryLimited(countryCode) {
-		if (!countryCode || !limitedCountries.length) return true;
+		if (!countryCode || !limitedCountries.length) return false;
 		return limitedCountries?.includes(countryCode.toUpperCase());
 	}
 
