@@ -41,7 +41,7 @@
     "no_data": "Nessun dato",
     "location_placeholder": "Posizione",
     "error_loading_pollen": "Si è verificato un errore nel caricamento dei tipi di polline e descrizioni:",
-    "error_fetching_data": "Si è verificato un errore nel recupero dei dati sul polline:",
+    "error_fetching_data": "Errore nel recupero dei dati:",
     "error": "Errore",
     "thankfully_not_allergic": "Fortunatamente, non siamo allergici agli errori.",
     "go_home": "Vai a casa",

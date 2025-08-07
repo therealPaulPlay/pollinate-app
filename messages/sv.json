@@ -41,7 +41,7 @@
     "no_data": "Ingen data",
     "location_placeholder": "Plats",
     "error_loading_pollen": "Ett fel uppstod vid laddning av pollentyper och beskrivningar:",
-    "error_fetching_data": "Ett fel uppstod vid hämtning av pollendata:",
+    "error_fetching_data": "Ett fel uppstod vid hämtning av data:",
     "error": "Fel",
     "thankfully_not_allergic": "Lyckligtvis är vi inte allergiska mot fel.",
     "go_home": "Gå hem",

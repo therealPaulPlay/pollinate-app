@@ -41,7 +41,7 @@
     "no_data": "Sin datos",
     "location_placeholder": "Ubicación",
     "error_loading_pollen": "Ocurrió un error al cargar los tipos de polen y descripciones:",
-    "error_fetching_data": "Ocurrió un error al obtener los datos de polen:",
+    "error_fetching_data": "Error al obtener los datos:",
     "error": "Error",
     "thankfully_not_allergic": "Afortunadamente, no somos alérgicos a los errores.",
     "go_home": "Ir a inicio",

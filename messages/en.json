@@ -41,7 +41,7 @@
   "no_data": "No data",
   "location_placeholder": "Location",
   "error_loading_pollen": "An error occurred loading the pollen types & descriptions:",
-  "error_fetching_data": "An error occurred fetching pollen data:",
+  "error_fetching_data": "Error occurred fetching data:",
   "error": "Error",
   "thankfully_not_allergic": "Thankfully, we're not allergic to errors.",
   "go_home": "Go home",

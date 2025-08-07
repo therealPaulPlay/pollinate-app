@@ -41,7 +41,7 @@
     "no_data": "Nincs adat",
     "location_placeholder": "Helyszín",
     "error_loading_pollen": "Hiba történt a pollen típusok és leírások betöltésekor:",
-    "error_fetching_data": "Hiba történt a pollen adatok lekérésekor:",
+    "error_fetching_data": "Hiba történt az adatok lekérésekor:",
     "error": "Hiba",
     "thankfully_not_allergic": "Szerencsére nem vagyunk allergiások a hibákra.",
     "go_home": "Főoldalra",

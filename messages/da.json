@@ -41,7 +41,7 @@
     "no_data": "Ingen data",
     "location_placeholder": "Placering",
     "error_loading_pollen": "Der opstod en fejl ved indlæsning af pollentyper og beskrivelser:",
-    "error_fetching_data": "Der opstod en fejl ved hentning af pollendata:",
+    "error_fetching_data": "Der opstod en fejl ved hentning af data:",
     "error": "Fejl",
     "thankfully_not_allergic": "Heldigvis er vi ikke allergiske over for fejl.",
     "go_home": "Gå hjem",

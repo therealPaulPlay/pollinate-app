@@ -41,7 +41,7 @@
     "no_data": "Geen gegevens",
     "location_placeholder": "Locatie",
     "error_loading_pollen": "Er is een fout opgetreden bij het laden van stuifmeelsoorten en beschrijvingen:",
-    "error_fetching_data": "Er is een fout opgetreden bij het ophalen van stuifmeelgegevens:",
+    "error_fetching_data": "Er is een fout opgetreden bij het ophalen van gegevens:",
     "error": "Fout",
     "thankfully_not_allergic": "Gelukkig zijn we niet allergisch voor fouten.",
     "go_home": "Naar huis",

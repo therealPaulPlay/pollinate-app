@@ -41,7 +41,7 @@
     "no_data": "Sem dados",
     "location_placeholder": "Localização",
     "error_loading_pollen": "Ocorreu um erro ao carregar os tipos de pólen e descrições:",
-    "error_fetching_data": "Ocorreu um erro ao buscar os dados de pólen:",
+    "error_fetching_data": "Erro ao buscar os dados:",
     "error": "Erro",
     "thankfully_not_allergic": "Felizmente, não somos alérgicos a erros.",
     "go_home": "Ir para casa",

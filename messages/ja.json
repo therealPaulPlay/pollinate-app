@@ -41,7 +41,7 @@
     "no_data": "データなし",
     "location_placeholder": "場所",
     "error_loading_pollen": "花粉の種類と説明の読み込み中にエラーが発生しました：",
-    "error_fetching_data": "花粉データの取得中にエラーが発生しました：",
+    "error_fetching_data": "データの取得中にエラーが発生しました：",
     "error": "エラー",
     "thankfully_not_allergic": "幸い、私たちはエラーにアレルギーがありません。",
     "go_home": "ホームに戻る",

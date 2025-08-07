@@ -25,7 +25,9 @@
 	let limitedCountries = $state([]);
 
 	// Info Drawer for unsupported countries
-	let infoDrawerOpen = $state(false);
+	let unsupportedInfoDrawerOpen = $state(false);
+	let errorInfoDrawerOpen = $state(false);
+	let fetchErrorMessage = $state("");
 
 	async function loadSupportedCountries() {
 		try {
@@ -85,6 +87,8 @@
 			}
 		} catch (error) {
 			console.error("Search failed:", error);
+			fetchErrorMessage = error.message;
+			errorInfoDrawerOpen = true;
 			locations = [];
 		}
 
@@ -113,7 +117,7 @@
 	}
 
 	function selectLocation(location) {
-		if (!isCountrySupported(location.countryCode)) return (infoDrawerOpen = true);
+		if (!isCountrySupported(location.countryCode)) return (unsupportedInfoDrawerOpen = true);
 
 		selectedLocation = location;
 		searchQuery = location.name;
@@ -273,4 +277,5 @@
 	</div>
 </div>
 
-<InfoDrawer bind:open={infoDrawerOpen} title={m.sorry()} text={m.unsupported_country_message()} />
+<InfoDrawer bind:open={unsupportedInfoDrawerOpen} title={m.sorry()} text={m.unsupported_country_message()} />
+<InfoDrawer bind:open={errorInfoDrawerOpen} title={m.error()} text={`${m.error_fetching_data()} ${fetchErrorMessage}`} />

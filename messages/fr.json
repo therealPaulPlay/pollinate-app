@@ -41,7 +41,7 @@
     "no_data": "Aucune donnée",
     "location_placeholder": "Emplacement",
     "error_loading_pollen": "Une erreur s'est produite lors du chargement des types de pollen et descriptions :",
-    "error_fetching_data": "Une erreur s'est produite lors de la récupération des données de pollen :",
+    "error_fetching_data": "Erreur lors de la récupération des données :",
     "error": "Erreur",
     "thankfully_not_allergic": "Heureusement, nous ne sommes pas allergiques aux erreurs.",
     "go_home": "Aller à l'accueil",
