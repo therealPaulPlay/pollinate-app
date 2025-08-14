@@ -1,9 +1,10 @@
 <script>
-	import { onMount } from "svelte";
+	import { onMount, onDestroy } from "svelte";
 	import { goto, onNavigate } from "$app/navigation";
 	import { page } from "$app/state";
 	import { ModeWatcher } from "mode-watcher";
-	import { locales, localizeHref } from "$lib/paraglide/runtime"; // <- Official docs path
+	import { locales, localizeHref } from "$lib/paraglide/runtime";
+	import { initializeAndroidBackHandler, removeAndroidBackHandler } from "$lib/utils/android-back.js";
 	import "../app.css";
 	import init from "overfade";
 
@@ -22,6 +23,11 @@
 
 	onMount(() => {
 		init(); // Init overfade
+		initializeAndroidBackHandler(); // Initialize Android back button handler
+	});
+
+	onDestroy(() => {
+		removeAndroidBackHandler(); // Clean up listener
 	});
 </script>
 
