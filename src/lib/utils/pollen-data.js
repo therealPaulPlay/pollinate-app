@@ -75,5 +75,5 @@ export function getPollenLevel(data, dayIndex, pollenCode) {
     // Check plantInfo
     const plant = dayData.plantInfo?.find(p => p.code === pollenCode);
     if (plant?.indexInfo?.value) return plant.indexInfo.value;
-    return 0;
+    return 0; // If it does not exist, assume 0
 }
