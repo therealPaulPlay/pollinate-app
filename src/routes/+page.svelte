@@ -288,6 +288,7 @@
 {/if}
 
 <!-- Main content -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	bind:this={container}
 	class="no-scrollbar of-top of-length-2 fixed top-[calc(5rem+var(--safe-top))] right-0 bottom-0 left-0 space-y-6 overflow-y-auto p-6 pb-12"
@@ -370,7 +371,7 @@
 								color: "var(--chart-1)"
 							}
 						}}
-						class="h-full w-full [&_.lc-group-g.lc-rule-g]:hidden [&_.lc-spline-path.lc-bar.lc-bars-bar]:stroke-none"
+						class="h-full w-full [&_.lc-group-g.lc-rule-g]:hidden [&_.lc-path.lc-bar.lc-bars-bar]:stroke-none"
 					>
 						<BarChart
 							data={riskForecastData}
