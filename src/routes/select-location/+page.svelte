@@ -210,7 +210,7 @@
 			<search class="relative mb-4">
 				<Search class="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 				<Input
-					type="text"
+					type="search"
 					placeholder={m.search_city()}
 					bind:value={searchQuery}
 					oninput={handleInput}
